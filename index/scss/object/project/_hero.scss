@@ -1,0 +1,61 @@
+@charset "utf-8";
+/*
+* object/project/_hero.scss
+*/
+.p-hero{
+  height: 500px;
+  text-align: left;
+  @include mq(md){
+    height: 300px;
+  }
+  &::before{
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 500px;
+    background-image: url(../img/top-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    // background-color: #333;
+    z-index: -1;
+  }
+  &__content{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &__msg{
+
+    font-weight: 700;
+    font-size: $font-size_4l;
+    letter-spacing: 0.2em;
+    color: $font-color_sub2;
+    @include mq(sm){
+      font-size: $font-size_xl;
+    }
+  }
+  &__list{
+    display: flex;
+    color: $font-color_sub1;
+  }
+  &__item{
+    margin-right: $space-xxl;
+  }
+  &__link{
+    padding: 12px 18px;
+    border: solid 2px $font-color_sub1;
+    border-radius: 24px;
+    &:hover{
+      background-color: $font-color_sub1;
+      color: $font-color_default;
+    }
+    &--msg{
+      font-size: $font-size-s;
+      text-align: center;
+    }
+  }
+}

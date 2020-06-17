@@ -1,0 +1,27 @@
+@charset "utf-8";
+/*
+* object/project/_review.scss
+*/
+.p-review{
+  padding: $space-xxl 0;
+  background-color: $color-bg2;
+  &__item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__icon{
+    margin-right: $space-xl;
+  }
+  &__body{
+    text-align: left;
+    flex-basis: 650px;
+  }
+  &__text{
+    font-size: $font-size_m;
+    font-weight: 700;
+  }
+  &__name{
+    font-size: $font-size_s;
+  }
+}

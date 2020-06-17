@@ -1,0 +1,38 @@
+@charset "utf-8";
+/*
+* layout/_footer.scss
+*/
+.l-footer{
+  background-color: $color_bg3;
+  &__body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    font-size: $font-size_m;
+  }
+  &__copyright{
+    color: $font-color_sub1;
+  }
+  &__icon{
+    display: inline;
+  }
+  & .fab{
+    padding-right: $space_xl;
+    font-size: $font-size_l;
+    color: $font-color_sub2;
+    transition: transform .3s;
+    &:hover{
+      transform: scale(1.2);
+      transition: transform .3s;
+    }
+  }
+  &__contact{
+    display: flex;
+    text-align: left;
+    color: $font-color_sub2;
+    &--lead{
+      margin-right: $space_l;
+    }
+  }
+}
