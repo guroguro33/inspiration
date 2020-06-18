@@ -1,0 +1,88 @@
+@charset "utf-8";
+/*
+* object/component/_auth.scss
+*/
+.c-auth{
+  margin: 150px auto 100px;
+  padding: $space_xxl 80px;
+  max-width: 500px;
+  width: 100%;
+  background-color: $color_bg2;
+  border: solid 1px $color_bar;
+  border-radius: 10px;
+  text-align: center;
+  @include mq(){
+    margin: 100px auto 50px;
+    padding: $space_xl;
+    max-width: 300px;
+  }
+  &__title{
+    font-size: $font-size_l;
+    @include mq(){
+      font-size: $font-size_m;
+    }
+  }
+  &__item{
+    text-align: left;
+    &--name{
+      font-weight: 700;
+      color: $font-color_sub3;
+      & span{
+        font-size: $font-size_s;
+        font-weight: 400;
+      }
+    }
+    &--text{
+      padding: $space_l;
+      width: calc(100% - #{$space_l} * 2);
+      height: 15px;
+      border: solid 1px $color_bar;
+      font-size: $font-size_m;
+      letter-spacing: .05em;
+      &::placeholder{
+        font-size: $font-size_m;
+      }
+      @include mq(){
+        height: 10px;
+        font-size: $font-size_m;
+        letter-spacing: 0;
+      }
+    }
+    &--alert{
+      display: block;
+      font-size: $font-size_s;
+      color: $font-color_alert;
+      @include mq(){
+        font-size: $font-size_xs;
+      }
+    }
+  }
+  &__save{
+    display: block;
+    text-align: left;
+    font-size: $font-size_m;
+    @include mq(){
+      font-size: $font-size_s;
+    }
+    &--box{
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      @include mq(){
+        width: 15px;
+        height: 15px;
+      }
+    }
+    &--text{
+      vertical-align: middle;
+      color: $font-color_sub3;
+    }
+  }
+  &__remind{
+    font-size: $font-size_s;
+    &--link{
+      display: inline-block;
+      text-decoration: underline;
+    }
+  }
+} 

@@ -19,7 +19,7 @@ $(function () {
   // フロートヘッダーメニュー
   var targetHeight = $('.js-float-menu-target').height();
   $(window).on('scroll', function () {
-    $('.js-float-menu').toggleClass('float-active', $(this).scrollTop() > targetHeight * 0.8);
+    $('.js-float-menu').toggleClass('float-active', $(this).scrollTop() > targetHeight);
   })
 
   // スムーズスクロール
@@ -32,5 +32,15 @@ $(function () {
     $('html,body').animate({ scrollTop: position }, 500);
     return false; //aタグの機能無効
   });
+
+  // フッター下部固定
+  $(function () {
+    let $ftr = $('#footer');
+    if (window.innerHeight > $ftr.offset().top + $ftr.outerHeight()) {
+      $ftr.attr({
+        'style': 'position:fixed; top:' + (window.innerHeight - $ftr.outerHeight() + 'px;')
+      });
+    }
+  })
 
 })

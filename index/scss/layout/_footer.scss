@@ -3,6 +3,7 @@
 * layout/_footer.scss
 */
 .l-footer{
+  width: 100%;
   background-color: $color_bg3;
   @include mq(md){
     padding: $space_m 0;

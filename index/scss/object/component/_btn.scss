@@ -1,0 +1,32 @@
+@charset "utf-8";
+/*
+* object/component/_btn.scss
+*/
+.c-btn{
+  &--main{
+    display: block;
+    padding: $space_m $space-4l;
+    margin: 0 auto;
+    background-color: $color_bg3;
+    border: none;
+    border-radius: 10px;
+    color: $font-color_sub2;
+    cursor: pointer;
+  }
+  &--all{
+    padding: 10px 18px;
+    border-radius: 24px;
+    border: solid 2px $font-color_sub1;
+    background-color: $font-color_sub1;
+    color: $font-color_sub2;
+    box-sizing: border-box;
+    @include mq(md){
+      padding: 8px 12px;
+    }
+    &:hover{
+      color: $font-color_sub1;
+      background-color: $color_bg1;
+    }
+  }
+  
+} 

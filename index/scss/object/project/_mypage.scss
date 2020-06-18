@@ -1,0 +1,75 @@
+@charset "utf-8";
+/*
+* object/project/_mypage.scss
+*/
+.p-mypage{
+  &__title{
+    font-size: $font-size_xl;
+    font-weight: 700;
+    @include mq(md){
+      font-size: $font-size_l;
+    }
+  }
+  &__heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 2px $color_bar;
+    &--text{
+      font-size: $font-size_l;
+      font-weight: 700;
+      @include mq(md){
+        font-size: $font-size_m;
+      }
+    }
+  }
+  &__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px $color_bar;
+  }
+  &__sub{
+    // padding-right: $space_l;
+    flex-basis: 120px;
+    font-size: $font-size_s;
+    @include mq(md){
+      font-size: $font-size_xs;
+    }
+  }
+  &__desc{
+    flex-basis: 620px;
+    text-align: left;
+    &--title{
+      font-weight: 700;
+      @include mq(md){
+        font-size: $font-size_s;
+      }
+    }
+    &--info{
+      display: flex;
+      align-items: center;
+    }
+    &--star{
+      margin-right: $space_s;
+      width: 20px;
+      height: auto;
+    }
+    &--point{
+      margin-right: $space_m;
+      font-size: $font-size_m;
+      @include mq(md){
+        font-size: $font-size_xs;
+      }
+    }
+    &--price{
+      color: $font-color_alert;
+    }
+    &--text{
+      font-size: $font-size_s;
+      @include mq(md){
+        font-size: $font-size_xs;
+      }
+    }
+  }
+}

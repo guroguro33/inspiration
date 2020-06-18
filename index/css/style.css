@@ -121,6 +121,7 @@ br {
 */
 .l-header {
   position: fixed;
+  top: 0;
   height: 70px;
   line-height: 70px;
   transition: .3s;
@@ -151,6 +152,7 @@ br {
 * layout/_footer.scss
 */
 .l-footer {
+  width: 100%;
   background-color: #525354; }
   @media screen and (max-width: 896px) {
     .l-footer {
@@ -197,6 +199,25 @@ br {
       margin-right: 15px; }
 
 /*
+* layout/_sidebar.scss
+*/
+.l-sidebar {
+  display: flex;
+  margin-top: 150px;
+  justify-content: center; }
+  @media screen and (max-width: 896px) {
+    .l-sidebar {
+      margin-top: 100px; } }
+  @media screen and (max-width: 480px) {
+    .l-sidebar {
+      display: block; } }
+  .l-sidebar__mymenu {
+    margin-right: 40px;
+    flex-basis: 200px; }
+  .l-sidebar__mypage {
+    flex-basis: 740px; }
+
+/*
 * object/component/_section.scss
 */
 .c-section__title {
@@ -214,6 +235,108 @@ br {
   @media screen and (max-width: 480px) {
     .c-section__sub-title {
       font-size: 12px; } }
+
+/*
+* object/component/_auth.scss
+*/
+.c-auth {
+  margin: 150px auto 100px;
+  padding: 30px 80px;
+  max-width: 500px;
+  width: 100%;
+  background-color: #FFFFFF;
+  border: solid 1px #707070;
+  border-radius: 10px;
+  text-align: center; }
+  @media screen and (max-width: 480px) {
+    .c-auth {
+      margin: 100px auto 50px;
+      padding: 20px;
+      max-width: 300px; } }
+  .c-auth__title {
+    font-size: 20px; }
+    @media screen and (max-width: 480px) {
+      .c-auth__title {
+        font-size: 14px; } }
+  .c-auth__item {
+    text-align: left; }
+    .c-auth__item--name {
+      font-weight: 700;
+      color: #707F89; }
+      .c-auth__item--name span {
+        font-size: 12px;
+        font-weight: 400; }
+    .c-auth__item--text {
+      padding: 15px;
+      width: calc(100% - 15px * 2);
+      height: 15px;
+      border: solid 1px #707070;
+      font-size: 14px;
+      letter-spacing: .05em; }
+      .c-auth__item--text::placeholder {
+        font-size: 14px; }
+      @media screen and (max-width: 480px) {
+        .c-auth__item--text {
+          height: 10px;
+          font-size: 14px;
+          letter-spacing: 0; } }
+    .c-auth__item--alert {
+      display: block;
+      font-size: 12px;
+      color: #DD1B1B; }
+      @media screen and (max-width: 480px) {
+        .c-auth__item--alert {
+          font-size: 10px; } }
+  .c-auth__save {
+    display: block;
+    text-align: left;
+    font-size: 14px; }
+    @media screen and (max-width: 480px) {
+      .c-auth__save {
+        font-size: 12px; } }
+    .c-auth__save--box {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle; }
+      @media screen and (max-width: 480px) {
+        .c-auth__save--box {
+          width: 15px;
+          height: 15px; } }
+    .c-auth__save--text {
+      vertical-align: middle;
+      color: #707F89; }
+  .c-auth__remind {
+    font-size: 12px; }
+    .c-auth__remind--link {
+      display: inline-block;
+      text-decoration: underline; }
+
+/*
+* object/component/_btn.scss
+*/
+.c-btn--main {
+  display: block;
+  padding: 10px 60px;
+  margin: 0 auto;
+  background-color: #525354;
+  border: none;
+  border-radius: 10px;
+  color: #FFFFFF;
+  cursor: pointer; }
+
+.c-btn--all {
+  padding: 10px 18px;
+  border-radius: 24px;
+  border: solid 2px #FAD249;
+  background-color: #FAD249;
+  color: #FFFFFF;
+  box-sizing: border-box; }
+  @media screen and (max-width: 896px) {
+    .c-btn--all {
+      padding: 8px 12px; } }
+  .c-btn--all:hover {
+    color: #FAD249;
+    background-color: #F2F2F2; }
 
 /*
 * object/project/_menu.scss
@@ -431,6 +554,110 @@ br {
         font-size: 10px; } }
 
 /*
+* object/project/_mymenu.scss
+*/
+.p-mymenu__img {
+  margin: 0 auto;
+  max-width: 140px;
+  width: 100%; }
+
+.p-mymenu__name {
+  font-size: 20px;
+  font-weight: 700; }
+  @media screen and (max-width: 896px) {
+    .p-mymenu__name {
+      font-size: 14px; } }
+
+.p-mymenu__prof {
+  color: #FAD249;
+  font-weight: 700; }
+
+.p-mymenu__body {
+  text-align: left; }
+  @media screen and (max-width: 896px) {
+    .p-mymenu__body {
+      font-size: 10px; } }
+  .p-mymenu__body--heading {
+    font-size: 14px;
+    border-bottom: solid 1px #707070; }
+    @media screen and (max-width: 896px) {
+      .p-mymenu__body--heading {
+        font-size: 12px; } }
+  .p-mymenu__body--link {
+    display: flex;
+    justify-content: space-between; }
+  .p-mymenu__body--arrow {
+    width: 10px;
+    height: auto; }
+
+.p-mymenu__back {
+  text-align: left; }
+
+/*
+* object/project/_mypage.scss
+*/
+.p-mypage__title {
+  font-size: 24px;
+  font-weight: 700; }
+  @media screen and (max-width: 896px) {
+    .p-mypage__title {
+      font-size: 20px; } }
+
+.p-mypage__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px #707070; }
+  .p-mypage__heading--text {
+    font-size: 20px;
+    font-weight: 700; }
+    @media screen and (max-width: 896px) {
+      .p-mypage__heading--text {
+        font-size: 14px; } }
+
+.p-mypage__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px #707070; }
+
+.p-mypage__sub {
+  flex-basis: 120px;
+  font-size: 12px; }
+  @media screen and (max-width: 896px) {
+    .p-mypage__sub {
+      font-size: 10px; } }
+
+.p-mypage__desc {
+  flex-basis: 620px;
+  text-align: left; }
+  .p-mypage__desc--title {
+    font-weight: 700; }
+    @media screen and (max-width: 896px) {
+      .p-mypage__desc--title {
+        font-size: 12px; } }
+  .p-mypage__desc--info {
+    display: flex;
+    align-items: center; }
+  .p-mypage__desc--star {
+    margin-right: 5px;
+    width: 20px;
+    height: auto; }
+  .p-mypage__desc--point {
+    margin-right: 10px;
+    font-size: 14px; }
+    @media screen and (max-width: 896px) {
+      .p-mypage__desc--point {
+        font-size: 10px; } }
+  .p-mypage__desc--price {
+    color: #DD1B1B; }
+  .p-mypage__desc--text {
+    font-size: 12px; }
+    @media screen and (max-width: 896px) {
+      .p-mypage__desc--text {
+        font-size: 10px; } }
+
+/*
 * object/utility/_space.scss
 */
 .u-pb-0 {
@@ -483,3 +710,12 @@ br {
 
 .u-mb-4l {
   margin-bottom: 60px; }
+
+/*
+* object/utility/_bg.scss
+*/
+.u-bg__main {
+  background-color: #F2F2F2; }
+
+.u-bg__header {
+  background-color: rgba(78, 79, 80, 0.8); }

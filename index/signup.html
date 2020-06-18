@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="ヒラメキを売り買いできるマーケットサイトです。">
+  <meta name="keywords" content="">
+  <!-- ファビコン -->
+  <link rel="apple-touch-icon" type="image/png" href="./img/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="./img/icon-192x192.png">
+  <!-- Twitterカード -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- <meta name="twitter:site" content="@guroguro33" />
+  <meta property="og:url" content="https://kurosuke-web.com/" />
+  <meta property="og:title" content="kurosukeのポートフォリオ" />
+  <meta property="og:description" content="プロフィール、スキル、制作実績など掲載" />
+  <meta property="og:image" content="https://kurosuke-web.com/twitter-card.jpg" /> -->
+
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="">
+
+  <title>新規登録</title>
+
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+    integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link href="./css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="u-bg__main">
+  <div id="app">
+    <header class="l-container__fluid  l-header u-bg__header">
+      <section class="l-header__body">
+        <h2 class="l-header__title"><a href="">Inspiration</a></h2>
+        <div class="p-menu__trigger js-toggle-sp-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav class="p-menu">
+          <ul class="p-menu__list">
+            <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
+            <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">ログイン</a></li>
+            <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">新規登録</a></li>
+          </ul>
+        </nav>
+      </section>
+    </header>
+
+    <main>
+      <div class="l-container">
+        <form method="" class="c-auth">
+          <h3 class="c-auth__title u-pb-xl">新規登録</h3>
+          <div class="c-auth__item u-pb-l">
+            <p class="c-auth__item--name u-pb-s">名前（必須）</p>
+            <input type="text" name="name" class="c-auth__item--text u-mb-s" placeholder="入力してください">
+            <span class="c-auth__item--alert">エラーメッセージが入ります。</span>
+          </div>
+          <div class="c-auth__item u-pb-l">
+            <p class="c-auth__item--name u-pb-s">メールアドレス（必須）</p>
+            <input type="email" name="email" class="c-auth__item--text u-mb-s" placeholder="入力してください">
+            <span class="c-auth__item--alert">エラーメッセージが入ります。</span>
+          </div>
+          <div class="c-auth__item u-pb-l">
+            <p class="c-auth__item--name u-pb-s">パスワード（必須）<span>※８文字以上</span></p>
+            <input type="password" name="pass" class="c-auth__item--text u-mb-s" placeholder="入力してください">
+            <span class="c-auth__item--alert">エラーメッセージが入ります。</span>
+          </div>
+          <div class="c-auth__item u-pb-xxl">
+            <p class="c-auth__item--name u-pb-s">パスワード（確認用）</p>
+            <input type="password" name="pass_re" class="c-auth__item--text u-mb-s" placeholder="入力してください">
+            <span class="c-auth__item--alert">エラーメッセージが入ります。</span>
+          </div>
+          <input type="submit" class="c-auth__btn c-btn--main u-mb-xxl" value="新規登録">
+        </form>
+      </div>
+
+
+    </main>
+    <footer id="footer" class="l-footer">
+      <div class="l-container l-footer__body">
+        <p class="l-footer__copyright">© Copyright | Inspiration 2020</p>
+        <div class="l-footer__sns">
+          <a href="" class="l-footer__icon"><i class="fab fa-instagram"></i></a>
+          <a href="" class="l-footer__icon"><i class="fab fa-twitter-square"></i></a>
+          <a href="" class="l-footer__icon"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="l-footer__contact">
+          <p class="l-footer__contact--lead">お問い合わせ</p>
+          <div class="l-footer__contact--body">
+            <a href="tel:0312345678">03-1234-5678</a>
+            <a href="mailto:info@mail.com">info@mail.com</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+    integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+  <!-- javascript -->
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
