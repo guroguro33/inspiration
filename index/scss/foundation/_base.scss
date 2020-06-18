@@ -92,3 +92,10 @@ img {
   width: 100%;
   vertical-align: bottom;
 }
+
+br {
+  display: none;
+  @include mq(){
+    display: block;
+  }
+}

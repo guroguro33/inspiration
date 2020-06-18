@@ -25,6 +25,9 @@
 }
 .u-pb-4l{
   padding-bottom: $space_4l;
+  @include mq(md){
+    padding-bottom: $space_3l;
+  }
 }
 .u-mb-0{
   margin-bottom: 0;

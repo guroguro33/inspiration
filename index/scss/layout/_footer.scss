@@ -4,15 +4,33 @@
 */
 .l-footer{
   background-color: $color_bg3;
+  @include mq(md){
+    padding: $space_m 0;
+  }
   &__body{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 70px;
     font-size: $font-size_m;
+    @include mq(md){
+      font-size: $font-size_s;
+    }
+    @include mq(md){
+      display: block;
+      height: auto;
+    }
   }
   &__copyright{
     color: $font-color_sub1;
+    @include mq(md){
+      padding-bottom: $space_m;
+    }
+  }
+  &__sns{
+    @include mq(md){
+      padding-bottom: $space_m;
+    }
   }
   &__icon{
     display: inline;
@@ -31,8 +49,14 @@
     display: flex;
     text-align: left;
     color: $font-color_sub2;
+    @include mq(md){
+      justify-content: center;
+    }
     &--lead{
       margin-right: $space_l;
+    }
+    &--body{
+      // text-align: right;
     }
   }
 }

@@ -7,7 +7,7 @@
   "scripts": {
     "build-css": "node-sass --include-path scss scss/style.scss css/style.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
-    "sync": "browser-sync start --server --files \"./scss/**/*\" \"./*.html\" ",
+    "sync": "browser-sync start --reload-delay 200 --server --files \"./scss/**/*\" \"./*.html\" ",
     "dev": "concurrently --kill-others \"npm run watch-css\" \"npm run sync\""
   },
   "author": "",

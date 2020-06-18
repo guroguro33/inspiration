@@ -6,7 +6,7 @@
   height: 500px;
   text-align: left;
   @include mq(md){
-    height: 300px;
+    height: 350px;
   }
   &::before{
     content: '';
@@ -20,8 +20,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    // background-color: #333;
     z-index: -1;
+    @include mq(md){
+      height: 350px;
+    }
   }
   &__content{
     position: relative;
@@ -34,7 +36,10 @@
     font-size: $font-size_4l;
     letter-spacing: 0.2em;
     color: $font-color_sub2;
-    @include mq(sm){
+    @include mq(md){
+      font-size: $font-size_xxl;
+    }
+    @include mq(){
       font-size: $font-size_xl;
     }
   }
@@ -44,11 +49,17 @@
   }
   &__item{
     margin-right: $space-xxl;
+    @include mq(){
+      margin-right: $space-l;
+    }
   }
   &__link{
     padding: 12px 18px;
     border: solid 2px $font-color_sub1;
     border-radius: 24px;
+    @include mq(md){
+      padding: 10px 12px;
+    }
     &:hover{
       background-color: $font-color_sub1;
       color: $font-color_default;
@@ -56,6 +67,9 @@
     &--msg{
       font-size: $font-size-s;
       text-align: center;
+      @include mq(md){
+        font-size: $font-size-xs;
+      }
     }
   }
 }
