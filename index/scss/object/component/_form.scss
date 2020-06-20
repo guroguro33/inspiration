@@ -1,18 +1,14 @@
 @charset "utf-8";
 /*
-* object/component/_auth.scss
+* object/component/_form.scss
 */
-.c-auth{
-  margin: 150px auto 100px;
+.c-form{
+  margin: 0 auto;
   padding: $space_xxl 80px;
-  max-width: 500px;
+  max-width: 700px;
   width: 100%;
-  background-color: $color_bg2;
-  border: solid 1px $color_bar;
-  border-radius: 10px;
   text-align: center;
   @include mq(){
-    margin: 100px auto 50px;
     padding: $space_xl;
     max-width: 300px;
   }
@@ -32,11 +28,12 @@
         font-weight: 400;
       }
     }
-    &--text{
+    &--input{
       padding: $space_l;
       width: calc(100% - #{$space_l} * 2);
       height: 15px;
-      border: solid 1px $color_bar;
+      border: none;
+      font-family: $font-family_main;
       font-size: $font-size_m;
       letter-spacing: .05em;
       &::placeholder{
@@ -44,9 +41,31 @@
       }
       @include mq(){
         height: 10px;
-        font-size: $font-size_m;
         letter-spacing: 0;
       }
+    }
+    &--text{
+      padding: $space_m;
+      width: calc(100% - #{$space_l} * 2);
+      border: none;
+      font-family: $font-family_main;
+      font-size: $font-size_m;
+      &::placeholder{
+        font-family: $font-family_main;
+      }
+    }
+    &--select{
+      padding: $space_m;
+      width: 50%;
+      border: none;
+      background-color: $color_bg2;
+      font-family: $font-family_main;
+      font-size: $font-size_m;
+    }
+    &--price{
+      @extend .c-form__item--input;
+      margin-right: $space_m;
+      width: 30%;
     }
     &--alert{
       display: block;
@@ -84,5 +103,8 @@
       display: inline-block;
       text-decoration: underline;
     }
+  }
+  &__file{
+    font-family: $font-family_main;
   }
 } 

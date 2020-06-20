@@ -21,6 +21,17 @@
       @include mq(md){
         font-size: $font-size_m;
       }
+      @include mq(){
+        font-size: $font-size_s;
+        text-align: left;
+      }
+    }
+    &--select{
+      padding: $space_m;
+      width: 150px;
+      border: none;
+      font-family: $font-family_main;
+      // font-size: $font-size_m;
     }
   }
   &__item{
@@ -28,6 +39,9 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: solid 1px $color_bar;
+    @include mq(){
+      display: block;
+    }
   }
   &__sub{
     // padding-right: $space_l;
@@ -35,6 +49,19 @@
     font-size: $font-size_s;
     @include mq(md){
       font-size: $font-size_xs;
+    }
+    @include mq(){
+      display: flex;
+    }
+  }
+  &__date{
+    @include mq(){
+      padding-right: $space_s;
+    }
+  }
+  &__cat{
+    @include mq(){
+      padding-left: $space_s;
     }
   }
   &__desc{
@@ -71,5 +98,22 @@
         font-size: $font-size_xs;
       }
     }
+    &--post{
+      display: flex;
+      justify-content: space-between;
+      background-color: $color_bg2;
+      & .p-mypage__desc--price{
+        margin-left: $space_m;
+        font-size: $font-size_s;
+        @include mq(md){
+          flex-basis: 120px;
+          text-align: right;
+          font-size: $font-size_xs;
+        }
+      }
+    }
+  }
+  &__link{
+    display: flex;
   }
 }

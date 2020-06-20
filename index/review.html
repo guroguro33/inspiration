@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="ヒラメキを売り買いできるマーケットサイトです。">
+  <meta name="keywords" content="">
+  <!-- ファビコン -->
+  <link rel="apple-touch-icon" type="image/png" href="./img/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="./img/icon-192x192.png">
+  <!-- Twitterカード -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- <meta name="twitter:site" content="@guroguro33" />
+  <meta property="og:url" content="https://kurosuke-web.com/" />
+  <meta property="og:title" content="kurosukeのポートフォリオ" />
+  <meta property="og:description" content="プロフィール、スキル、制作実績など掲載" />
+  <meta property="og:image" content="https://kurosuke-web.com/twitter-card.jpg" /> -->
+
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="">
+
+  <title>購入者からのレビュー</title>
+
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+    integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link href="./css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="u-bg__main">
+  <div id="app">
+    <header class="l-container__fluid  l-header u-bg__header">
+      <section class="l-header__body">
+        <h2 class="l-header__title"><a href="">Inspiration</a></h2>
+        <div class="p-menu__trigger js-toggle-sp-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav class="p-menu">
+          <ul class="p-menu__list">
+            <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">マイページ</a></li>
+            <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
+            <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">ヒラメキを売る</a></li>
+            <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">ログアウト</a></li>
+          </ul>
+        </nav>
+      </section>
+    </header>
+
+    <main>
+      <div class="l-container l-sidebar l-sidebar--reverse">
+        <section class="l-sidebar__mymenu">
+          <div class="p-mymenu__img u-pb-s">
+            <img src="./img/no-img2.svg" alt="人のアイコン">
+          </div>
+          <p class="p-mymenu__name u-pb-s">名前が入ります</p>
+          <a href="" class="p-mymenu__prof u-mb-xl">プロフィール編集 &gt;</a>
+          <div class="p-mymenu__body u-pb-xl">
+            <p class="p-mymenu__body--heading u-pb-s u-mb-m">出品者メニュー</p>
+            <a href="" class="p-mymenu__body--link u-mb-m">
+              <span>ヒラメキを出品する</span>
+              <img src="./img/arrow-right.svg" class="p-mymenu__body--arrow" alt="リンクマーク">
+            </a>
+            <a href="" class="p-mymenu__body--link u-mb-m">
+              <span>出品したものの管理</span>
+              <img src="./img/arrow-right.svg" class="p-mymenu__body--arrow" alt="リンクマーク">
+            </a>
+            <a href="" class="p-mymenu__body--link u-mb-m">
+              <span>購入者からのレビュー</span>
+              <img src="./img/arrow-right.svg" class="p-mymenu__body--arrow" alt="リンクマーク">
+            </a>
+          </div>
+          <div class="p-mymenu__body u-pb-xl">
+            <p class="p-mymenu__body--heading u-pb-s u-mb-m">購入者メニュー</p>
+            <a href="" class="p-mymenu__body--link u-mb-m">
+              <span>購入したヒラメキ</span>
+              <img src="./img/arrow-right.svg" class="p-mymenu__body--arrow" alt="リンクマーク">
+            </a>
+            <a href="" class="p-mymenu__body--link u-mb-m">
+              <span>気になるリスト</span>
+              <img src="./img/arrow-right.svg" class="p-mymenu__body--arrow" alt="リンクマーク">
+            </a>
+          </div>
+          <a href="" class="p-mymenu__back u-mb-m">&lt; 戻る</a>
+        </section>
+
+        <section class="l-sidebar__mypage">
+          <h1 class="p-mypage__title u-pb-m">購入者からのレビュー</h1>
+          <div class="u-mb-xxl">
+            <form action="" method="" class="p-mypage__heading u-pb-m u-mb-l">
+              <h2 class="p-mypage__heading--text"></h2>
+              <select name="" class="p-mypage__heading--select">
+                <option value="1">新しい順</option>
+                <option value="2">古い順</option>
+              </select>
+            </form>
+            <div href="" class="p-mypage__item u-pb-l u-mb-m">
+              <div class="p-mypage__sub">
+                <p class="p-mypage__date">2020/10/10</p>
+                <p class="p-mypage__date">23:59</p>
+                <p class="p-mypage__cat">シェアリング</p>
+              </div>
+              <div class="p-mypage__desc">
+                <h3 class="p-mypage__desc--title">レビューレビューレビューレビューレビューレビューレビューレビューレビューレビュー…</h3>
+                <div class="p-mypage__desc--info u-pb-s">
+                  <img src="./img/star.svg" alt="星のアイコン" class="p-mypage__desc--star">
+                  <span class="p-mypage__desc--point">4</span>
+                  <span class="p-mypage__desc--point">by 名前が入ります</span>
+                </div>
+                <div class="p-mypage__desc u-bg__post">
+                  <h3 class="p-mypage__desc--title">タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル…</h3>
+                  <div class="p-mypage__desc--info u-pb-s">
+                    <img src="./img/star.svg" alt="星のアイコン" class="p-mypage__desc--star">
+                    <span class="p-mypage__desc--point">3.5(３件)</span>
+                    <span class="p-mypage__desc--price">1,000,000円</span>
+                  </div>
+                  <p class="p-mypage__desc--text u-pb-m">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ…</p>
+                  <a href="" class="c-btn--detail">詳細を見る</a>
+                </div>
+              </div>
+            </div>
+            <div href="" class="p-mypage__item u-pb-l u-mb-m">
+              <div class="p-mypage__sub">
+                <p class="p-mypage__date">2020/10/10</p>
+                <p class="p-mypage__date">23:59</p>
+                <p class="p-mypage__cat">シェアリング</p>
+              </div>
+              <div class="p-mypage__desc">
+                <h3 class="p-mypage__desc--title">レビューレビューレビューレビューレビューレビューレビューレビューレビューレビュー…</h3>
+                <div class="p-mypage__desc--info u-pb-s">
+                  <img src="./img/star.svg" alt="星のアイコン" class="p-mypage__desc--star">
+                  <span class="p-mypage__desc--point">4</span>
+                  <span class="p-mypage__desc--point">by 名前が入ります</span>
+                </div>
+                <div class="p-mypage__desc u-bg__post">
+                  <h3 class="p-mypage__desc--title">タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル…</h3>
+                  <div class="p-mypage__desc--info u-pb-s">
+                    <img src="./img/star.svg" alt="星のアイコン" class="p-mypage__desc--star">
+                    <span class="p-mypage__desc--point">3.5(３件)</span>
+                    <span class="p-mypage__desc--price">1,000,000円</span>
+                  </div>
+                  <p class="p-mypage__desc--text u-pb-m">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ…</p>
+                  <a href="" class="c-btn--detail">詳細を見る</a>
+                </div>
+              </div>
+            </div>
+            <div href="" class="p-mypage__item u-pb-l u-mb-m">
+              <div class="p-mypage__sub">
+                <p class="p-mypage__date">2020/10/10</p>
+                <p class="p-mypage__date">23:59</p>
+                <p class="p-mypage__cat">シェアリング</p>
+              </div>
+              <div class="p-mypage__desc">
+                <h3 class="p-mypage__desc--title">レビューレビューレビューレビューレビューレビューレビューレビューレビューレビュー…</h3>
+                <div class="p-mypage__desc--info u-pb-s">
+                  <img src="./img/star.svg" alt="星のアイコン" class="p-mypage__desc--star">
+                  <span class="p-mypage__desc--point">4</span>
+                  <span class="p-mypage__desc--point">by 名前が入ります</span>
+                </div>
+                <div class="p-mypage__desc u-bg__post">
+                  <h3 class="p-mypage__desc--title">タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル…</h3>
+                  <div class="p-mypage__desc--info u-pb-s">
+                    <img src="./img/star.svg" alt="星のアイコン" class="p-mypage__desc--star">
+                    <span class="p-mypage__desc--point">3.5(３件)</span>
+                    <span class="p-mypage__desc--price">1,000,000円</span>
+                  </div>
+                  <p class="p-mypage__desc--text u-pb-m">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ…</p>
+                  <a href="" class="c-btn--detail">詳細を見る</a>
+                </div>
+              </div>
+            </div>
+            <div href="" class="p-mypage__item u-pb-l u-mb-m">
+              <div class="p-mypage__sub">
+                <p class="p-mypage__date">2020/10/10</p>
+                <p class="p-mypage__date">23:59</p>
+                <p class="p-mypage__cat">シェアリング</p>
+              </div>
+              <div class="p-mypage__desc">
+                <h3 class="p-mypage__desc--title">レビューレビューレビューレビューレビューレビューレビューレビューレビューレビュー…</h3>
+                <div class="p-mypage__desc--info u-pb-s">
+                  <img src="./img/star.svg" alt="星のアイコン" class="p-mypage__desc--star">
+                  <span class="p-mypage__desc--point">4</span>
+                  <span class="p-mypage__desc--point">by 名前が入ります</span>
+                </div>
+                <div class="p-mypage__desc u-bg__post">
+                  <h3 class="p-mypage__desc--title">タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル…</h3>
+                  <div class="p-mypage__desc--info u-pb-s">
+                    <img src="./img/star.svg" alt="星のアイコン" class="p-mypage__desc--star">
+                    <span class="p-mypage__desc--point">3.5(３件)</span>
+                    <span class="p-mypage__desc--price">1,000,000円</span>
+                  </div>
+                  <p class="p-mypage__desc--text u-pb-m">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ…</p>
+                  <a href="" class="c-btn--detail">詳細を見る</a>
+                </div>
+              </div>
+            </div>
+            <div href="" class="p-mypage__item u-pb-l u-mb-m">
+              <div class="p-mypage__sub">
+                <p class="p-mypage__date">2020/10/10</p>
+                <p class="p-mypage__date">23:59</p>
+                <p class="p-mypage__cat">シェアリング</p>
+              </div>
+              <div class="p-mypage__desc">
+                <h3 class="p-mypage__desc--title">レビューレビューレビューレビューレビューレビューレビューレビューレビューレビュー…</h3>
+                <div class="p-mypage__desc--info u-pb-s">
+                  <img src="./img/star.svg" alt="星のアイコン" class="p-mypage__desc--star">
+                  <span class="p-mypage__desc--point">4</span>
+                  <span class="p-mypage__desc--point">by 名前が入ります</span>
+                </div>
+                <div class="p-mypage__desc u-bg__post">
+                  <h3 class="p-mypage__desc--title">タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル…</h3>
+                  <div class="p-mypage__desc--info u-pb-s">
+                    <img src="./img/star.svg" alt="星のアイコン" class="p-mypage__desc--star">
+                    <span class="p-mypage__desc--point">3.5(３件)</span>
+                    <span class="p-mypage__desc--price">1,000,000円</span>
+                  </div>
+                  <p class="p-mypage__desc--text u-pb-m">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ…</p>
+                  <a href="" class="c-btn--detail">詳細を見る</a>
+                </div>
+              </div>
+            </div>
+
+            <div>ページネーション</div>
+          </div>
+        </section>
+
+      </div>
+
+
+    </main>
+    <footer id="footer" class="l-footer">
+      <div class="l-container l-footer__body">
+        <p class="l-footer__copyright">© Copyright | Inspiration 2020</p>
+        <div class="l-footer__sns">
+          <a href="" class="l-footer__icon"><i class="fab fa-instagram"></i></a>
+          <a href="" class="l-footer__icon"><i class="fab fa-twitter-square"></i></a>
+          <a href="" class="l-footer__icon"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="l-footer__contact">
+          <p class="l-footer__contact--lead">お問い合わせ</p>
+          <div class="l-footer__contact--body">
+            <a href="tel:0312345678">03-1234-5678</a>
+            <a href="mailto:info@mail.com">info@mail.com</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+    integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+  <!-- javascript -->
+  <script src="./js/script.js"></script>
+</body>
+
+</html>

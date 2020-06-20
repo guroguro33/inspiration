@@ -1,0 +1,15 @@
+@charset "utf-8";
+/*
+* object/project/_checkout.scss
+*/
+.p-checkout{
+  padding: $space_xxl $space_4l;
+  border: solid 1px $color_bar;
+  border-radius: 10px;
+  background-color: $color_bg2;
+  &__price{
+    font-size: $font-size_l;
+    font-weight: 700;
+    color: $font-color_alert;
+  }
+}

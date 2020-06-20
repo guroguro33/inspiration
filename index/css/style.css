@@ -209,13 +209,43 @@ br {
     .l-sidebar {
       margin-top: 100px; } }
   @media screen and (max-width: 480px) {
-    .l-sidebar {
-      display: block; } }
+    .l-sidebar--reverse {
+      flex-direction: column-reverse; } }
   .l-sidebar__mymenu {
     margin-right: 40px;
     flex-basis: 200px; }
+    @media screen and (max-width: 480px) {
+      .l-sidebar__mymenu {
+        margin-right: 0; } }
   .l-sidebar__mypage {
     flex-basis: 740px; }
+  .l-sidebar__detail {
+    margin-right: 40px;
+    flex-basis: 600px;
+    text-align: left; }
+    @media screen and (max-width: 480px) {
+      .l-sidebar__detail {
+        margin-right: 0; } }
+  .l-sidebar__sub {
+    flex-basis: 300px; }
+
+/*
+* layout/_auth.scss
+*/
+.l-auth {
+  margin: 150px auto 100px;
+  padding: 30px 80px;
+  max-width: 500px;
+  width: 100%;
+  background-color: #FFFFFF;
+  border: solid 1px #707070;
+  border-radius: 10px;
+  text-align: center; }
+  @media screen and (max-width: 480px) {
+    .l-auth {
+      margin: 100px auto 50px;
+      padding: 20px;
+      max-width: 300px; } }
 
 /*
 * object/component/_section.scss
@@ -237,106 +267,157 @@ br {
       font-size: 12px; } }
 
 /*
-* object/component/_auth.scss
+* object/component/_form.scss
 */
-.c-auth {
-  margin: 150px auto 100px;
+.c-form {
+  margin: 0 auto;
   padding: 30px 80px;
-  max-width: 500px;
+  max-width: 700px;
   width: 100%;
-  background-color: #FFFFFF;
-  border: solid 1px #707070;
-  border-radius: 10px;
   text-align: center; }
   @media screen and (max-width: 480px) {
-    .c-auth {
-      margin: 100px auto 50px;
+    .c-form {
       padding: 20px;
       max-width: 300px; } }
-  .c-auth__title {
+  .c-form__title {
     font-size: 20px; }
     @media screen and (max-width: 480px) {
-      .c-auth__title {
+      .c-form__title {
         font-size: 14px; } }
-  .c-auth__item {
+  .c-form__item {
     text-align: left; }
-    .c-auth__item--name {
+    .c-form__item--name {
       font-weight: 700;
       color: #707F89; }
-      .c-auth__item--name span {
+      .c-form__item--name span {
         font-size: 12px;
         font-weight: 400; }
-    .c-auth__item--text {
+    .c-form__item--input, .c-form__item--price {
       padding: 15px;
       width: calc(100% - 15px * 2);
       height: 15px;
-      border: solid 1px #707070;
+      border: none;
+      font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
       font-size: 14px;
       letter-spacing: .05em; }
-      .c-auth__item--text::placeholder {
+      .c-form__item--input::placeholder, .c-form__item--price::placeholder {
         font-size: 14px; }
       @media screen and (max-width: 480px) {
-        .c-auth__item--text {
+        .c-form__item--input, .c-form__item--price {
           height: 10px;
-          font-size: 14px;
           letter-spacing: 0; } }
-    .c-auth__item--alert {
+    .c-form__item--text {
+      padding: 10px;
+      width: calc(100% - 15px * 2);
+      border: none;
+      font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+      font-size: 14px; }
+      .c-form__item--text::placeholder {
+        font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
+    .c-form__item--select {
+      padding: 10px;
+      width: 50%;
+      border: none;
+      background-color: #FFFFFF;
+      font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+      font-size: 14px; }
+    .c-form__item--price {
+      margin-right: 10px;
+      width: 30%; }
+    .c-form__item--alert {
       display: block;
       font-size: 12px;
       color: #DD1B1B; }
       @media screen and (max-width: 480px) {
-        .c-auth__item--alert {
+        .c-form__item--alert {
           font-size: 10px; } }
-  .c-auth__save {
+  .c-form__save {
     display: block;
     text-align: left;
     font-size: 14px; }
     @media screen and (max-width: 480px) {
-      .c-auth__save {
+      .c-form__save {
         font-size: 12px; } }
-    .c-auth__save--box {
+    .c-form__save--box {
       width: 20px;
       height: 20px;
       vertical-align: middle; }
       @media screen and (max-width: 480px) {
-        .c-auth__save--box {
+        .c-form__save--box {
           width: 15px;
           height: 15px; } }
-    .c-auth__save--text {
+    .c-form__save--text {
       vertical-align: middle;
       color: #707F89; }
-  .c-auth__remind {
+  .c-form__remind {
     font-size: 12px; }
-    .c-auth__remind--link {
+    .c-form__remind--link {
       display: inline-block;
       text-decoration: underline; }
+  .c-form__file {
+    font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
 
 /*
 * object/component/_btn.scss
 */
-.c-btn--main {
+.c-btn--main, .c-btn--detail, .c-btn--sub, .c-btn--alert {
   display: block;
   padding: 10px 60px;
   margin: 0 auto;
-  background-color: #525354;
   border: none;
+  background-color: #525354;
   border-radius: 10px;
+  font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 14px;
   color: #FFFFFF;
   cursor: pointer; }
+  .c-btn--main:hover, .c-btn--detail:hover, .c-btn--sub:hover, .c-btn--alert:hover {
+    opacity: .7; }
+  @media screen and (max-width: 896px) {
+    .c-btn--main, .c-btn--detail, .c-btn--sub, .c-btn--alert {
+      font-size: 12px; } }
+  @media screen and (max-width: 480px) {
+    .c-btn--main, .c-btn--detail, .c-btn--sub, .c-btn--alert {
+      font-size: 10px; } }
 
 .c-btn--all {
   padding: 10px 18px;
-  border-radius: 24px;
   border: solid 2px #FAD249;
   background-color: #FAD249;
   color: #FFFFFF;
+  border-radius: 24px;
   box-sizing: border-box; }
   @media screen and (max-width: 896px) {
     .c-btn--all {
       padding: 8px 12px; } }
+  @media screen and (max-width: 480px) {
+    .c-btn--all {
+      padding: 6px 10px; } }
   .c-btn--all:hover {
     color: #FAD249;
     background-color: #F2F2F2; }
+
+.c-btn--detail {
+  margin: 0;
+  padding: 10px 20px;
+  width: 150px;
+  background-color: #29A8E1;
+  text-align: center; }
+  @media screen and (max-width: 480px) {
+    .c-btn--detail {
+      width: 130px; } }
+
+.c-btn--sub {
+  margin: 0 10px 0 0;
+  padding: 10px 20px;
+  width: 150px;
+  text-align: center; }
+  @media screen and (max-width: 480px) {
+    .c-btn--sub {
+      width: 130px; } }
+
+.c-btn--alert {
+  background-color: #DD1B1B; }
 
 /*
 * object/project/_menu.scss
@@ -571,6 +652,8 @@ br {
 .p-mymenu__prof {
   color: #FAD249;
   font-weight: 700; }
+  .p-mymenu__prof:hover {
+    color: #707F89; }
 
 .p-mymenu__body {
   text-align: left; }
@@ -586,12 +669,19 @@ br {
   .p-mymenu__body--link {
     display: flex;
     justify-content: space-between; }
+    .p-mymenu__body--link:hover {
+      color: #707F89; }
   .p-mymenu__body--arrow {
     width: 10px;
     height: auto; }
 
 .p-mymenu__back {
   text-align: left; }
+  .p-mymenu__back:hover {
+    color: #707F89; }
+  @media screen and (max-width: 480px) {
+    .p-mymenu__back {
+      text-align: center; } }
 
 /*
 * object/project/_mypage.scss
@@ -614,12 +704,24 @@ br {
     @media screen and (max-width: 896px) {
       .p-mypage__heading--text {
         font-size: 14px; } }
+    @media screen and (max-width: 480px) {
+      .p-mypage__heading--text {
+        font-size: 12px;
+        text-align: left; } }
+  .p-mypage__heading--select {
+    padding: 10px;
+    width: 150px;
+    border: none;
+    font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
 
 .p-mypage__item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: solid 1px #707070; }
+  @media screen and (max-width: 480px) {
+    .p-mypage__item {
+      display: block; } }
 
 .p-mypage__sub {
   flex-basis: 120px;
@@ -627,6 +729,17 @@ br {
   @media screen and (max-width: 896px) {
     .p-mypage__sub {
       font-size: 10px; } }
+  @media screen and (max-width: 480px) {
+    .p-mypage__sub {
+      display: flex; } }
+
+@media screen and (max-width: 480px) {
+  .p-mypage__date {
+    padding-right: 5px; } }
+
+@media screen and (max-width: 480px) {
+  .p-mypage__cat {
+    padding-left: 5px; } }
 
 .p-mypage__desc {
   flex-basis: 620px;
@@ -656,6 +769,268 @@ br {
     @media screen and (max-width: 896px) {
       .p-mypage__desc--text {
         font-size: 10px; } }
+  .p-mypage__desc--post {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF; }
+    .p-mypage__desc--post .p-mypage__desc--price {
+      margin-left: 10px;
+      font-size: 12px; }
+      @media screen and (max-width: 896px) {
+        .p-mypage__desc--post .p-mypage__desc--price {
+          flex-basis: 120px;
+          text-align: right;
+          font-size: 10px; } }
+
+.p-mypage__link {
+  display: flex; }
+
+/*
+* object/project/_sort.scss
+*/
+.p-sort {
+  margin: 100px 0 100px;
+  padding: 10px 30px;
+  background-color: #FFFFFF;
+  text-align: left; }
+  @media screen and (max-width: 480px) {
+    .p-sort {
+      margin: 80px 0 50px; } }
+  .p-sort__title {
+    font-weight: 700; }
+  .p-sort__body {
+    display: flex;
+    justify-content: space-around; }
+    @media screen and (max-width: 896px) {
+      .p-sort__body {
+        flex-wrap: wrap; } }
+    @media screen and (max-width: 480px) {
+      .p-sort__body {
+        display: block; } }
+  .p-sort__item {
+    width: 18%; }
+    @media screen and (max-width: 896px) {
+      .p-sort__item {
+        width: 42%; } }
+    @media screen and (max-width: 480px) {
+      .p-sort__item {
+        margin-bottom: 5px;
+        width: 80%; } }
+    .p-sort__item--title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #707F89; }
+      @media screen and (max-width: 480px) {
+        .p-sort__item--title {
+          font-size: 12px; } }
+    .p-sort__item--select {
+      padding: 5px 10px;
+      width: 100%;
+      font-size: 10px;
+      font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
+  .p-sort__price {
+    width: 35%; }
+    @media screen and (max-width: 896px) {
+      .p-sort__price {
+        width: 42%; } }
+    @media screen and (max-width: 480px) {
+      .p-sort__price {
+        width: 80%; } }
+    .p-sort__price--number {
+      padding: 5px 10px;
+      width: 20%;
+      font-size: 12px;
+      font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
+      @media screen and (max-width: 896px) {
+        .p-sort__price--number {
+          width: 25%; } }
+      @media screen and (max-width: 480px) {
+        .p-sort__price--number {
+          margin-bottom: 5px;
+          width: 40%; } }
+    .p-sort__price span {
+      font-size: 12px; }
+      @media screen and (max-width: 896px) {
+        .p-sort__price span {
+          font-size: 10px; } }
+
+/*
+* object/project/_index.scss
+*/
+.p-index {
+  text-align: center; }
+  .p-index__title {
+    font-size: 20px;
+    font-weight: 700; }
+  .p-index__item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px #707070;
+    align-items: center; }
+    .p-index__item:hover {
+      opacity: .7; }
+    @media screen and (max-width: 480px) {
+      .p-index__item {
+        display: block; } }
+  @media screen and (max-width: 480px) {
+    .p-index__icon {
+      display: none; } }
+  .p-index__icon--img {
+    margin: 0 auto;
+    max-width: 65px;
+    width: 100%; }
+  .p-index__icon--name {
+    font-size: 12px; }
+    @media screen and (max-width: 896px) {
+      .p-index__icon--name {
+        font-size: 10px; } }
+  .p-index__sub {
+    flex-basis: 120px;
+    font-size: 12px; }
+    @media screen and (max-width: 896px) {
+      .p-index__sub {
+        font-size: 10px; } }
+    @media screen and (max-width: 480px) {
+      .p-index__sub {
+        display: flex; } }
+  @media screen and (max-width: 480px) {
+    .p-index__date {
+      padding-right: 5px; } }
+  @media screen and (max-width: 480px) {
+    .p-index__cat {
+      padding-left: 5px; } }
+  .p-index__desc {
+    flex-basis: 720px;
+    text-align: left; }
+    .p-index__desc--title {
+      font-weight: 700; }
+      @media screen and (max-width: 896px) {
+        .p-index__desc--title {
+          font-size: 12px; } }
+    .p-index__desc--info {
+      display: flex;
+      align-items: center; }
+    .p-index__desc--star {
+      margin-right: 5px;
+      width: 20px;
+      height: auto; }
+    .p-index__desc--point {
+      margin-right: 10px;
+      font-size: 14px; }
+      @media screen and (max-width: 896px) {
+        .p-index__desc--point {
+          font-size: 10px; } }
+    .p-index__desc--price {
+      color: #DD1B1B; }
+    .p-index__desc--text {
+      font-size: 12px; }
+      @media screen and (max-width: 896px) {
+        .p-index__desc--text {
+          font-size: 10px; } }
+
+/*
+* object/project/_detail.scss
+*/
+.p-detail__title {
+  font-size: 24px;
+  font-weight: 700; }
+
+.p-detail__note {
+  display: flex;
+  justify-content: space-between; }
+  .p-detail__note__info {
+    display: flex;
+    align-items: center; }
+  .p-detail__note__star {
+    margin-right: 5px;
+    width: 20px;
+    height: auto; }
+  .p-detail__note__text {
+    padding-right: 15px; }
+
+.p-detail__btn {
+  display: flex;
+  align-items: center; }
+  .p-detail__btn--like {
+    display: flex;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: solid 1px #707070;
+    border-radius: 5px; }
+
+.p-detail__date {
+  text-align: right;
+  color: #707F89; }
+
+.p-detail__tab {
+  display: flex;
+  justify-content: space-evenly; }
+  .p-detail__tab__btn {
+    padding: 10px;
+    font-weight: 700;
+    color: #707F89; }
+
+.p-detail__text {
+  padding: 20px 30px;
+  min-height: 500px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  font-size: 14px; }
+
+.p-detail__review__heading {
+  text-align: center;
+  font-weight: 700; }
+
+.p-detail__review__item {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: solid 1px #707070; }
+
+.p-detail__review__sub {
+  flex-basis: 70px;
+  padding-right: 20px;
+  text-align: right;
+  font-size: 12px; }
+  @media screen and (max-width: 480px) {
+    .p-detail__review__sub {
+      font-size: 10px; } }
+
+.p-detail__review__desc {
+  flex-basis: 490px; }
+
+.p-detail__review__text {
+  font-size: 14px; }
+  @media screen and (max-width: 896px) {
+    .p-detail__review__text {
+      font-size: 10px; } }
+
+.p-detail__review__info {
+  display: flex; }
+
+.p-detail__review__star {
+  margin-right: 5px;
+  width: 20px;
+  height: auto; }
+
+.p-detail__review__point {
+  margin-right: 10px;
+  font-size: 14px; }
+  @media screen and (max-width: 896px) {
+    .p-detail__review__point {
+      font-size: 10px; } }
+
+/*
+* object/project/_checkout.scss
+*/
+.p-checkout {
+  padding: 30px 60px;
+  border: solid 1px #707070;
+  border-radius: 10px;
+  background-color: #FFFFFF; }
+  .p-checkout__price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #DD1B1B; }
 
 /*
 * object/utility/_space.scss
@@ -719,3 +1094,16 @@ br {
 
 .u-bg__header {
   background-color: rgba(78, 79, 80, 0.8); }
+
+.u-bg__post {
+  padding: 10px;
+  background-color: #FFFFFF; }
+
+/*
+* object/utility/border.scss
+*/
+.u-border {
+  border: solid 1px #707070; }
+
+.u-border--bottom {
+  border-bottom: solid 2px #707070; }

@@ -1,0 +1,101 @@
+@charset "utf-8";
+/*
+* object/project/_detail.scss
+*/
+.p-detail{
+  &__title{
+    font-size: $font-size_xl;
+    font-weight: 700;
+  }
+  &__note{
+    display: flex;
+    justify-content: space-between;
+    &__info{
+      display: flex;
+      align-items: center;
+    }
+    &__star{
+      margin-right: $space_s;
+      width: 20px;
+      height: auto;
+    }
+    &__text{
+      padding-right: $space_l;
+    }
+  }
+  &__btn{
+    display: flex;
+    align-items: center;
+    &--like{
+      display: flex;
+      margin-left: $space_m;
+      padding: $space_s $space_m;
+      border: solid 1px $color_bar;
+      border-radius: 5px;
+    }
+  }
+  &__date{
+    text-align: right;
+    color: $font-color_sub3;
+  }
+  &__tab{
+    display: flex;
+    justify-content: space-evenly;
+    &__btn{
+      padding: $space_m;
+      font-weight: 700;
+      color: $font-color_sub3;
+    }
+  }
+  &__text{
+    padding: $space_xl $space_xxl;
+    min-height: 500px;
+    background-color: $color_bg2;
+    border-radius: 10px;
+    font-size: $font-size_m;
+  }
+  &__review{
+    &__heading{
+      text-align: center;
+      font-weight: 700;
+    }
+    &__item{
+      display: flex;
+      justify-content: flex-end;
+      border-bottom: solid 1px $color_bar;
+    }
+    &__sub{
+      flex-basis: 70px;
+      padding-right: $space_xl;
+      text-align: right;
+      font-size: $font-size_s;
+      @include mq(){
+        font-size: $font-size_xs;
+      }
+    }
+    &__desc{
+      flex-basis: 490px;
+    }
+    &__text{
+      font-size: $font-size_m;
+      @include mq(md){
+        font-size: $font-size_xs;
+      }
+    }
+    &__info{
+      display: flex;
+    }
+    &__star{
+      margin-right: $space_s;
+      width: 20px;
+      height: auto;
+    }
+    &__point{
+      margin-right: $space_m;
+      font-size: $font-size_m;
+      @include mq(md){
+        font-size: $font-size_xs;
+      }
+    }
+  }
+}

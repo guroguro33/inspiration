@@ -1,0 +1,10 @@
+@charset "utf-8";
+/*
+* object/utility/border.scss
+*/
+.u-border{
+  border: solid 1px $color_bar;
+}
+.u-border--bottom{
+  border-bottom: solid 2px $color_bar;
+}

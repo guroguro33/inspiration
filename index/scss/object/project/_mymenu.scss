@@ -18,6 +18,9 @@
   &__prof{
     color: $font-color_sub1;
     font-weight: 700;
+    &:hover{
+      color: $font-color_sub3;
+    }
   }
   &__body{
     text-align: left;
@@ -34,6 +37,9 @@
     &--link{
       display: flex;
       justify-content: space-between;
+      &:hover{
+        color: $font-color_sub3;
+      }
     }
     &--arrow{
       width: 10px;
@@ -42,5 +48,11 @@
   }
   &__back{
     text-align: left;
+    &:hover{
+      color: $font-color_sub3;
+    }
+    @include mq(){
+      text-align: center;
+    }
   }
 }

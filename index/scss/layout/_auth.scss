@@ -1,0 +1,19 @@
+@charset "utf-8";
+/*
+* layout/_auth.scss
+*/
+.l-auth{
+  margin: 150px auto 100px;
+  padding: $space_xxl 80px;
+  max-width: 500px;
+  width: 100%;
+  background-color: $color_bg2;
+  border: solid 1px $color_bar;
+  border-radius: 10px;
+  text-align: center;
+  @include mq(){
+    margin: 100px auto 50px;
+    padding: $space_xl;
+    max-width: 300px;
+  }
+}
