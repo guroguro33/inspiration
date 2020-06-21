@@ -3,13 +3,63 @@
 * object/project/_checkout.scss
 */
 .p-checkout{
-  padding: $space_xxl $space_4l;
-  border: solid 1px $color_bar;
-  border-radius: 10px;
-  background-color: $color_bg2;
+  &__pay{
+    padding: $space_xxl $space_4l;
+    border: solid 1px $color_bar;
+    border-radius: 10px;
+    background-color: $color_bg2;
+    @include mq(md){
+      padding: $space_xl $space_xxl;
+    }
+    @include mq(){
+      margin: 0 auto $space_xl;
+      width: 80%;
+    }
+  }
   &__price{
     font-size: $font-size_l;
     font-weight: 700;
     color: $font-color_alert;
+    @include mq(md){
+      font-size: $font-size_default;
+    }
+  }
+  &__review{
+    padding: $space_xl $space_xl;
+    border: solid 1px $color_bar;
+    border-radius: 10px;
+    background-color: $color_bg2;
+    @include mq(md){
+      padding: $space_l $space_l;
+    }
+    @include mq(){
+      margin: 0 auto $space_xl;
+    }
+    &__heading{
+      font-weight: 700;
+    }
+    &__point-area{
+      display: flex;
+      align-items: baseline;
+    }
+    &__point{
+      margin-left: $space_l;
+      padding-left: $space_m;
+      width: 50px;
+      height: 30px;
+      font-family: $font-family_main;
+    }
+    &__comment-area{
+      text-align: left;
+      
+    }
+    &__comment{
+      padding: $space_m;
+      width: 90%;
+      border: solid 1px $color_bar;
+      line-height: inherit;
+      font-family: $font-family_main;
+
+    }
   }
 }

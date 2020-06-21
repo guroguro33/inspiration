@@ -3,13 +3,12 @@
 * object/component/_btn.scss
 */
 .c-btn{
-  &--main{
+
+  &__main{
     display: block;
-    padding: $space_m $space_4l;
-    margin: 0 auto;
     border: none;
-    background-color: $color_bg3;
     border-radius: 10px;
+    text-align: center;
     font-family: $font-family_main;
     font-size: $font_size_m;
     color: $font-color_sub2;
@@ -23,49 +22,82 @@
     @include mq(){
       font-size: $font_size_xs;
     }
+    &--gray1{
+      @extend .c-btn__main;
+      margin: 0 auto;
+      padding: $space_m $space_4l;
+      background-color: $color_bg3;
+    }
+    &--gray2{
+      @extend .c-btn__main;
+      margin: 0 $space_m 0 0;
+      padding: $space_m $space_xl;
+      width: 150px;
+      background-color: $color_bg3;
+      @include mq(sm){
+        width: 130px;
+      }
+    }
+    &--blue{
+      @extend .c-btn__main;
+      margin: 0;
+      padding: $space_m $space_xl;
+      width: 150px;
+      background-color: $color_bg4;
+      @include mq(sm){
+        width: 130px;
+      }
+    }
+    &--blue2{
+      @extend .c-btn__main;
+      margin: 0;
+      padding: $space_m $space_xl;
+      width: 150px;
+      border: solid 2px $color_bg4;
+      color: $color_bg4;
+      cursor: default;
+      &:hover{
+        opacity: 1;
+      }
+      @include mq(sm){
+        width: 130px;
+      }
+    }
+    &--red{
+      @extend .c-btn__main--gray1;
+      background-color: $font-color_alert;
+    }
   }
-  &--all{
-    padding: 10px 18px;
+
+  &__sub{
     border: solid 2px $font-color_sub1;
-    background-color: $font-color_sub1;
-    color: $font-color_sub2;
     border-radius: 24px;
-    box-sizing: border-box;
-    @include mq(md){
-      padding: 8px 12px;
-    }
-    @include mq(){
-      padding: 6px 10px;
-    }
     &:hover{
+      background-color: $font-color_sub1;
+      color: $font-color_default;
+    }
+    &--top{
+      @extend .c-btn__sub;
+      padding: 12px 18px;
+      @include mq(md){
+        padding: 10px 12px;
+      }
+    }
+    // 別ボタンに変える
+    &--mypage{
+      @extend .c-btn__sub;
+      padding: 10px 18px;
       color: $font-color_sub1;
-      background-color: $color_bg1;
+      &:hover{
+        color: $color_bg1;
+      }
+      @include mq(md){
+        padding: 8px 12px;
+      }
+      @include mq(){
+        padding: 6px 10px;
+      }
     }
-  }
-  &--detail{
-    @extend .c-btn--main;
-    margin: 0;
-    padding: $space_m $space_xl;
-    width: 150px;
-    background-color: $color_bg4;
-    text-align: center;
-    @include mq(sm){
-      width: 130px;
-    }
-  }
-  &--sub{
-    @extend .c-btn--main;
-    margin: 0 $space_m 0 0;
-    padding: $space_m $space_xl;
-    width: 150px;
-    text-align: center;
-    @include mq(sm){
-      width: 130px;
-    }
-  }
-  &--alert{
-    @extend .c-btn--main;
-    background-color: $font-color_alert;
   }
   
 } 

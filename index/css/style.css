@@ -201,22 +201,27 @@ br {
 /*
 * layout/_sidebar.scss
 */
-.l-sidebar {
+.l-sidebar, .l-sidebar--reverse {
   display: flex;
   margin-top: 150px;
   justify-content: center; }
   @media screen and (max-width: 896px) {
-    .l-sidebar {
+    .l-sidebar, .l-sidebar--reverse {
       margin-top: 100px; } }
   @media screen and (max-width: 480px) {
+    .l-sidebar, .l-sidebar--reverse {
+      display: block; } }
+  @media screen and (max-width: 480px) {
     .l-sidebar--reverse {
+      display: flex;
       flex-direction: column-reverse; } }
   .l-sidebar__mymenu {
     margin-right: 40px;
     flex-basis: 200px; }
     @media screen and (max-width: 480px) {
       .l-sidebar__mymenu {
-        margin-right: 0; } }
+        margin: 0 auto;
+        width: 80%; } }
   .l-sidebar__mypage {
     flex-basis: 740px; }
   .l-sidebar__detail {
@@ -360,64 +365,80 @@ br {
 /*
 * object/component/_btn.scss
 */
-.c-btn--main, .c-btn--detail, .c-btn--sub, .c-btn--alert {
+.c-btn__main, .c-btn__main--gray1, .c-btn__main--red, .c-btn__main--gray2, .c-btn__main--blue, .c-btn__main--blue2 {
   display: block;
-  padding: 10px 60px;
-  margin: 0 auto;
   border: none;
-  background-color: #525354;
   border-radius: 10px;
+  text-align: center;
   font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   font-size: 14px;
   color: #FFFFFF;
   cursor: pointer; }
-  .c-btn--main:hover, .c-btn--detail:hover, .c-btn--sub:hover, .c-btn--alert:hover {
+  .c-btn__main:hover, .c-btn__main--gray1:hover, .c-btn__main--red:hover, .c-btn__main--gray2:hover, .c-btn__main--blue:hover, .c-btn__main--blue2:hover {
     opacity: .7; }
   @media screen and (max-width: 896px) {
-    .c-btn--main, .c-btn--detail, .c-btn--sub, .c-btn--alert {
+    .c-btn__main, .c-btn__main--gray1, .c-btn__main--red, .c-btn__main--gray2, .c-btn__main--blue, .c-btn__main--blue2 {
       font-size: 12px; } }
   @media screen and (max-width: 480px) {
-    .c-btn--main, .c-btn--detail, .c-btn--sub, .c-btn--alert {
+    .c-btn__main, .c-btn__main--gray1, .c-btn__main--red, .c-btn__main--gray2, .c-btn__main--blue, .c-btn__main--blue2 {
       font-size: 10px; } }
+  .c-btn__main--gray1, .c-btn__main--red {
+    margin: 0 auto;
+    padding: 10px 60px;
+    background-color: #525354; }
+  .c-btn__main--gray2 {
+    margin: 0 10px 0 0;
+    padding: 10px 20px;
+    width: 150px;
+    background-color: #525354; }
+    @media screen and (max-width: 480px) {
+      .c-btn__main--gray2 {
+        width: 130px; } }
+  .c-btn__main--blue {
+    margin: 0;
+    padding: 10px 20px;
+    width: 150px;
+    background-color: #29A8E1; }
+    @media screen and (max-width: 480px) {
+      .c-btn__main--blue {
+        width: 130px; } }
+  .c-btn__main--blue2 {
+    margin: 0;
+    padding: 10px 20px;
+    width: 150px;
+    border: solid 2px #29A8E1;
+    color: #29A8E1;
+    cursor: default; }
+    .c-btn__main--blue2:hover {
+      opacity: 1; }
+    @media screen and (max-width: 480px) {
+      .c-btn__main--blue2 {
+        width: 130px; } }
+  .c-btn__main--red {
+    background-color: #DD1B1B; }
 
-.c-btn--all {
-  padding: 10px 18px;
+.c-btn__sub, .c-btn__sub--top, .c-btn__sub--mypage {
   border: solid 2px #FAD249;
-  background-color: #FAD249;
-  color: #FFFFFF;
-  border-radius: 24px;
-  box-sizing: border-box; }
-  @media screen and (max-width: 896px) {
-    .c-btn--all {
-      padding: 8px 12px; } }
-  @media screen and (max-width: 480px) {
-    .c-btn--all {
-      padding: 6px 10px; } }
-  .c-btn--all:hover {
-    color: #FAD249;
-    background-color: #F2F2F2; }
-
-.c-btn--detail {
-  margin: 0;
-  padding: 10px 20px;
-  width: 150px;
-  background-color: #29A8E1;
-  text-align: center; }
-  @media screen and (max-width: 480px) {
-    .c-btn--detail {
-      width: 130px; } }
-
-.c-btn--sub {
-  margin: 0 10px 0 0;
-  padding: 10px 20px;
-  width: 150px;
-  text-align: center; }
-  @media screen and (max-width: 480px) {
-    .c-btn--sub {
-      width: 130px; } }
-
-.c-btn--alert {
-  background-color: #DD1B1B; }
+  border-radius: 24px; }
+  .c-btn__sub:hover, .c-btn__sub--top:hover, .c-btn__sub--mypage:hover {
+    background-color: #FAD249;
+    color: #3B4043; }
+  .c-btn__sub--top {
+    padding: 12px 18px; }
+    @media screen and (max-width: 896px) {
+      .c-btn__sub--top {
+        padding: 10px 12px; } }
+  .c-btn__sub--mypage {
+    padding: 10px 18px;
+    color: #FAD249; }
+    .c-btn__sub--mypage:hover {
+      color: #F2F2F2; }
+    @media screen and (max-width: 896px) {
+      .c-btn__sub--mypage {
+        padding: 8px 12px; } }
+    @media screen and (max-width: 480px) {
+      .c-btn__sub--mypage {
+        padding: 6px 10px; } }
 
 /*
 * object/project/_menu.scss
@@ -934,13 +955,22 @@ br {
 .p-detail__title {
   font-size: 24px;
   font-weight: 700; }
+  @media screen and (max-width: 896px) {
+    .p-detail__title {
+      font-size: 16px; } }
 
 .p-detail__note {
   display: flex;
   justify-content: space-between; }
+  @media screen and (max-width: 896px) {
+    .p-detail__note {
+      display: block; } }
   .p-detail__note__info {
     display: flex;
     align-items: center; }
+    @media screen and (max-width: 896px) {
+      .p-detail__note__info {
+        padding-bottom: 10px; } }
   .p-detail__note__star {
     margin-right: 5px;
     width: 20px;
@@ -957,6 +987,9 @@ br {
     padding: 5px 10px;
     border: solid 1px #707070;
     border-radius: 5px; }
+    @media screen and (max-width: 480px) {
+      .p-detail__btn--like {
+        font-size: 10px; } }
 
 .p-detail__date {
   text-align: right;
@@ -976,6 +1009,12 @@ br {
   background-color: #FFFFFF;
   border-radius: 10px;
   font-size: 14px; }
+  @media screen and (max-width: 896px) {
+    .p-detail__text {
+      font-size: 12px; } }
+  @media screen and (max-width: 480px) {
+    .p-detail__text {
+      padding: 20px; } }
 
 .p-detail__review__heading {
   text-align: center;
@@ -991,7 +1030,7 @@ br {
   padding-right: 20px;
   text-align: right;
   font-size: 12px; }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 896px) {
     .p-detail__review__sub {
       font-size: 10px; } }
 
@@ -1022,15 +1061,57 @@ br {
 /*
 * object/project/_checkout.scss
 */
-.p-checkout {
+.p-checkout__pay {
   padding: 30px 60px;
   border: solid 1px #707070;
   border-radius: 10px;
   background-color: #FFFFFF; }
-  .p-checkout__price {
-    font-size: 20px;
-    font-weight: 700;
-    color: #DD1B1B; }
+  @media screen and (max-width: 896px) {
+    .p-checkout__pay {
+      padding: 20px 30px; } }
+  @media screen and (max-width: 480px) {
+    .p-checkout__pay {
+      margin: 0 auto 20px;
+      width: 80%; } }
+
+.p-checkout__price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #DD1B1B; }
+  @media screen and (max-width: 896px) {
+    .p-checkout__price {
+      font-size: 16px; } }
+
+.p-checkout__review {
+  padding: 20px 20px;
+  border: solid 1px #707070;
+  border-radius: 10px;
+  background-color: #FFFFFF; }
+  @media screen and (max-width: 896px) {
+    .p-checkout__review {
+      padding: 15px 15px; } }
+  @media screen and (max-width: 480px) {
+    .p-checkout__review {
+      margin: 0 auto 20px; } }
+  .p-checkout__review__heading {
+    font-weight: 700; }
+  .p-checkout__review__point-area {
+    display: flex;
+    align-items: baseline; }
+  .p-checkout__review__point {
+    margin-left: 15px;
+    padding-left: 10px;
+    width: 50px;
+    height: 30px;
+    font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
+  .p-checkout__review__comment-area {
+    text-align: left; }
+  .p-checkout__review__comment {
+    padding: 10px;
+    width: 90%;
+    border: solid 1px #707070;
+    line-height: inherit;
+    font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
 
 /*
 * object/utility/_space.scss
@@ -1061,6 +1142,9 @@ br {
   @media screen and (max-width: 896px) {
     .u-pb-4l {
       padding-bottom: 40px; } }
+
+.u-m-0auto {
+  margin: 0 auto; }
 
 .u-mb-0 {
   margin-bottom: 0; }

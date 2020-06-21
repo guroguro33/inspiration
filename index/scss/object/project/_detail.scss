@@ -6,13 +6,22 @@
   &__title{
     font-size: $font-size_xl;
     font-weight: 700;
+    @include mq(md){
+      font-size: $font-size_default;
+    }
   }
   &__note{
     display: flex;
     justify-content: space-between;
+    @include mq(md){
+      display: block;
+    }
     &__info{
       display: flex;
       align-items: center;
+      @include mq(md){
+        padding-bottom: $space_m;
+      }
     }
     &__star{
       margin-right: $space_s;
@@ -32,6 +41,9 @@
       padding: $space_s $space_m;
       border: solid 1px $color_bar;
       border-radius: 5px;
+      @include mq(){
+        font-size: $font-size_xs;
+      }
     }
   }
   &__date{
@@ -53,6 +65,12 @@
     background-color: $color_bg2;
     border-radius: 10px;
     font-size: $font-size_m;
+    @include mq(md){
+      font-size: $font-size_s;
+    }
+    @include mq(){
+      padding: $space_xl;
+    }
   }
   &__review{
     &__heading{
@@ -69,7 +87,7 @@
       padding-right: $space_xl;
       text-align: right;
       font-size: $font-size_s;
-      @include mq(){
+      @include mq(md){
         font-size: $font-size_xs;
       }
     }
