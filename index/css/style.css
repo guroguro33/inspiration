@@ -111,10 +111,6 @@ br {
       padding: 0 20px; } }
   .l-container__fluid {
     width: 100%; }
-  @media screen and (max-width: 896px) {
-    .l-container__body {
-      margin-right: 20px;
-      margin-left: 20px; } }
 
 /*
 * layout/_header.scss
@@ -195,7 +191,7 @@ br {
     @media screen and (max-width: 896px) {
       .l-footer__contact {
         justify-content: center; } }
-    .l-footer__contact--lead {
+    .l-footer__contact__lead {
       margin-right: 15px; }
 
 /*
@@ -272,6 +268,49 @@ br {
       font-size: 12px; } }
 
 /*
+* object/component/_concept.scss
+*/
+.c-concept {
+  padding: 30px 0;
+  background-color: #F2F2F2; }
+  .c-concept__info {
+    display: flex;
+    justify-content: space-between; }
+    @media screen and (max-width: 480px) {
+      .c-concept__info {
+        display: block; } }
+  .c-concept__item {
+    flex-basis: 300px; }
+    @media screen and (max-width: 896px) {
+      .c-concept__item {
+        flex-basis: 200px; } }
+  .c-concept__heading {
+    font-size: 24px; }
+    @media screen and (max-width: 896px) {
+      .c-concept__heading {
+        font-size: 20px; } }
+    @media screen and (max-width: 480px) {
+      .c-concept__heading {
+        font-size: 16px; } }
+  .c-concept__icon {
+    margin: 0 auto;
+    max-width: 130px; }
+    @media screen and (max-width: 896px) {
+      .c-concept__icon {
+        max-width: 100px; } }
+  @media screen and (max-width: 480px) {
+    .c-concept__body {
+      margin: 0 auto 30px;
+      width: 80%; } }
+  .c-concept__text {
+    text-align: left;
+    font-size: 12px;
+    line-height: 2; }
+    @media screen and (max-width: 896px) {
+      .c-concept__text {
+        font-size: 10px; } }
+
+/*
 * object/component/_form.scss
 */
 .c-form {
@@ -291,13 +330,14 @@ br {
         font-size: 14px; } }
   .c-form__item {
     text-align: left; }
-    .c-form__item--name {
+    .c-form__item__name {
       font-weight: 700;
       color: #707F89; }
-      .c-form__item--name span {
+      .c-form__item__name span {
         font-size: 12px;
         font-weight: 400; }
-    .c-form__item--input, .c-form__item--price {
+    .c-form__item__input, .c-form__item__price {
+      margin-top: 5px;
       padding: 15px;
       width: calc(100% - 15px * 2);
       height: 15px;
@@ -305,30 +345,31 @@ br {
       font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
       font-size: 14px;
       letter-spacing: .05em; }
-      .c-form__item--input::placeholder, .c-form__item--price::placeholder {
-        font-size: 14px; }
+      .c-form__item__input::placeholder, .c-form__item__price::placeholder {
+        font-size: 12px; }
       @media screen and (max-width: 480px) {
-        .c-form__item--input, .c-form__item--price {
+        .c-form__item__input, .c-form__item__price {
           height: 10px;
           letter-spacing: 0; } }
-    .c-form__item--text {
+    .c-form__item__price {
+      margin-right: 10px;
+      width: 40%; }
+    .c-form__item__text {
       padding: 10px;
       width: calc(100% - 15px * 2);
       border: none;
       font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
       font-size: 14px; }
-      .c-form__item--text::placeholder {
-        font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
-    .c-form__item--select {
+      .c-form__item__text::placeholder {
+        font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        font-size: 12px; }
+    .c-form__item__select {
       padding: 10px;
-      width: 50%;
+      width: 65%;
       border: none;
       background-color: #FFFFFF;
       font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
       font-size: 14px; }
-    .c-form__item--price {
-      margin-right: 10px;
-      width: 30%; }
     .c-form__item--alert {
       display: block;
       font-size: 12px;
@@ -343,22 +384,23 @@ br {
     @media screen and (max-width: 480px) {
       .c-form__save {
         font-size: 12px; } }
-    .c-form__save--box {
+    .c-form__save__box {
       width: 20px;
       height: 20px;
       vertical-align: middle; }
       @media screen and (max-width: 480px) {
-        .c-form__save--box {
+        .c-form__save__box {
           width: 15px;
           height: 15px; } }
-    .c-form__save--text {
+    .c-form__save__text {
       vertical-align: middle;
       color: #707F89; }
   .c-form__remind {
     font-size: 12px; }
-    .c-form__remind--link {
+    .c-form__remind__link {
       display: inline-block;
-      text-decoration: underline; }
+      text-decoration: underline;
+      transition: all .3s; }
   .c-form__file {
     font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
 
@@ -373,6 +415,7 @@ br {
   font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   font-size: 14px;
   color: #FFFFFF;
+  transition: all .3s;
   cursor: pointer; }
   .c-btn__main:hover, .c-btn__main--gray1:hover, .c-btn__main--red:hover, .c-btn__main--gray2:hover, .c-btn__main--blue:hover, .c-btn__main--blue2:hover {
     opacity: .7; }
@@ -419,7 +462,8 @@ br {
 
 .c-btn__sub, .c-btn__sub--top, .c-btn__sub--mypage {
   border: solid 2px #FAD249;
-  border-radius: 24px; }
+  border-radius: 24px;
+  transition: all .3s; }
   .c-btn__sub:hover, .c-btn__sub--top:hover, .c-btn__sub--mypage:hover {
     background-color: #FAD249;
     color: #3B4043; }
@@ -439,6 +483,37 @@ br {
     @media screen and (max-width: 480px) {
       .c-btn__sub--mypage {
         padding: 6px 10px; } }
+
+/*
+* object/component/_desc.scss
+*/
+.c-desc {
+  text-align: left; }
+  .c-desc__title {
+    font-weight: 700; }
+    @media screen and (max-width: 896px) {
+      .c-desc__title {
+        font-size: 12px; } }
+  .c-desc__info {
+    display: flex;
+    align-items: center; }
+  .c-desc__star {
+    margin-right: 5px;
+    width: 20px;
+    height: auto; }
+  .c-desc__point {
+    margin-right: 10px;
+    font-size: 14px; }
+    @media screen and (max-width: 896px) {
+      .c-desc__point {
+        font-size: 10px; } }
+  .c-desc__price {
+    color: #DD1B1B; }
+  .c-desc__text {
+    font-size: 12px; }
+    @media screen and (max-width: 896px) {
+      .c-desc__text {
+        font-size: 10px; } }
 
 /*
 * object/project/_menu.scss
@@ -562,64 +637,11 @@ br {
     @media screen and (max-width: 480px) {
       .p-hero__item {
         margin-right: 15px; } }
-  .p-hero__link {
-    padding: 12px 18px;
-    border: solid 2px #FAD249;
-    border-radius: 24px; }
-    @media screen and (max-width: 896px) {
-      .p-hero__link {
-        padding: 10px 12px; } }
-    .p-hero__link:hover {
-      background-color: #FAD249;
-      color: #3B4043; }
-    .p-hero__link--msg {
-      font-size: 12px;
-      text-align: center; }
-      @media screen and (max-width: 896px) {
-        .p-hero__link--msg {
-          font-size: 10px; } }
-
-/*
-* object/project/_concept.scss
-*/
-.p-concept {
-  padding: 30px 0;
-  background-color: #F2F2F2; }
-  .p-concept__info {
-    display: flex;
-    justify-content: space-between; }
-    @media screen and (max-width: 480px) {
-      .p-concept__info {
-        display: block; } }
-  .p-concept__item {
-    flex-basis: 300px; }
-    @media screen and (max-width: 896px) {
-      .p-concept__item {
-        flex-basis: 200px; } }
-  .p-concept__heading {
-    font-size: 24px; }
-    @media screen and (max-width: 896px) {
-      .p-concept__heading {
-        font-size: 20px; } }
-    @media screen and (max-width: 480px) {
-      .p-concept__heading {
-        font-size: 16px; } }
-  .p-concept__icon {
-    margin: 0 auto;
-    max-width: 130px; }
-    @media screen and (max-width: 896px) {
-      .p-concept__icon {
-        max-width: 100px; } }
-  @media screen and (max-width: 480px) {
-    .p-concept__body {
-      margin: 0 auto 30px;
-      width: 80%; } }
-  .p-concept__text {
-    text-align: left;
+  .p-hero__intro {
     font-size: 12px;
-    line-height: 2; }
+    text-align: center; }
     @media screen and (max-width: 896px) {
-      .p-concept__text {
+      .p-hero__intro {
         font-size: 10px; } }
 
 /*
@@ -681,18 +703,18 @@ br {
   @media screen and (max-width: 896px) {
     .p-mymenu__body {
       font-size: 10px; } }
-  .p-mymenu__body--heading {
+  .p-mymenu__body__heading {
     font-size: 14px;
     border-bottom: solid 1px #707070; }
     @media screen and (max-width: 896px) {
-      .p-mymenu__body--heading {
+      .p-mymenu__body__heading {
         font-size: 12px; } }
-  .p-mymenu__body--link {
+  .p-mymenu__body__link {
     display: flex;
     justify-content: space-between; }
-    .p-mymenu__body--link:hover {
+    .p-mymenu__body__link:hover {
       color: #707F89; }
-  .p-mymenu__body--arrow {
+  .p-mymenu__body__arrow {
     width: 10px;
     height: auto; }
 
@@ -719,17 +741,17 @@ br {
   justify-content: space-between;
   align-items: center;
   border-bottom: solid 2px #707070; }
-  .p-mypage__heading--text {
+  .p-mypage__heading__text {
     font-size: 20px;
     font-weight: 700; }
     @media screen and (max-width: 896px) {
-      .p-mypage__heading--text {
+      .p-mypage__heading__text {
         font-size: 14px; } }
     @media screen and (max-width: 480px) {
-      .p-mypage__heading--text {
+      .p-mypage__heading__text {
         font-size: 12px;
         text-align: left; } }
-  .p-mypage__heading--select {
+  .p-mypage__heading__select {
     padding: 10px;
     width: 150px;
     border: none;
@@ -753,52 +775,24 @@ br {
   @media screen and (max-width: 480px) {
     .p-mypage__sub {
       display: flex; } }
-
-@media screen and (max-width: 480px) {
-  .p-mypage__date {
-    padding-right: 5px; } }
-
-@media screen and (max-width: 480px) {
-  .p-mypage__cat {
-    padding-left: 5px; } }
+  @media screen and (max-width: 480px) {
+    .p-mypage__sub__date {
+      padding-right: 5px; } }
+  @media screen and (max-width: 480px) {
+    .p-mypage__sub__cat {
+      padding-left: 5px; } }
 
 .p-mypage__desc {
-  flex-basis: 620px;
-  text-align: left; }
-  .p-mypage__desc--title {
-    font-weight: 700; }
-    @media screen and (max-width: 896px) {
-      .p-mypage__desc--title {
-        font-size: 12px; } }
-  .p-mypage__desc--info {
-    display: flex;
-    align-items: center; }
-  .p-mypage__desc--star {
-    margin-right: 5px;
-    width: 20px;
-    height: auto; }
-  .p-mypage__desc--point {
-    margin-right: 10px;
-    font-size: 14px; }
-    @media screen and (max-width: 896px) {
-      .p-mypage__desc--point {
-        font-size: 10px; } }
-  .p-mypage__desc--price {
-    color: #DD1B1B; }
-  .p-mypage__desc--text {
-    font-size: 12px; }
-    @media screen and (max-width: 896px) {
-      .p-mypage__desc--text {
-        font-size: 10px; } }
-  .p-mypage__desc--post {
+  flex-basis: 620px; }
+  .p-mypage__desc__post {
     display: flex;
     justify-content: space-between;
-    background-color: #FFFFFF; }
-    .p-mypage__desc--post .p-mypage__desc--price {
+    align-items: center; }
+    .p-mypage__desc__post .c-desc__price {
       margin-left: 10px;
       font-size: 12px; }
       @media screen and (max-width: 896px) {
-        .p-mypage__desc--post .p-mypage__desc--price {
+        .p-mypage__desc__post .c-desc__price {
           flex-basis: 120px;
           text-align: right;
           font-size: 10px; } }
@@ -837,14 +831,14 @@ br {
       .p-sort__item {
         margin-bottom: 5px;
         width: 80%; } }
-    .p-sort__item--title {
+    .p-sort__item__title {
       font-size: 14px;
       font-weight: 700;
       color: #707F89; }
       @media screen and (max-width: 480px) {
-        .p-sort__item--title {
+        .p-sort__item__title {
           font-size: 12px; } }
-    .p-sort__item--select {
+    .p-sort__item__select {
       padding: 5px 10px;
       width: 100%;
       font-size: 10px;
@@ -857,16 +851,16 @@ br {
     @media screen and (max-width: 480px) {
       .p-sort__price {
         width: 80%; } }
-    .p-sort__price--number {
+    .p-sort__price__number {
       padding: 5px 10px;
       width: 20%;
       font-size: 12px;
       font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
       @media screen and (max-width: 896px) {
-        .p-sort__price--number {
+        .p-sort__price__number {
           width: 25%; } }
       @media screen and (max-width: 480px) {
-        .p-sort__price--number {
+        .p-sort__price__number {
           margin-bottom: 5px;
           width: 40%; } }
     .p-sort__price span {
@@ -886,8 +880,8 @@ br {
   .p-index__item {
     display: flex;
     justify-content: space-between;
-    border-bottom: solid 1px #707070;
-    align-items: center; }
+    align-items: center;
+    border-bottom: solid 1px #707070; }
     .p-index__item:hover {
       opacity: .7; }
     @media screen and (max-width: 480px) {
@@ -896,14 +890,14 @@ br {
   @media screen and (max-width: 480px) {
     .p-index__icon {
       display: none; } }
-  .p-index__icon--img {
+  .p-index__icon__img {
     margin: 0 auto;
     max-width: 65px;
     width: 100%; }
-  .p-index__icon--name {
+  .p-index__icon__name {
     font-size: 12px; }
     @media screen and (max-width: 896px) {
-      .p-index__icon--name {
+      .p-index__icon__name {
         font-size: 10px; } }
   .p-index__sub {
     flex-basis: 120px;
@@ -914,40 +908,14 @@ br {
     @media screen and (max-width: 480px) {
       .p-index__sub {
         display: flex; } }
-  @media screen and (max-width: 480px) {
-    .p-index__date {
-      padding-right: 5px; } }
-  @media screen and (max-width: 480px) {
-    .p-index__cat {
-      padding-left: 5px; } }
+    @media screen and (max-width: 480px) {
+      .p-index__sub__date {
+        padding-right: 5px; } }
+    @media screen and (max-width: 480px) {
+      .p-index__sub__cat {
+        padding-left: 5px; } }
   .p-index__desc {
-    flex-basis: 720px;
-    text-align: left; }
-    .p-index__desc--title {
-      font-weight: 700; }
-      @media screen and (max-width: 896px) {
-        .p-index__desc--title {
-          font-size: 12px; } }
-    .p-index__desc--info {
-      display: flex;
-      align-items: center; }
-    .p-index__desc--star {
-      margin-right: 5px;
-      width: 20px;
-      height: auto; }
-    .p-index__desc--point {
-      margin-right: 10px;
-      font-size: 14px; }
-      @media screen and (max-width: 896px) {
-        .p-index__desc--point {
-          font-size: 10px; } }
-    .p-index__desc--price {
-      color: #DD1B1B; }
-    .p-index__desc--text {
-      font-size: 12px; }
-      @media screen and (max-width: 896px) {
-        .p-index__desc--text {
-          font-size: 10px; } }
+    flex-basis: 720px; }
 
 /*
 * object/project/_detail.scss
@@ -1176,6 +1144,9 @@ br {
 .u-bg__main {
   background-color: #F2F2F2; }
 
+.u-bg--sub {
+  background-color: #FFFFFF; }
+
 .u-bg__header {
   background-color: rgba(78, 79, 80, 0.8); }
 
@@ -1191,3 +1162,9 @@ br {
 
 .u-border--bottom {
   border-bottom: solid 2px #707070; }
+
+/*
+* object/utility/opacity.scss
+*/
+.u-opacity:hover {
+  opacity: .7; }

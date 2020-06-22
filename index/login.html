@@ -60,22 +60,28 @@
       <div class="l-container">
         <form action="" method="" class="l-auth">
           <h3 class="c-form__title u-pb-xl">ログイン</h3>
-          <div class="c-form__item u-pb-l">
-            <p class="c-form__item--name u-pb-s">メールアドレス</p>
-            <input type="email" name="email" class="c-form__item--input u-border u-mb-s" placeholder="入力してください">
-            <span class="c-form__item--alert">エラーメッセージが入ります。</span>
-          </div>
-          <div class="c-form__item u-pb-l">
-            <p class="c-form__item--name u-pb-s">パスワード</p>
-            <input type="password" name="pass" class="c-form__item--input u-border u-mb-s" placeholder="入力してください">
-            <span class="c-form__item--alert">エラーメッセージが入ります。</span>
-          </div>
-          <label class="c-form__save u-pb-l">
-            <input type="checkbox" name="form-save" class="c-form__save--box">
-            <span class="c-form__save--text">ログイン状態を保存</span>
-          </label>
-          <input type="submit" class="c-form__btn c-btn__main--gray1 u-mb-m" value="ログイン">
-          <p class="c-form__remind">パスワードを忘れた場合は<a href="" class="c-form__remind--link">コチラ</a></p>
+          <ul>
+            <li class="c-form__item u-pb-l">
+              <label class="c-form__item__name">
+                メールアドレス
+                <input type="email" name="email" class="c-form__item__input u-border u-mb-s" placeholder="入力してください">
+              </label>
+              <span class="c-form__item--alert">エラーメッセージが入ります。</span>
+            </li>
+            <li class="c-form__item u-pb-l">
+              <label class="c-form__item__name">
+                パスワード
+                <input type="password" name="pass" class="c-form__item__input u-border u-mb-s" placeholder="入力してください">
+              </label>
+              <span class="c-form__item--alert">エラーメッセージが入ります。</span>
+            </li>
+            <label class="c-form__save u-pb-l">
+              <input type="checkbox" name="form-save" class="c-form__save__box">
+              <span class="c-form__save__text">ログイン状態を保存</span>
+            </label>
+            <input type="submit" class="c-form__btn c-btn__main--gray1 u-mb-m" value="ログイン">
+            <p class="c-form__remind">パスワードを忘れた場合は<a href="" class="c-form__remind__link u-opacity">コチラ</a></p>
+          </ul>
         </form>
       </div>
 
@@ -90,8 +96,8 @@
           <a href="" class="l-footer__icon"><i class="fab fa-facebook"></i></a>
         </div>
         <div class="l-footer__contact">
-          <p class="l-footer__contact--lead">お問い合わせ</p>
-          <div class="l-footer__contact--body">
+          <p class="l-footer__contact__lead">お問い合わせ</p>
+          <div class="l-footer__contact__body">
             <a href="tel:0312345678">03-1234-5678</a>
             <a href="mailto:info@mail.com">info@mail.com</a>
           </div>

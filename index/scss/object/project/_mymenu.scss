@@ -27,21 +27,21 @@
     @include mq(md){
       font-size: $font-size_xs;
     }
-    &--heading{
+    &__heading{
       font-size: $font-size_m;
       border-bottom: solid 1px $color_bar;
       @include mq(md){
         font-size: $font-size_s;
       }
     }
-    &--link{
+    &__link{
       display: flex;
       justify-content: space-between;
       &:hover{
         color: $font-color_sub3;
       }
     }
-    &--arrow{
+    &__arrow{
       width: 10px;
       height: auto;
     }

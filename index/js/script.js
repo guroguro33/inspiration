@@ -22,17 +22,6 @@ $(function () {
     $('.js-float-menu').toggleClass('float-active', $(this).scrollTop() > targetHeight);
   })
 
-  // スムーズスクロール
-  $('a[href^="#"').on('click', function () {
-
-    var href = $(this).attr('href'),
-      target = $((href == '#' || href == '') ? 'html' : href),
-      position = target.offset().top + 50;
-
-    $('html,body').animate({ scrollTop: position }, 500);
-    return false; //aタグの機能無効
-  });
-
   // フッター下部固定
   $(function () {
     let $ftr = $('#footer');

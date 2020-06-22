@@ -15,7 +15,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: solid 2px $color_bar;
-    &--text{
+    &__text{
       font-size: $font-size_l;
       font-weight: 700;
       @include mq(md){
@@ -26,12 +26,11 @@
         text-align: left;
       }
     }
-    &--select{
+    &__select{
       padding: $space_m;
       width: 150px;
       border: none;
       font-family: $font-family_main;
-      // font-size: $font-size_m;
     }
   }
   &__item{
@@ -44,7 +43,6 @@
     }
   }
   &__sub{
-    // padding-right: $space_l;
     flex-basis: 120px;
     font-size: $font-size_s;
     @include mq(md){
@@ -53,56 +51,24 @@
     @include mq(){
       display: flex;
     }
-  }
-  &__date{
-    @include mq(){
-      padding-right: $space_s;
+    &__date{
+      @include mq(){
+        padding-right: $space_s;
+      }
     }
-  }
-  &__cat{
-    @include mq(){
-      padding-left: $space_s;
+    &__cat{
+      @include mq(){
+        padding-left: $space_s;
+      }
     }
   }
   &__desc{
     flex-basis: 620px;
-    text-align: left;
-    &--title{
-      font-weight: 700;
-      @include mq(md){
-        font-size: $font-size_s;
-      }
-    }
-    &--info{
-      display: flex;
-      align-items: center;
-    }
-    &--star{
-      margin-right: $space_s;
-      width: 20px;
-      height: auto;
-    }
-    &--point{
-      margin-right: $space_m;
-      font-size: $font-size_m;
-      @include mq(md){
-        font-size: $font-size_xs;
-      }
-    }
-    &--price{
-      color: $font-color_alert;
-    }
-    &--text{
-      font-size: $font-size_s;
-      @include mq(md){
-        font-size: $font-size_xs;
-      }
-    }
-    &--post{
+    &__post{
       display: flex;
       justify-content: space-between;
-      background-color: $color_bg2;
-      & .p-mypage__desc--price{
+      align-items: center;
+      & .c-desc__price{
         margin-left: $space_m;
         font-size: $font-size_s;
         @include mq(md){

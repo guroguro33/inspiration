@@ -11,8 +11,8 @@
   &__item{
     display: flex;
     justify-content: space-between;
-    border-bottom: solid 1px $color_bar;
     align-items: center;
+    border-bottom: solid 1px $color_bar;
     &:hover{
       opacity: .7;
     }
@@ -24,12 +24,12 @@
     @include mq(){
       display: none;
     }
-    &--img{
+    &__img{
       margin: 0 auto;
       max-width: 65px;
       width: 100%;
     }
-    &--name{
+    &__name{
       font-size: $font-size_s;
       @include mq(md){
         font-size: $font-size_xs;
@@ -45,50 +45,18 @@
     @include mq(){
       display: flex;
     }
-  }
-  &__date{
-    @include mq(){
-      padding-right: $space_s;
+    &__date{
+      @include mq(){
+        padding-right: $space_s;
+      }
     }
-  }
-  &__cat{
-    @include mq(){
-      padding-left: $space_s;
+    &__cat{
+      @include mq(){
+        padding-left: $space_s;
+      }
     }
   }
   &__desc{
     flex-basis: 720px;
-    text-align: left;
-    &--title{
-      font-weight: 700;
-      @include mq(md){
-        font-size: $font-size_s;
-      }
-    }
-    &--info{
-      display: flex;
-      align-items: center;
-    }
-    &--star{
-      margin-right: $space_s;
-      width: 20px;
-      height: auto;
-    }
-    &--point{
-      margin-right: $space_m;
-      font-size: $font-size_m;
-      @include mq(md){
-        font-size: $font-size_xs;
-      }
-    }
-    &--price{
-      color: $font-color_alert;
-    }
-    &--text{
-      font-size: $font-size_s;
-      @include mq(md){
-        font-size: $font-size_xs;
-      }
-    }
   }
 }

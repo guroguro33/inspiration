@@ -32,7 +32,7 @@
       margin-bottom: $space_s;
       width: 80%;
     }
-    &--title{
+    &__title{
       font-size: $font-size_m;
       font-weight: 700;
       color: $font-color_sub3;
@@ -40,7 +40,7 @@
         font-size: $font-size_s;
       }
     }
-    &--select{
+    &__select{
       padding: $space_s $space_m;
       width: 100%;
       font-size: $font-size_xs;
@@ -55,7 +55,7 @@
     @include mq(){
       width: 80%;
     }
-    &--number{
+    &__number{
       padding: $space_s $space_m;
       width: 20%;
       font-size: $font-size_s;

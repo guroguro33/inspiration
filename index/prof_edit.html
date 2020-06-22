@@ -66,79 +66,102 @@
           <p class="p-mymenu__name u-pb-s">名前が入ります</p>
           <a href="" class="p-mymenu__prof u-mb-xl">プロフィール編集 &gt;</a>
           <div class="p-mymenu__body u-pb-xl">
-            <p class="p-mymenu__body--heading u-pb-s u-mb-m">出品者メニュー</p>
-            <a href="" class="p-mymenu__body--link u-mb-m">
-              <span>ヒラメキを出品する</span>
-              <img src="./img/arrow-right.svg" class="p-mymenu__body--arrow" alt="リンクマーク">
-            </a>
-            <a href="" class="p-mymenu__body--link u-mb-m">
-              <span>出品したものの管理</span>
-              <img src="./img/arrow-right.svg" class="p-mymenu__body--arrow" alt="リンクマーク">
-            </a>
-            <a href="" class="p-mymenu__body--link u-mb-m">
-              <span>購入者からのレビュー</span>
-              <img src="./img/arrow-right.svg" class="p-mymenu__body--arrow" alt="リンクマーク">
-            </a>
+            <p class="p-mymenu__body__heading u-pb-s u-mb-m">出品者メニュー</p>
+            <ul>
+              <li>
+                <a href="" class="p-mymenu__body__link u-mb-m">
+                  <span>ヒラメキを出品する</span>
+                  <img src="./img/arrow-right.svg" class="p-mymenu__body__arrow" alt="リンクマーク">
+                </a>
+              </li>
+              <li>
+                <a href="" class="p-mymenu__body__link u-mb-m">
+                  <span>出品したものの管理</span>
+                  <img src="./img/arrow-right.svg" class="p-mymenu__body__arrow" alt="リンクマーク">
+                </a>
+              </li>
+              <li>
+                <a href="" class="p-mymenu__body__link u-mb-m">
+                  <span>購入者からのレビュー</span>
+                  <img src="./img/arrow-right.svg" class="p-mymenu__body__arrow" alt="リンクマーク">
+                </a>
+              </li>
+            </ul>
           </div>
           <div class="p-mymenu__body u-pb-xl">
-            <p class="p-mymenu__body--heading u-pb-s u-mb-m">購入者メニュー</p>
-            <a href="" class="p-mymenu__body--link u-mb-m">
-              <span>購入したヒラメキ</span>
-              <img src="./img/arrow-right.svg" class="p-mymenu__body--arrow" alt="リンクマーク">
-            </a>
-            <a href="" class="p-mymenu__body--link u-mb-m">
-              <span>気になるリスト</span>
-              <img src="./img/arrow-right.svg" class="p-mymenu__body--arrow" alt="リンクマーク">
-            </a>
+            <p class="p-mymenu__body__heading u-pb-s u-mb-m">購入者メニュー</p>
+            <ul>
+              <li>
+                <a href="" class="p-mymenu__body__link u-mb-m">
+                  <span>購入したヒラメキ</span>
+                  <img src="./img/arrow-right.svg" class="p-mymenu__body__arrow" alt="リンクマーク">
+                </a>
+              </li>
+              <li>
+                <a href="" class="p-mymenu__body__link u-mb-m">
+                  <span>気になるリスト</span>
+                  <img src="./img/arrow-right.svg" class="p-mymenu__body__arrow" alt="リンクマーク">
+                </a>
+              </li>
+            </ul>
           </div>
           <a href="" class="p-mymenu__back u-mb-m">&lt; 戻る</a>
         </section>
 
         <section class="l-sidebar__mypage">
           <h1 class="p-mypage__title u-pb-m">プロフィール編集</h1>
-          <form action="" method="post" class="c-form">
+          <form action="" method="POST" class="c-form">
             <div class="u-mb-xxl">
               <div class="p-mymenu__img u-pb-m">
                 <img src="./img/no-img2.svg" alt="人のアイコン">
               </div>
               <input type="file" name="my_img" class="c-form__file" value="ファイルを選択">
             </div>
-            <div class="c-form__item u-pb-l">
-              <p class="c-form__item--name u-pb-s">名前（必須）</p>
-              <input type="text" name="name" class="c-form__item--input u-mb-s" placeholder="入力してください">
-              <span class="c-form__item--alert">エラーメッセージが入ります。</span>
-            </div>
-            <div class="c-form__item u-pb-l">
-              <p class="c-form__item--name u-pb-s">メールアドレス（必須）</p>
-              <input type="email" name="email" class="c-form__item--input u-mb-s" placeholder="入力してください">
-              <span class="c-form__item--alert">エラーメッセージが入ります。</span>
-            </div>
-            <div class="c-form__item u-pb-l">
-              <p class="c-form__item--name u-pb-s">パスワード（必須）<span>※８文字以上</span></p>
-              <input type="password" name="pass" class="c-form__item--input u-mb-s" placeholder="入力してください">
-              <span class="c-form__item--alert">エラーメッセージが入ります。</span>
-            </div>
-            <div class="c-form__item u-pb-l">
-              <p class="c-form__item--name u-pb-s">パスワード（確認用）</p>
-              <input type="password" name="pass_re" class="c-form__item--input u-mb-s" placeholder="入力してください">
-              <span class="c-form__item--alert">エラーメッセージが入ります。</span>
-            </div>
-            <div class="c-form__item u-pb-l">
-              <p class="c-form__item--name u-pb-s">自己紹介</p>
-              <textarea name="self" class="c-form__item--text" cols="20" rows="10" placeholder="入力してください"></textarea>
-              <span class="c-form__item--alert">エラーメッセージが入ります。</span>
-            </div>
+            <ul>
+              <li class="c-form__item u-pb-l">
+                <label class="c-form__item__name">
+                  名前（必須）
+                  <input type="text" name="name" class="c-form__item__input u-mb-s" placeholder="入力してください">
+                </label>
+                <span class="c-form__item--alert">エラーメッセージが入ります。</span>
+              </li>
+              <li class="c-form__item u-pb-l">
+                <label class="c-form__item__name">
+                  メールアドレス（必須）
+                  <input type="email" name="email" class="c-form__item__input u-mb-s" placeholder="入力してください">
+                </label>
+                <span class="c-form__item--alert">エラーメッセージが入ります。</span>
+              </li>
+              <li class="c-form__item u-pb-l">
+                <label class="c-form__item__name">
+                  パスワード（必須）<span>※８文字以上</span>
+                  <input type="password" name="pass" class="c-form__item__input u-mb-s" placeholder="入力してください">
+                </label>
+                <span class="c-form__item--alert">エラーメッセージが入ります。</span>
+              </li>
+              <li class="c-form__item u-pb-l">
+                <label class="c-form__item__name">
+                  パスワード（確認用）
+                  <input type="password" name="pass_re" class="c-form__item__input u-mb-s" placeholder="入力してください">
+                </label>
+                <span class="c-form__item--alert">エラーメッセージが入ります。</span>
+              </li>
+              <li class="c-form__item u-pb-l">
+                <label class="c-form__item__name">
+                  自己紹介
+                  <textarea name="self" class="c-form__item--text" cols="20" rows="10"
+                    placeholder="入力してください"></textarea>
+                </label>
+                <span class="c-form__item--alert">エラーメッセージが入ります。</span>
+              </li>
+            </ul>
             <input type="submit" class="c-form__btn c-btn__main--gray1 u-mb-xxl" value="登録する">
           </form>
 
-
-
         </section>
-
       </div>
-
-
     </main>
+
     <footer id="footer" class="l-footer">
       <div class="l-container l-footer__body">
         <p class="l-footer__copyright">© Copyright | Inspiration 2020</p>
@@ -148,8 +171,8 @@
           <a href="" class="l-footer__icon"><i class="fab fa-facebook"></i></a>
         </div>
         <div class="l-footer__contact">
-          <p class="l-footer__contact--lead">お問い合わせ</p>
-          <div class="l-footer__contact--body">
+          <p class="l-footer__contact__lead">お問い合わせ</p>
+          <div class="l-footer__contact__body">
             <a href="tel:0312345678">03-1234-5678</a>
             <a href="mailto:info@mail.com">info@mail.com</a>
           </div>

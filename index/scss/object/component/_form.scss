@@ -20,7 +20,7 @@
   }
   &__item{
     text-align: left;
-    &--name{
+    &__name{
       font-weight: 700;
       color: $font-color_sub3;
       & span{
@@ -28,7 +28,8 @@
         font-weight: 400;
       }
     }
-    &--input{
+    &__input{
+      margin-top: $space_s;
       padding: $space_l;
       width: calc(100% - #{$space_l} * 2);
       height: 15px;
@@ -37,14 +38,19 @@
       font-size: $font-size_m;
       letter-spacing: .05em;
       &::placeholder{
-        font-size: $font-size_m;
+        font-size: $font-size_s;
       }
       @include mq(){
         height: 10px;
         letter-spacing: 0;
       }
     }
-    &--text{
+    &__price{
+      @extend .c-form__item__input;
+      margin-right: $space_m;
+      width: 40%;
+    }
+    &__text{
       padding: $space_m;
       width: calc(100% - #{$space_l} * 2);
       border: none;
@@ -52,21 +58,18 @@
       font-size: $font-size_m;
       &::placeholder{
         font-family: $font-family_main;
+        font-size: $font-size_s;
       }
     }
-    &--select{
+    &__select{
       padding: $space_m;
-      width: 50%;
+      width: 65%;
       border: none;
       background-color: $color_bg2;
       font-family: $font-family_main;
       font-size: $font-size_m;
     }
-    &--price{
-      @extend .c-form__item--input;
-      margin-right: $space_m;
-      width: 30%;
-    }
+
     &--alert{
       display: block;
       font-size: $font-size_s;
@@ -83,7 +86,7 @@
     @include mq(){
       font-size: $font-size_s;
     }
-    &--box{
+    &__box{
       width: 20px;
       height: 20px;
       vertical-align: middle;
@@ -92,16 +95,17 @@
         height: 15px;
       }
     }
-    &--text{
+    &__text{
       vertical-align: middle;
       color: $font-color_sub3;
     }
   }
   &__remind{
     font-size: $font-size_s;
-    &--link{
+    &__link{
       display: inline-block;
       text-decoration: underline;
+      transition: all .3s;
     }
   }
   &__file{

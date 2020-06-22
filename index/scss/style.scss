@@ -28,8 +28,10 @@
 // -----------------------------------------------------------------
 
 @import "object/component/_section";
+@import "object/component/_concept";
 @import "object/component/_form";
 @import "object/component/_btn";
+@import "object/component/_desc";
 
 
 // -----------------------------------------------------------------
@@ -38,7 +40,6 @@
 
 @import "object/project/_menu";
 @import "object/project/_hero";
-@import "object/project/_concept";
 @import "object/project/_review";
 @import "object/project/_mymenu";
 @import "object/project/_mypage";
@@ -55,3 +56,4 @@
 @import "object/utility/_space";
 @import "object/utility/_bg";
 @import "object/utility/_border";
+@import "object/utility/_opacity";

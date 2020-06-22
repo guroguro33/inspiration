@@ -53,11 +53,8 @@
     @include mq(md){
       justify-content: center;
     }
-    &--lead{
+    &__lead{
       margin-right: $space_l;
-    }
-    &--body{
-      // text-align: right;
     }
   }
 }

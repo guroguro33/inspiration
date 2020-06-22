@@ -31,7 +31,6 @@
     transform: translateY(-50%);
   }
   &__msg{
-
     font-weight: 700;
     font-size: $font-size_4l;
     letter-spacing: 0.2em;
@@ -53,23 +52,11 @@
       margin-right: $space-l;
     }
   }
-  &__link{
-    padding: 12px 18px;
-    border: solid 2px $font-color_sub1;
-    border-radius: 24px;
+  &__intro{
+    font-size: $font-size-s;
+    text-align: center;
     @include mq(md){
-      padding: 10px 12px;
-    }
-    &:hover{
-      background-color: $font-color_sub1;
-      color: $font-color_default;
-    }
-    &--msg{
-      font-size: $font-size-s;
-      text-align: center;
-      @include mq(md){
-        font-size: $font-size-xs;
-      }
+      font-size: $font-size-xs;
     }
   }
 }
