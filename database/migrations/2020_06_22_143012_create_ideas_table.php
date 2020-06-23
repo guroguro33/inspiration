@@ -18,9 +18,9 @@ class CreateIdeasTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             $table->string('idea_title');
-            $table->string('idea_description');
+            $table->text('idea_description');
             $table->text('idea_detail');
-            $table->unsignedInteger('price');
+            $table->unsignedInteger('idea_price');
             $table->timestamps();
             $table->softDeletes();
             // FK設定
