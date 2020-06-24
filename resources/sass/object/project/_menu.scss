@@ -1,0 +1,87 @@
+@charset "utf-8";
+/*
+* object/project/_menu.scss
+*/
+.p-menu{
+  @include mq(md){
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    padding-top: 70px;
+    background: rgba(78, 79, 80, 0.85);
+    transition: .5s;
+    text-align: center;
+    &.active{
+      transform: translateX(-100%);
+      z-index: 4;
+    }
+  } 
+  &__list{
+    display: flex;
+    font-weight: 700;
+    color: $font-color_sub2;
+    @include mq(md){
+      display: block;
+      font-size: $font-size_l;
+    }
+  }  
+  &__item{
+    margin-right: $space_3l;
+    &:last-of-type{
+      margin-right: 0;
+    }
+    @include mq(md){
+      margin-right: 0;
+      margin-bottom: $space_xl;
+    }
+  }
+  &__link:hover{
+    transform: scale(1.1);
+  }
+  &__trigger{
+    display: none;
+    @include mq(md){
+      display: inline-block;
+    }
+    position: relative;
+    margin-top: 20px;
+    width: 40px;
+    height: 32px;
+    cursor: pointer;
+    transition: all .4s;
+    z-index: 5;
+    span{
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: $font-color_sub2;
+      border-radius: 4px;
+      transition: all .3s;
+      &:nth-last-of-type(1){
+        top: 0;
+      }
+      &:nth-last-of-type(2){
+        top: 14px;
+      }
+      &:nth-last-of-type(3){
+        bottom: 0;
+      }
+    }
+    &.active span{
+      &:nth-last-of-type(1){
+        transform: translateY(12px) rotate(-45deg);
+      }
+      &:nth-last-of-type(2){
+        opacity: 0;
+      }
+      &:nth-last-of-type(3){
+        transform: translateY(-15px) rotate(45deg);
+      }
+    }
+  }
+}

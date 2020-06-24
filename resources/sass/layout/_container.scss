@@ -1,0 +1,20 @@
+@charset "utf-8";
+/*
+* layout/_container.scss
+*/
+.l-container{
+  position: relative;
+  margin: 0 auto;
+  max-width: $site-width;
+  text-align: center;
+  @include mq(md){
+    width: 100%;
+    padding: 0 40px;
+  }
+  @include mq(){
+    padding: 0 20px;
+  }
+  &__fluid{
+    width: 100%;
+  }
+}

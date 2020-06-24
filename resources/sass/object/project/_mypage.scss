@@ -1,0 +1,85 @@
+@charset "utf-8";
+/*
+* object/project/_mypage.scss
+*/
+.p-mypage{
+  &__title{
+    font-size: $font-size_xl;
+    font-weight: 700;
+    @include mq(md){
+      font-size: $font-size_l;
+    }
+  }
+  &__heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 2px $color_bar;
+    &__text{
+      font-size: $font-size_l;
+      font-weight: 700;
+      @include mq(md){
+        font-size: $font-size_m;
+      }
+      @include mq(){
+        font-size: $font-size_s;
+        text-align: left;
+      }
+    }
+    &__select{
+      padding: $space_m;
+      width: 150px;
+      border: none;
+      font-family: $font-family_main;
+    }
+  }
+  &__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px $color_bar;
+    @include mq(){
+      display: block;
+    }
+  }
+  &__sub{
+    flex-basis: 120px;
+    font-size: $font-size_s;
+    @include mq(md){
+      font-size: $font-size_xs;
+    }
+    @include mq(){
+      display: flex;
+    }
+    &__date{
+      @include mq(){
+        padding-right: $space_s;
+      }
+    }
+    &__cat{
+      @include mq(){
+        padding-left: $space_s;
+      }
+    }
+  }
+  &__desc{
+    flex-basis: 620px;
+    &__post{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & .c-desc__price{
+        margin-left: $space_m;
+        font-size: $font-size_s;
+        @include mq(md){
+          flex-basis: 120px;
+          text-align: right;
+          font-size: $font-size_xs;
+        }
+      }
+    }
+  }
+  &__link{
+    display: flex;
+  }
+}

@@ -1,0 +1,13 @@
+@charset "utf-8";
+/*
+* object/component/_alert.scss
+*/
+.c-alert{
+  &--success{
+    font-size: $font-size_s;
+    color: $font-color_success;
+    @include mq(md){
+      font-size: $font-size_xs;
+    }
+  }
+}

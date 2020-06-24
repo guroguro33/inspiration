@@ -1,0 +1,62 @@
+@charset "utf-8";
+/*
+* object/project/_index.scss
+*/
+.p-index{
+  text-align: center;
+  &__title{
+    font-size: $font-size_l;
+    font-weight: 700;
+  }
+  &__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px $color_bar;
+    &:hover{
+      opacity: .7;
+    }
+    @include mq(){
+      display: block;
+    }
+  }
+  &__icon{
+    @include mq(){
+      display: none;
+    }
+    &__img{
+      margin: 0 auto;
+      max-width: 65px;
+      width: 100%;
+    }
+    &__name{
+      font-size: $font-size_s;
+      @include mq(md){
+        font-size: $font-size_xs;
+      }
+    }
+  }
+  &__sub{
+    flex-basis: 120px;
+    font-size: $font-size_s;
+    @include mq(md){
+      font-size: $font-size_xs;
+    }
+    @include mq(){
+      display: flex;
+    }
+    &__date{
+      @include mq(){
+        padding-right: $space_s;
+      }
+    }
+    &__cat{
+      @include mq(){
+        padding-left: $space_s;
+      }
+    }
+  }
+  &__desc{
+    flex-basis: 720px;
+  }
+}

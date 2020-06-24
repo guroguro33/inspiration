@@ -1,0 +1,58 @@
+@charset "utf-8";
+/*
+* object/project/_mymenu.scss
+*/
+.p-mymenu{
+  &__img{
+    margin: 0 auto;
+    max-width: 140px;
+    width: 100%;
+  }
+  &__name{
+    font-size: $font-size_l;
+    font-weight: 700;
+    @include mq(md){
+      font-size: $font-size_m;
+    }
+  }
+  &__prof{
+    color: $font-color_sub1;
+    font-weight: 700;
+    &:hover{
+      color: $font-color_sub3;
+    }
+  }
+  &__body{
+    text-align: left;
+    @include mq(md){
+      font-size: $font-size_xs;
+    }
+    &__heading{
+      font-size: $font-size_m;
+      border-bottom: solid 1px $color_bar;
+      @include mq(md){
+        font-size: $font-size_s;
+      }
+    }
+    &__link{
+      display: flex;
+      justify-content: space-between;
+      &:hover{
+        color: $font-color_sub3;
+      }
+    }
+    &__arrow{
+      width: 10px;
+      height: auto;
+    }
+  }
+  &__back{
+    text-align: left;
+    &:hover{
+      color: $font-color_sub3;
+    }
+    @include mq(){
+      text-align: center;
+    }
+  }
+}
