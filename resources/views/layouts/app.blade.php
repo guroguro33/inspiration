@@ -47,15 +47,15 @@
         <nav class="p-menu">
           @guest
             <ul class="p-menu__list">
-              <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
+              <li class="p-menu__item"><a href="{{ route('ideas.index')}}" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
               <li class="p-menu__item"><a href="{{ route('login') }}" class="p-menu__link js-menu-link">{{ __('Login') }}</a></li>
               <li class="p-menu__item"><a href="{{ route('register') }}" class="p-menu__link js-menu-link">{{ __('Register') }}</a></li>
             </ul>
           @else
             <ul class="p-menu__list">
-              <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">マイページ</a></li>
-              <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
-              <li class="p-menu__item"><a href="" class="p-menu__link js-menu-link">ヒラメキを売る</a></li>
+              <li class="p-menu__item"><a href="{{ route('mypage.index')}}" class="p-menu__link js-menu-link">マイページ</a></li>
+              <li class="p-menu__item"><a href="{{ route('mypage.lists')}}" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
+              <li class="p-menu__item"><a href="{{ route('ideas.create')}}" class="p-menu__link js-menu-link">ヒラメキを売る</a></li>
               <li class="p-menu__item"><a href="{{ route('logout') }}" class="p-menu__link js-menu-link" onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
