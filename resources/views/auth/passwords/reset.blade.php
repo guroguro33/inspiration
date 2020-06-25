@@ -11,8 +11,7 @@
       <li class="c-form__item u-pb-l">
         <label class="c-form__item__name">
           {{ __('E-Mail Address') }}{{ __('Required') }}
-          {{-- @error('name') is-invalid @enderrorを保留 --}}
-          <input type="email" name="email" class="c-form__item__input u-border u-mb-s"  value="{{ $email ?? old('email') }}" placeholder="{{ __('Please Enter')}}" required autocomplete="email">
+          <input type="email" name="email" class="c-form__item__input u-border u-mb-s @error('email') is-invalid @enderror"  value="{{ $email ?? old('email') }}" placeholder="{{ __('Please Enter')}}" required autocomplete="email">
         </label>
         @error('email')
         <span class="c-form__item--alert" role="alert">{{ $message }}</span>
@@ -22,8 +21,7 @@
       <li class="c-form__item u-pb-l">
         <label class="c-form__item__name">
           {{ __('Password')}}{{ __('Required') }}<span>※{{ __('8 characters or more')}}</span>
-          {{-- @error('name') is-invalid @enderrorを保留 --}}
-          <input type="password" name="password" class="c-form__item__input u-border u-mb-s" placeholder="{{ __('Please Enter')}}" required autocomplete="new-password" autofocus>
+          <input type="password" name="password" class="c-form__item__input u-border u-mb-s @error('password') is-invalid @enderror" placeholder="{{ __('Please Enter')}}" required autocomplete="new-password" autofocus>
         </label>
         @error('password')
         <span class="c-form__item--alert" role="alert">{{ $message }}</span>
@@ -33,8 +31,7 @@
       <li class="c-form__item u-pb-xxl">
         <label class="c-form__item__name">
           {{ __('Confirm Password') }}
-          {{-- @error('name') is-invalid @enderrorを保留 --}}
-          <input type="password" name="password_confirmation" class="c-form__item__input u-border u-mb-s"
+          <input type="password" name="password_confirmation" class="c-form__item__input u-border u-mb-s @error('email') is-invalid @enderror"
             placeholder="{{ __('Please Enter')}}" required autocomplete="new-password">
         </label>
       </li>

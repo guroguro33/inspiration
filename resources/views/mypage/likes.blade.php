@@ -4,6 +4,7 @@
 <div class="l-container l-sidebar--reverse">
   
   @component('components.mypageSidebar')
+    @slot('user', $user);
   @endcomponent
 
   <section class="l-sidebar__mypage">

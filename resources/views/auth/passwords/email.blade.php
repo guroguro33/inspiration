@@ -7,7 +7,7 @@
     <h3 class="c-form__title u-pb-xl">{{ __('Reset Password') }}</h3>
 
     @if (session('status'))
-      <div class="c-alert--success u-pb-l" role="alert">
+      <div class="c-alert__sendMail u-pb-l" role="alert">
         {{ session('status') }}
       </div>
     @endif
@@ -15,8 +15,7 @@
     <div class="c-form__item u-pb-xl">
       <label class="c-form__item__name">
         {{ __('E-Mail Address') }}
-          {{-- @error('name') is-invalid @enderrorを保留 --}}
-        <input type="email" name="email" class="c-form__item__input u-border u-mb-s" value="{{ old('email') }}" placeholder="{{ __('Please Enter')}}" required autocomplete="email" autofocus>
+        <input type="email" name="email" class="c-form__item__input u-border u-mb-s @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="{{ __('Please Enter')}}" required autocomplete="email" autofocus>
       </label>
       @error('email')
       <span class="c-form__item--alert" role="alert">{{ $message }}</span>

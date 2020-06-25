@@ -67,6 +67,20 @@
       </section>
     </header>
 
+    {{-- フラッシュメッセージ --}}
+    @if (session('flash_message'))
+      <div class="c-alert__register--success js-flash-msg" role="alert">
+        {{ session('flash_message') }}
+      </div>
+    @endif
+
+    {{-- エラー時 --}}
+    @if(count($errors) > 0)
+      <div class="c-alert__register--error js-flash-msg" role="alert">
+        エラーがあります
+      </div>
+    @endif
+    
     <main>
       @yield('content')
 

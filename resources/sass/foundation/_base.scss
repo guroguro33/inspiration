@@ -94,7 +94,17 @@ img {
   width: 100%;
   vertical-align: bottom;
 }
-
+textarea {
+  resize: none;
+  &.is-invalid{
+    border: solid 1px $font-color_alert;
+  }
+}
+input {
+  &.is-invalid{
+    border: solid 1px $font-color_alert;
+  }
+}
 br {
   display: none;
   @include mq(){

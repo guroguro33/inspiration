@@ -10,8 +10,7 @@
       <li class="c-form__item u-pb-l">
         <label class="c-form__item__name">
           {{ __('E-Mail Address') }}
-          {{-- エラー時のis-invalidクラスを付与すること --}}
-          <input type="email" name="email" class="c-form__item__input u-border u-mb-s" value="{{ old('email') }}" placeholder="{{ __('Please Enter')}}" required autocomplete="email" autofocu>
+          <input type="email" name="email" class="c-form__item__input u-border u-mb-s  @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="{{ __('Please Enter')}}" required autocomplete="email" autofocu>
         </label>
         @error('email')
         <span class="c-form__item--alert" role="alert">{{ $message }}</span>
@@ -20,9 +19,7 @@
 
       <li class="c-form__item u-pb-l">
         <label class="c-form__item__name">
-          {{ __('Password') }}
-          {{-- エラー時のis-invalidクラスを付与すること --}}
-          <input type="password" name="password" class="c-form__item__input u-border u-mb-s" placeholder="{{ __('Please Enter')}}" required autocomplete="current-password">
+          <input type="password" name="password" class="c-form__item__input u-border u-mb-s  @error('password') is-invalid @enderror" placeholder="{{ __('Please Enter')}}" required autocomplete="current-password">
         </label>
         @error('password')
         <span class="c-form__item--alert" role="alert">{{ $message }}</span>

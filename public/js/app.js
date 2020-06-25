@@ -49857,6 +49857,11 @@ $(function () {
         'style': 'position:fixed; top:' + (window.innerHeight - $ftr.outerHeight() + 'px;')
       });
     }
+  }); // フラッシュメッセージ
+
+  $(function () {
+    var $jsFlashMsg = $('.js-flash-msg');
+    $jsFlashMsg.fadeOut(5000);
   });
 });
 

@@ -31,5 +31,11 @@ $(function () {
       });
     }
   })
+  // フラッシュメッセージ
+  $(function () {
+    let $jsFlashMsg = $('.js-flash-msg');
+
+    $jsFlashMsg.fadeOut(5000);
+  })
 
 })

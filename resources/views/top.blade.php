@@ -6,10 +6,12 @@
     <h1 class="p-hero__msg u-pb-4l">「ヒラメキ」<br>を売り買いしよう</h1>
     <div class="p-hero__links">
       <ul class="p-hero__list">
-        <li class="p-hero__item"><a href="" class="c-btn__sub--top">ヒラメキを買う</a></li>
+        <li class="p-hero__item"><a href="{{ route('ideas.index')}}" class="c-btn__sub--top">ヒラメキを買う</a></li>
         <li class="p-hero__item">
-          <a href="" class="c-btn__sub--top">ヒラメキを売る</a>
+          <a href="{{ route('ideas.create') }}" class="c-btn__sub--top">ヒラメキを売る</a>
+          @guest
           <p class="p-hero__intro">(新規登録へ移動します)</p>
+          @endguest
         </li>
       </ul>
     </div>
@@ -60,57 +62,20 @@
   <div class="l-container">
     <h2 class="c-section__title u-pb-s">寄せられたレビュー</h2>
     <p class="c-section__sub-title u-pb-4l">実際に購入した方のレビューの一部をご紹介</p>
+    
+    @foreach($evaluations as $evaluation)
     <div class="p-review__item u-mb-xxl">
       <div class="p-review__icon">
-        <img src="./img/no-img.svg" alt="人のアイコン">
+        <img src="{{ asset('./img/no-img.svg') }}" alt="人のアイコン">
       </div>
       <div class="p-review__body">
         <p class="p-review__text u-pb-m">
-          コメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入ります…
+          {!! nl2br(e($evaluation->idea_review)) !!}
         </p>
-        <p class="p-review__name">By 名前が入ります</p>
+        <p class="p-review__name">By {{ $evaluation->user->name}}</p>
       </div>
     </div>
-    <div class="p-review__item u-mb-xxl">
-      <div class="p-review__icon">
-        <img src="./img/no-img.svg" alt="人のアイコン">
-      </div>
-      <div class="p-review__body">
-        <p class="p-review__text u-pb-m">コメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入ります…
-        </p>
-        <p class="p-review__name">By 名前が入ります</p>
-      </div>
-    </div>
-    <div class="p-review__item u-mb-xxl">
-      <div class="p-review__icon">
-        <img src="./img/no-img.svg" alt="人のアイコン">
-      </div>
-      <div class="p-review__body">
-        <p class="p-review__text u-pb-m">コメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入ります…
-        </p>
-        <p class="p-review__name">By 名前が入ります</p>
-      </div>
-    </div>
-    <div class="p-review__item u-mb-xxl">
-      <div class="p-review__icon">
-        <img src="./img/no-img.svg" alt="人のアイコン">
-      </div>
-      <div class="p-review__body">
-        <p class="p-review__text u-pb-m">コメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入ります…
-        </p>
-        <p class="p-review__name">By 名前が入ります</p>
-      </div>
-    </div>
-    <div class="p-review__item u-mb-xxl">
-      <div class="p-review__icon">
-        <img src="./img/no-img.svg" alt="人のアイコン">
-      </div>
-      <div class="p-review__body">
-        <p class="p-review__text u-pb-m">コメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入りますコメントが入ります…
-        </p>
-        <p class="p-review__name">By 名前が入ります</p>
-      </div>
-    </div>
-  </div>
+    @endforeach
+
 </section>
 @endsection

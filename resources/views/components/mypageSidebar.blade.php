@@ -1,8 +1,9 @@
 <section class="l-sidebar__mymenu">
   <div class="p-mymenu__img u-pb-s">
     <img src="{{ asset('./img/no-img2.svg') }}" alt="人のアイコン">
+    {{-- <img src="{{ $user->user_img }}" alt="人のアイコン"> --}}
   </div>
-  <p class="p-mymenu__name u-pb-s">名前が入ります</p>
+  <p class="p-mymenu__name u-pb-s">{{ $user->name }}</p>
   <a href="{{ route('mypage.edit')}}" class="p-mymenu__prof u-mb-xl">プロフィール編集 &gt;</a>
   <div class="p-mymenu__body u-pb-xl">
     <p class="p-mymenu__body__heading u-pb-s u-mb-m">出品者メニュー</p>

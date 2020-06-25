@@ -14,4 +14,18 @@ class Idea extends Model
   protected $fillable = [
     'user_id', 'category_id', 'idea_title', 'idea_description', 'idea_detail', 'idea_price'
   ];
+
+  // リレーション
+  public function user(){
+    return $this->belongsTo('App\User');
+  }
+  public function category(){
+    return $this->belongsTo('App\Category');
+  }
+  public function likes(){
+    return $this->hasMany('App\Like');
+  }
+  public function evaluations(){
+    return $this->hasMany('App\Evaluation');
+  }
 }

@@ -25,7 +25,7 @@ Route::get('/', 'EvaluationsController@index')->name('evaluations.index');
 // ヒラメキ一覧画面
 Route::get('/index', 'IdeasController@index')->name('ideas.index');
 // ヒラメキ詳細画面
-Route::get('/ideas/1', 'IdeasController@show')->name('ideas.show');
+Route::get('/ideas/{id}', 'IdeasController@show')->name('ideas.show');
 
 Route::group(['middleware' => 'auth'], function(){
   // ヒラメキ出品画面
@@ -33,20 +33,20 @@ Route::group(['middleware' => 'auth'], function(){
   // ヒラメキ登録
   Route::post('/ideas/new', 'IdeasController@store')->name('ideas.store');
   // ヒラメキ編集画面
-  Route::get('/ideas/1/edit', 'IdeasController@edit')->name('ideas.edit');
+  Route::get('/ideas/{id}/edit', 'IdeasController@edit')->name('ideas.edit');
   // ヒラメキ更新
-  Route::post('/ideas/1/edit', 'IdeasController@update')->name('ideas.update');
+  Route::post('/ideas/{id}/edit', 'IdeasController@update')->name('ideas.update');
   // ヒラメキ削除
-  Route::get('/ideas/1/del', 'IdeasController@delete')->name('ideas.delete');
+  Route::get('/ideas/{id}/del', 'IdeasController@delete')->name('ideas.delete');
 });
 
 Route::group(['middleware' => 'auth'], function(){
   // レビュー登録
-  Route::post('/ideas/1', 'EvaluationsController@store')->name('evaluations.store');
+  Route::post('/ideas/{id}', 'EvaluationsController@store')->name('evaluations.store');
   // レビュー削除
-  Route::post('/ideas/1/del', 'EvaluationsController@delete')->name('evaluations.delete');
+  Route::post('/ideas/{id}/del', 'EvaluationsController@delete')->name('evaluations.delete');
   // お気に入り着脱
-  Route::post('/ideas/1/like', 'EvaluationsController@toggleLike')->name('evaluations.toggleLike');
+  Route::post('/ideas/{id}/like', 'EvaluationsController@toggleLike')->name('evaluations.toggleLike');
 });
 
 Route::group(['middleware' => 'auth'], function(){
