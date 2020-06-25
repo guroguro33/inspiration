@@ -1,0 +1,44 @@
+@charset "utf-8";
+/*
+* layout/_sidebar.scss
+*/
+.l-sidebar{
+  display: flex;
+  margin-top: 150px;
+  justify-content: center;
+  @include mq(md){
+    margin-top: 100px;
+  }
+  @include mq(){
+    display: block;
+  }
+  &--reverse{
+    @extend .l-sidebar;
+    @include mq(){
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+  &__mymenu{
+    margin-right: $space_3l;
+    flex-basis: 200px;
+    @include mq(){
+      margin: 0 auto;
+      width: 80%;
+    }
+  }
+  &__mypage{
+    flex-basis: 740px;
+  }
+  &__detail{
+    margin-right: $space_3l;
+    flex-basis: 600px;
+    text-align: left;
+    @include mq(){
+      margin-right: 0;
+    }
+  }
+  &__sub{
+    flex-basis: 300px;
+  }
+}

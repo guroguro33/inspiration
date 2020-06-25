@@ -1,0 +1,51 @@
+@charset "utf-8";
+/*
+* object/component/_concept.scss
+*/
+.c-concept{
+  padding: $space-xxl 0;
+  background-color: $color-bg1;
+  &__info{
+    display: flex;
+    justify-content: space-between;
+    @include mq(){
+      display: block;
+    }
+  }
+  &__item{
+    flex-basis: 300px;
+    @include mq(md){
+      flex-basis: 200px;
+    }
+  }
+  &__heading{
+    font-size: $font-size_xl;
+    @include mq(md){
+      font-size: $font-size_l;
+    }
+    @include mq(){
+      font-size: $font-size_default;
+    }
+  }
+  &__icon{
+    margin: 0 auto;
+    max-width: 130px;
+    @include mq(md){
+      max-width: 100px;
+    }
+  }
+  &__body{
+    @include mq(){
+      margin: 0 auto $space_xxl;
+      width: 80%;
+    }
+  }
+  &__text{
+    text-align: left;
+    font-size: $font-size_s;
+    line-height: 2;
+    @include mq(md){
+      font-size: $font-size_xs;
+    }
+  }
+}

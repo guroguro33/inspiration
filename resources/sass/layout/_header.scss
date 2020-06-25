@@ -1,0 +1,37 @@
+@charset "utf-8";
+/*
+* layout/_header.scss
+*/
+.l-header{
+  position: fixed;
+  top: 0;
+  height: 70px;
+  line-height: 70px;
+  transition: .3s;
+  z-index: 3;
+  &.float-active{
+    background-color: rgba(78, 79, 80, 0.8);
+  }
+  &__body{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: $site-width;
+    width: 100%;
+    @include mq(md){
+      padding: 0 $space_xl;
+      & a{
+        color: inherit;
+      }
+    }
+  }
+  &__title{
+    font-size: $font-size-xl;
+    font-weight: 700;
+    color: $font-color-sub1;
+    @include mq(){
+      font-size: $font-size-m;
+    }
+  }
+}

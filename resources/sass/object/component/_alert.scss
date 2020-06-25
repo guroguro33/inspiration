@@ -1,0 +1,30 @@
+@charset "utf-8";
+/*
+* object/component/_alert.scss
+*/
+.c-alert{
+  &__sendMail{
+    font-size: $font-size_s;
+    color: $font-color_success;
+    @include mq(md){
+      font-size: $font-size_xs;
+    }
+  }
+  &__register{
+    position:fixed;
+    top:70px;
+    width:100%; 
+    height:30px;
+    text-align:center;
+    line-height: 30px;
+    &--success{
+      @extend .c-alert__register;
+      background-color: $color_bg4;
+    }
+    &--error{
+      @extend .c-alert__register;
+      background-color: $color_bg2;
+      color: $font-color_alert;
+    }
+  }
+}

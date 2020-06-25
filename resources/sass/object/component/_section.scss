@@ -1,0 +1,22 @@
+@charset "utf-8";
+/*
+* object/component/_section.scss
+*/
+.c-section{
+  &__title{
+    font-size: $font-size_3l;
+    font-weight: 700;
+    @include mq(md){
+      font-size: $font-size_xxl;
+    }
+    @include mq(){
+      font-size: $font-size_l;
+    }
+  }
+  &__sub-title{
+    color: $font-color_sub3;
+    @include mq(){
+      font-size: $font-size_s;
+    }
+  }
+}
