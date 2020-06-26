@@ -66,7 +66,11 @@
     @foreach($evaluations as $evaluation)
     <div class="p-review__item u-mb-xxl">
       <div class="p-review__icon">
-        <img src="{{ asset('./img/no-img.svg') }}" alt="人のアイコン">
+        @if($evaluation->user->user_img)
+        <img src="{{ $evaluation->user->user_img }}" alt="ユーザーのアイコン">
+        @else
+        <img src="{{ asset('./img/no-img2.svg') }}" alt="ユーザーのアイコン">
+        @endif
       </div>
       <div class="p-review__body">
         <p class="p-review__text u-pb-m">

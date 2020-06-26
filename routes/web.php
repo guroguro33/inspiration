@@ -25,7 +25,7 @@ Route::get('/', 'EvaluationsController@index')->name('evaluations.index');
 // ヒラメキ一覧画面
 Route::get('/index', 'IdeasController@index')->name('ideas.index');
 // ヒラメキ詳細画面
-Route::get('/ideas/{id}', 'IdeasController@show')->name('ideas.show');
+Route::get('/ideas/{id}/show', 'IdeasController@show')->name('ideas.show');
 
 Route::group(['middleware' => 'auth'], function(){
   // ヒラメキ出品画面

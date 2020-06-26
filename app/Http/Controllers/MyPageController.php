@@ -20,14 +20,28 @@ class MyPageController extends Controller
     // お気に入りと出品リスト情報を取得
     $user_data = User::with([
       // お気に入りを最新５件取得
-      'likes' => function($query) {
-        $query->orderBy('created_at', 'desc')->limit(5);
+      'likes' => function($query) use($user) {
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc')
+              ->limit(5);
       },
       'likes.idea.category',
       'likes.idea.evaluations',
+      
+      // 購入したヒラメキを最新５件取得
+      'purchases' => function($query) use($user) {
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc')
+              ->limit(5);
+      },
+      'purchases.idea.category',
+      'purchases.idea.evaluations',
+
       // 出品したヒラメキを最新５件取得
-      'ideas' => function($query) {
-        $query->orderBy('created_at', 'desc')->limit(5);
+      'ideas' => function($query) use($user) {
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc')
+              ->limit(5);
       },
       'ideas.evaluations',
       'ideas.category',

@@ -54,7 +54,7 @@
           @else
             <ul class="p-menu__list">
               <li class="p-menu__item"><a href="{{ route('mypage.index')}}" class="p-menu__link js-menu-link">マイページ</a></li>
-              <li class="p-menu__item"><a href="{{ route('mypage.lists')}}" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
+              <li class="p-menu__item"><a href="{{ route('ideas.index')}}" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
               <li class="p-menu__item"><a href="{{ route('ideas.create')}}" class="p-menu__link js-menu-link">ヒラメキを売る</a></li>
               <li class="p-menu__item"><a href="{{ route('logout') }}" class="p-menu__link js-menu-link" onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>

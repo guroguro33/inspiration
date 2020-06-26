@@ -42,30 +42,67 @@ class IdeasController extends Controller
   }
 
   // ヒラメキ編集画面表示
-  public function edit(){
+  public function edit($id){
+    // GETパラメータが数字かチェック
+    if(!ctype_digit($id)) {
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
 
     // ユーザー情報を取得
     $user = Auth::user();
+    // カテゴリ情報を取得
+    $categories = Category::all();
+    // ヒラメキ詳細情を取得
+    $idea = Idea::find($id);
+
+    // dd($idea->toArray());
     
-    return view('ideas.edit', compact('user'));
+    return view('ideas.edit', compact('user', 'categories', 'idea'));
   }
 
   // ヒラメキ編集登録
-  public function update(){
+  public function update(IdeaRequest $request, $id){
+    // GETパラメータが数字かチェック
+    if(!ctype_digit($id)) {
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
+
+    // ideasテーブルのデータ更新
+    $idea = Idea::find($id);
+    $idea->fill($request->all())->save();
+
     // リダイレクトする
     // sessionフラッシュにメッセージ格納
     return redirect('/mypage')->with('flash_message', __('Registered'));
   }
 
   // ヒラメキ削除
-  public function delete(){
+  public function delete($id){
+    // GETパラメータが数字かチェック
+    if(!ctype_digit($id)) {
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
+
+    // 自分が出品したものだった場合、論理削除する（リファクタリングの余地がある）
+    if(empty(Auth::user()->ideas()->find($id))){
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    } else {
+      Auth::user()->ideas()->find($id)->delete();
+    }
+
     // リダイレクトする
     // sessionフラッシュにメッセージ格納
-    return redirect('/mypage')->with('flash_message', __('Registered'));
+    return redirect('/mypage')->with('flash_message', __('Deleted.'));
   }
 
   // ヒラメキ詳細画面表示
-  public function show(){
+  public function show($id){
+    // GETパラメータが数字かチェック
+    if(!ctype_digit($id)) {
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
+
+
     return view('ideas.show');}
 
 }

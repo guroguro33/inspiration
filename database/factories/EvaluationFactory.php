@@ -10,6 +10,7 @@ $factory->define(Evaluation::class, function (Faker $faker) {
     'idea_id' => $faker->numberBetween($min = 1, $max = 15),
     'user_id' => $faker->numberBetween(1, 5),
     'idea_review' => $faker->paragraphs($nb = $faker->numberBetween(1,3), $asText = true),
-    'five_rank' => $faker->numberBetween(1, 5)
+    'five_rank' => $faker->numberBetween(1, 5),
+    'created_at' => $faker->dateTimeThisDecade()
   ];
 });

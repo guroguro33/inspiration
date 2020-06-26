@@ -19,6 +19,6 @@ class LikesTableSeeder extends Seeder
     DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
     // データの挿入
-    factory(Like::class, 10)->create();
+    factory(Like::class, 40)->create();
   }
 }
