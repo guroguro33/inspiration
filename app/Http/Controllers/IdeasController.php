@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Idea;
+use App\Like;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\IdeaRequest;
@@ -103,6 +104,34 @@ class IdeasController extends Controller
     }
 
 
-    return view('ideas.show');}
+    return view('ideas.show');
+  }
 
+  // 気になるの着脱
+  public function toggleLike(Request $request){
+    // 当該のヒラメキのidを代入
+    $idea_id = $request->id;
+
+    // ログインしているユーザー情報取得
+    $user = Auth::user();
+    // お気に入り済みか確認
+    $like = $user->likes()->where('idea_id', $idea_id)->first();
+    // お気に入りだった場合、お気に入りから削除
+    if($like){
+      $like->delete(); 
+      $isActive = ['isActive' => false];
+      return $isActive;
+
+    } else{
+      // お気に入りではない場合、お気に入りに登録
+      $like = new Like;
+
+      $like->user_id = $user->id;
+      $like->idea_id = $idea_id;
+      $like->save();
+      $isActive = ['isActive' => true];
+      return $isActive;
+      
+    }
+  }
 }

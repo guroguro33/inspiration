@@ -35,73 +35,71 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="u-bg__main">
-  <div id="app">
-    <header class="l-container__fluid  l-header u-bg__header">
-      <section class="l-header__body">
-        <h2 class="l-header__title"><a href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a></h2>
-        <div class="p-menu__trigger js-toggle-sp-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <nav class="p-menu">
-          @guest
-            <ul class="p-menu__list">
-              <li class="p-menu__item"><a href="{{ route('ideas.index')}}" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
-              <li class="p-menu__item"><a href="{{ route('login') }}" class="p-menu__link js-menu-link">{{ __('Login') }}</a></li>
-              <li class="p-menu__item"><a href="{{ route('register') }}" class="p-menu__link js-menu-link">{{ __('Register') }}</a></li>
-            </ul>
-          @else
-            <ul class="p-menu__list">
-              <li class="p-menu__item"><a href="{{ route('mypage.index')}}" class="p-menu__link js-menu-link">マイページ</a></li>
-              <li class="p-menu__item"><a href="{{ route('ideas.index')}}" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
-              <li class="p-menu__item"><a href="{{ route('ideas.create')}}" class="p-menu__link js-menu-link">ヒラメキを売る</a></li>
-              <li class="p-menu__item"><a href="{{ route('logout') }}" class="p-menu__link js-menu-link" onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-              </form>
-            </ul>
-          @endguest
-        </nav>
-      </section>
-    </header>
-
-    {{-- フラッシュメッセージ --}}
-    @if (session('flash_message'))
-      <div class="c-alert__register--success js-flash-msg" role="alert">
-        {{ session('flash_message') }}
+  <header class="l-container__fluid  l-header u-bg__header">
+    <section class="l-header__body">
+      <h2 class="l-header__title"><a href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a></h2>
+      <div class="p-menu__trigger js-toggle-sp-menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-    @endif
+      <nav class="p-menu">
+        @guest
+          <ul class="p-menu__list">
+            <li class="p-menu__item"><a href="{{ route('ideas.index')}}" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
+            <li class="p-menu__item"><a href="{{ route('login') }}" class="p-menu__link js-menu-link">{{ __('Login') }}</a></li>
+            <li class="p-menu__item"><a href="{{ route('register') }}" class="p-menu__link js-menu-link">{{ __('Register') }}</a></li>
+          </ul>
+        @else
+          <ul class="p-menu__list">
+            <li class="p-menu__item"><a href="{{ route('mypage.index')}}" class="p-menu__link js-menu-link">マイページ</a></li>
+            <li class="p-menu__item"><a href="{{ route('ideas.index')}}" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
+            <li class="p-menu__item"><a href="{{ route('ideas.create')}}" class="p-menu__link js-menu-link">ヒラメキを売る</a></li>
+            <li class="p-menu__item"><a href="{{ route('logout') }}" class="p-menu__link js-menu-link" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+          </ul>
+        @endguest
+      </nav>
+    </section>
+  </header>
 
-    {{-- エラー時 --}}
-    @if(count($errors) > 0)
-      <div class="c-alert__register--error js-flash-msg" role="alert">
-        エラーがあります
+  {{-- フラッシュメッセージ --}}
+  @if (session('flash_message'))
+    <div class="c-alert__register--success js-flash-msg" role="alert">
+      {{ session('flash_message') }}
+    </div>
+  @endif
+
+  {{-- エラー時 --}}
+  @if(count($errors) > 0)
+    <div class="c-alert__register--error js-flash-msg" role="alert">
+      エラーがあります
+    </div>
+  @endif
+  
+  <main>
+    @yield('content')
+
+  </main>
+  <footer id="footer" class="l-footer">
+    <div class="l-container l-footer__body">
+      <p class="l-footer__copyright">© Copyright | Inspiration 2020</p>
+      <div class="l-footer__sns">
+        <a href="" class="l-footer__icon"><i class="fab fa-instagram"></i></a>
+        <a href="" class="l-footer__icon"><i class="fab fa-twitter-square"></i></a>
+        <a href="" class="l-footer__icon"><i class="fab fa-facebook"></i></a>
       </div>
-    @endif
-    
-    <main>
-      @yield('content')
-
-    </main>
-    <footer id="footer" class="l-footer">
-      <div class="l-container l-footer__body">
-        <p class="l-footer__copyright">© Copyright | Inspiration 2020</p>
-        <div class="l-footer__sns">
-          <a href="" class="l-footer__icon"><i class="fab fa-instagram"></i></a>
-          <a href="" class="l-footer__icon"><i class="fab fa-twitter-square"></i></a>
-          <a href="" class="l-footer__icon"><i class="fab fa-facebook"></i></a>
-        </div>
-        <div class="l-footer__contact">
-          <p class="l-footer__contact__lead">お問い合わせ</p>
-          <div class="l-footer__contact__body">
-            <a href="tel:0312345678">03-1234-5678</a>
-            <a href="mailto:info@mail.com">info@mail.com</a>
-          </div>
+      <div class="l-footer__contact">
+        <p class="l-footer__contact__lead">お問い合わせ</p>
+        <div class="l-footer__contact__body">
+          <a href="tel:0312345678">03-1234-5678</a>
+          <a href="mailto:info@mail.com">info@mail.com</a>
         </div>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 </body>
 </html>

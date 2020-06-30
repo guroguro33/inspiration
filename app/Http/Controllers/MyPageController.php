@@ -115,7 +115,22 @@ class MyPageController extends Controller
     // ユーザー情報を取得
     $user = Auth::user();
 
-    return view('mypage.likes', compact('user'));
+    // 気になるリストを取得
+    $user_data = User::with([
+      // お気に入りを取得
+      'likes' => function($query) use($user) {
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc');
+              // ->paginate(3);
+      },
+      'likes.idea.category',
+      'likes.idea.evaluations',
+    ])->get()->find($user->id)->paginate(3);
+    
+    // $user_data = json_encode($user_data);
+    // dd($user_data->toArray());  
+
+    return view('mypage.likes', compact('user','user_data'));
   }
 
   // ヒラメキ出品一覧表示
