@@ -22,7 +22,8 @@ Vue.component('paginate', Paginate)
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('idea-component', require('./components/IdeaComponent.vue').default);
+Vue.component('likes-component', require('./components/LikesComponent.vue').default);
+Vue.component('purchases-component', require('./components/PurchasesComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -75,8 +75,11 @@ export default {
     time(val) {
       const date = new Date(val);
 
-      const hour = date.getHours();
-      const minute = date.getMinutes();
+      let hour = date.getHours();
+      hour = ("0" + hour).slice(-2);
+
+      let minute = date.getMinutes();
+      minute = ("0" + minute).slice(-2);
 
       const formatTime = hour + ":" + minute;
       return formatTime;
@@ -96,9 +99,6 @@ export default {
       return val;
     }
   },
-  mounted() {
-    console.log(this.sort);
-  },
   computed: {
     // お気に入りリスト
     likeLists: function() {
@@ -109,11 +109,13 @@ export default {
         return this.userData.likes.reverse();
       }
     },
+    // ページネーションで現在のページで表示するリストを抽出
     getItems: function() {
       let current = this.currentPage * this.parPage;
       let start = current - this.parPage;
       return this.likeLists.slice(start, current);
     },
+    // ページネーションの全ページ数を計算
     getPageCount: function() {
       return Math.ceil(this.likeLists.length / this.parPage);
     }

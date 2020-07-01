@@ -106,7 +106,20 @@ class MyPageController extends Controller
     // ユーザー情報を取得
     $user = Auth::user();
 
-    return view('mypage.purchases', compact('user'));
+    // 購入済みリストを取得
+    $user_data = User::with([
+      'purchases' => function($query) use($user){
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc');
+      },
+      'purchases.idea.category',
+      'purchases.idea.evaluations',
+    ])->get()->find($user->id);
+
+    $user_data = json_encode($user_data);
+    // dd($user_data);
+
+    return view('mypage.purchases', compact('user', 'user_data'));
   }
 
   // 気になる一覧表示
@@ -117,7 +130,6 @@ class MyPageController extends Controller
 
     // 気になるリストを取得
     $user_data = User::with([
-      // お気に入りを取得
       'likes' => function($query) use($user) {
         $query->where('user_id', $user->id)
               ->orderBy('created_at', 'desc');

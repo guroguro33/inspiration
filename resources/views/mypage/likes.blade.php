@@ -13,7 +13,7 @@
       
       <div id="app">
 
-        <idea-component :user-data="{{ $user_data }}"></idea-component>
+        <likes-component :user-data="{{ $user_data }}"></likes-component>
 
       </div>
 
