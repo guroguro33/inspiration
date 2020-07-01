@@ -150,7 +150,20 @@ class MyPageController extends Controller
     // ユーザー情報を取得
     $user = Auth::user();
 
-    return view('mypage.lists', compact('user'));
+    // ヒラメキ出品一覧を取得
+    $user_data = user::with([
+      'ideas' => function($query) use($user){
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc');
+      },
+      'ideas.category',
+      'ideas.evaluations',
+    ])->get()->find($user->id);
+
+    $user_data = json_encode($user_data);
+    // dd($user_data->toArray());
+
+    return view('mypage.lists', compact('user', 'user_data'));
   }
 
   // レビュー一覧表示
