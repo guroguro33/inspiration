@@ -31,11 +31,19 @@ $(function () {
       });
     }
   })
+
   // フラッシュメッセージ
   $(function () {
     let $jsFlashMsg = $('.js-flash-msg');
 
     $jsFlashMsg.fadeOut(5000);
+  })
+
+  // ページネーションをクリックしたら、ページトップに移動する
+  $(function () {
+    $('.c-pagination__page-item, .c-pagination__prev, .c-pagination__next').on('click', function () {
+      $("html, body").animate({ scrollTop: 0 }, 500);
+    })
   })
 
 })

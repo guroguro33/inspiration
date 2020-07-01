@@ -17,8 +17,6 @@
 
       </div>
 
-      <div>{{$user_data->links() }}</div>
-
     </div>
   </section>
 

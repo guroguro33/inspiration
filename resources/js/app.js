@@ -6,9 +6,11 @@
 
 require('./bootstrap');
 require('./script');
+var Paginate = require('vuejs-paginate')
 
 window.Vue = require('vue');
 
+Vue.component('paginate', Paginate)
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

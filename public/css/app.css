@@ -826,6 +826,18 @@ br {
   }
 }
 
+.c-btn__main--gray2.is-notlike {
+  background-color: #29A8E1;
+  font-size: 0;
+  transition: none;
+}
+
+.c-btn__main--gray2.is-notlike:before {
+  background-color: #29A8E1;
+  font-size: 12px;
+  content: "\304A\6C17\306B\5165\308A\306B\8FFD\52A0";
+}
+
 .c-btn__main--blue {
   margin: 0;
   padding: 10px 20px;
@@ -995,6 +1007,41 @@ br {
 .c-alert__register--error {
   background-color: #FFFFFF;
   color: #DD1B1B;
+}
+
+/*
+* object/component/_pagination.scss
+*/
+
+.c-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-pagination__page-item a,
+.c-pagination__prev a,
+.c-pagination__next a {
+  padding: 5px 10px;
+}
+
+.c-pagination__page-item a:hover,
+.c-pagination__prev a:hover,
+.c-pagination__next a:hover {
+  background-color: #FFFFFF;
+}
+
+.c-pagination__page-item a:focus,
+.c-pagination__prev a:focus,
+.c-pagination__next a:focus {
+  outline: 0;
+}
+
+.c-pagination__page-item.active a,
+.c-pagination__prev.active a,
+.c-pagination__next.active a {
+  background-color: #525354;
+  color: #FFFFFF;
 }
 
 /*
