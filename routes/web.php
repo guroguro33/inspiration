@@ -25,7 +25,7 @@ Route::get('/', 'EvaluationsController@index')->name('evaluations.index');
 // ヒラメキ一覧画面
 Route::get('/index', 'IdeasController@index')->name('ideas.index');
 // ヒラメキ詳細画面
-Route::get('/ideas/{id}', 'IdeasController@show')->name('ideas.show');
+Route::get('/ideas/{id}/show', 'IdeasController@show')->name('ideas.show');
 
 Route::group(['middleware' => 'auth'], function(){
   // ヒラメキ出品画面
@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function(){
   Route::post('/ideas/{id}/edit', 'IdeasController@update')->name('ideas.update');
   // ヒラメキ削除
   Route::get('/ideas/{id}/del', 'IdeasController@delete')->name('ideas.delete');
+  // お気に入り着脱
+  Route::post('/ideas/like', 'IdeasController@toggleLike')->name('ideas.toggleLike');
 });
 
 Route::group(['middleware' => 'auth'], function(){
@@ -45,8 +47,6 @@ Route::group(['middleware' => 'auth'], function(){
   Route::post('/ideas/{id}', 'EvaluationsController@store')->name('evaluations.store');
   // レビュー削除
   Route::post('/ideas/{id}/del', 'EvaluationsController@delete')->name('evaluations.delete');
-  // お気に入り着脱
-  Route::post('/ideas/{id}/like', 'EvaluationsController@toggleLike')->name('evaluations.toggleLike');
 });
 
 Route::group(['middleware' => 'auth'], function(){

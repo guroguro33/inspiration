@@ -1,0 +1,29 @@
+@charset "utf-8";
+/*
+* object/component/_pagination.scss
+*/
+.c-pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__page-item,
+  &__prev,
+  &__next {
+    & a{
+      padding: $space_s $space_m;
+      &:hover{
+        background-color: $color_bg2;
+      }
+      &:focus{
+        outline: 0;
+      }
+    }
+    &.active a{
+      background-color: $color_bg3;
+      color: $font-color_sub2;
+    }
+    & span{
+      padding: $space_s $space_m;
+    }
+  }
+}

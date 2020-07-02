@@ -1,7 +1,10 @@
 <section class="l-sidebar__mymenu">
   <div class="p-mymenu__img u-pb-s">
-    <img src="{{ asset('./img/no-img2.svg') }}" alt="人のアイコン">
-    {{-- <img src="{{ $user->user_img }}" alt="人のアイコン"> --}}
+    @if($user->user_img)
+    <img src="{{ $user->user_img }}" alt="ユーザーのアイコン">
+    @else
+    <img src="{{ asset('./img/no-img2.svg') }}" alt="ユーザーのアイコン">
+    @endif
   </div>
   <p class="p-mymenu__name u-pb-s">{{ $user->name }}</p>
   <a href="{{ route('mypage.edit')}}" class="p-mymenu__prof u-mb-xl">プロフィール編集 &gt;</a>

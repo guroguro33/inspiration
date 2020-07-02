@@ -65,90 +65,27 @@
 
     <div class="p-mypage__unit u-mb-xxl">
       <div class="p-mypage__heading u-pb-s u-mb-m">
-        <h2 class="p-mypage__heading__text">購入したヒラメキ（最新５件）</h2>
-        <a href="" class="c-btn__sub--mypage">全件表示</a>
+        <h2 class="p-mypage__heading__text">購入したヒラメキ（最新{{ count($user_data->purchases) }}件）</h2>
+        <a href="{{ route('mypage.purchases') }}" class="c-btn__sub--mypage">全件表示</a>
       </div>
-      <a href="" class="p-mypage__item u-pb-l u-mb-m u-opacity">
+      @foreach($user_data->purchases as $purchase)
+      <a href="{{ route('ideas.show', $purchase->idea_id) }}" class="p-mypage__item u-pb-l u-mb-m u-opacity">
         <div class="p-mypage__sub">
-          <p class="p-mypage__sub__date">2020/10/10</p>
-          <p class="p-mypage__sub__date">23:59</p>
-          <p class="p-mypage__sub__cat">シェアリング</p>
+          <p class="p-mypage__sub__date">{{ date('Y/m/d', strtotime($purchase->created_at)) }}</p>
+          <p class="p-mypage__sub__date">{{ date('G:i', strtotime($purchase->created_at)) }}</p>
+          <p class="p-mypage__sub__cat">{{ $purchase->idea->category->category_name}}</p>
         </div>
         <div class="p-mypage__desc c-desc">
-          <h3 class="c-desc__title">タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル…</h3>
+          <h3 class="c-desc__title">{{ mb_strimwidth($purchase->idea->idea_title, 0, 65, "…", "UTF-8") }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">3.5(３件)</span>
-            <span class="c-desc__price">1,000,000円</span>
+            <span class="c-desc__point">3.5({{ count($purchase->idea->evaluations) }}件)</span>
+            <span class="c-desc__price">{{ number_format($purchase->idea->idea_price) }}円</span>
           </div>
-          <p class="c-desc__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ…</p>
+          <p class="c-desc__text">{{ mb_strimwidth($purchase->idea->idea_description, 0, 83, "…", "UTF-8") }}</p>
         </div>
       </a>
-      <a href="" class="p-mypage__item u-pb-l u-mb-m u-opacity">
-        <div class="p-mypage__sub">
-          <p class="p-mypage__sub__date">2020/10/10</p>
-          <p class="p-mypage__sub__date">23:59</p>
-          <p class="p-mypage__sub__cat">シェアリング</p>
-        </div>
-        <div class="p-mypage__desc c-desc">
-          <h3 class="c-desc__title">タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル…</h3>
-          <div class="c-desc__info u-pb-s">
-            <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">3.5(３件)</span>
-            <span class="c-desc__price">1,000,000円</span>
-          </div>
-          <p class="c-desc__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ…</p>
-        </div>
-      </a>
-      <a href="" class="p-mypage__item u-pb-l u-mb-m u-opacity">
-        <div class="p-mypage__sub">
-          <p class="p-mypage__sub__date">2020/10/10</p>
-          <p class="p-mypage__sub__date">23:59</p>
-          <p class="p-mypage__sub__cat">シェアリング</p>
-        </div>
-        <div class="p-mypage__desc c-desc">
-          <h3 class="c-desc__title">タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル…</h3>
-          <div class="c-desc__info u-pb-s">
-            <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">3.5(３件)</span>
-            <span class="c-desc__price">1,000,000円</span>
-          </div>
-          <p class="c-desc__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ…</p>
-        </div>
-      </a>
-      <a href="" class="p-mypage__item u-pb-l u-mb-m u-opacity">
-        <div class="p-mypage__sub">
-          <p class="p-mypage__sub__date">2020/10/10</p>
-          <p class="p-mypage__sub__date">23:59</p>
-          <p class="p-mypage__sub__cat">シェアリング</p>
-        </div>
-        <div class="p-mypage__desc c-desc">
-          <h3 class="c-desc__title">タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル…</h3>
-          <div class="c-desc__info u-pb-s">
-            <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">3.5(３件)</span>
-            <span class="c-desc__price">1,000,000円</span>
-          </div>
-          <p class="c-desc__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ…</p>
-        </div>
-      </a>
-      <a href="" class="p-mypage__item u-pb-l u-mb-m u-opacity">
-        <div class="p-mypage__sub">
-          <p class="p-mypage__sub__date">2020/10/10</p>
-          <p class="p-mypage__sub__date">23:59</p>
-          <p class="p-mypage__sub__cat">シェアリング</p>
-        </div>
-        <div class="p-mypage__desc c-desc">
-          <h3 class="c-desc__title">タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル…</h3>
-          <div class="c-desc__info u-pb-s">
-            <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">3.5(３件)</span>
-            <span class="c-desc__price">1,000,000円</span>
-          </div>
-          <p class="c-desc__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ…</p>
-        </div>
-      </a>
-
+      @endforeach
     </div>
 
     <div class="p-mypage__unit u-mb-xxl">
@@ -175,7 +112,7 @@
       </a>
       @endforeach
     </div>
-    
+
   </section>
 
 </div>

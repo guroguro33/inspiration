@@ -13,7 +13,11 @@
       @csrf
       <div class="u-mb-xxl">
         <div class="p-mymenu__img u-pb-m">
-          <img src="{{ asset('./img/no-img2.svg') }}" alt="人のアイコン">
+          @if($user->user_img)
+          <img src="{{ $user->user_img }}" alt="ユーザーのアイコン">
+          @else
+          <img src="{{ asset('./img/no-img2.svg') }}" alt="ユーザーのアイコン">
+          @endif
         </div>
         <input type="file" name="user_img" class="c-form__file @error('user_img') is-invalid @enderror" value="ファイルを選択">
       </div>

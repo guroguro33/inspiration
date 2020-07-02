@@ -35,15 +35,28 @@
   &__btn{
     display: flex;
     align-items: center;
+    &--img{
+      margin-right: $space_s;
+      & .fas{
+        color: $font-color_alert;
+      }
+    }
     &--like{
       display: flex;
       margin-left: $space_m;
       padding: $space_s $space_m;
       border: solid 1px $color_bar;
       border-radius: 5px;
+      cursor: pointer;
       @include mq(){
         font-size: $font-size_xs;
       }
+    }
+    &--tweet{
+      @extend .p-detail__btn--like;
+      background-color: #2A9BF5;
+      border: none;
+      color: $font-color_sub2;
     }
   }
   &__date{
@@ -64,6 +77,7 @@
     min-height: 500px;
     background-color: $color_bg2;
     border-radius: 10px;
+    white-space: pre-wrap;
     font-size: $font-size_m;
     @include mq(md){
       font-size: $font-size_s;

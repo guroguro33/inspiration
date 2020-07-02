@@ -1,10 +1,10 @@
 <?php
 
-use App\Evaluation;
+use App\Purchase;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class EvaluationsTableSeeder extends Seeder
+class PurchasesTableSeeder extends Seeder
 {
   /**
    * Run the database seeds.
@@ -15,10 +15,10 @@ class EvaluationsTableSeeder extends Seeder
   {
     // データのクリア
     DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-    DB::table('evaluations')->truncate();
+    DB::table('purchases')->truncate();
     DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
     // データの挿入
-    factory(Evaluation::class, 40)->create();
+    factory(Purchase::class, 40)->create();
   }
 }

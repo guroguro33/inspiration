@@ -12,4 +12,28 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+  .sass('resources/sass/app.scss', 'public/css')
+  .browserSync({
+    host: 'homestead.inspiration',
+    proxy: {
+      target: "http://homestead.inspiration",
+      ws: true
+    },
+    browser: "google chrome",
+    files: [
+      './public/css/app.css',
+      './app/**/*',
+      './config/**/*',
+      './resources/js/**/*',
+      './resources/sass/**/*',
+      './resources/views/**/*.blade.php',
+      './resources/views/*.blade.php',
+      './routes/**/*'
+    ],
+    watchOptions: {
+      usePolling: true,
+      interval: 3000
+    },
+    open: "external",
+    reloadOnRestart: true
+  });

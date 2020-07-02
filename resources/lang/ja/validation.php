@@ -119,6 +119,13 @@ return [
     'attributes' => [
       'email' => 'メールアドレス',
       'password' => 'パスワード',
+      'category_id' => 'カテゴリー',
+      'idea_title' => 'タイトル',
+      'idea_description' => '概要',
+      'idea_detail' => '詳細',
+      'idea_price' => '金額',
+      'idea_review' => 'レビュー',
+      'five_rank' => '5段階評価',
     ],
 
 ];

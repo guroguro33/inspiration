@@ -25,6 +25,9 @@ class Idea extends Model
   public function likes(){
     return $this->hasMany('App\Like');
   }
+  public function Purchases(){
+    return $this->hasMany('App\Purchase');
+  }
   public function evaluations(){
     return $this->hasMany('App\Evaluation');
   }

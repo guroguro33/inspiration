@@ -105,6 +105,9 @@ input {
     border: solid 1px $font-color_alert;
   }
 }
+select{
+  outline: 0;
+}
 br {
   display: none;
   @include mq(){

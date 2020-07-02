@@ -20,14 +20,28 @@ class MyPageController extends Controller
     // お気に入りと出品リスト情報を取得
     $user_data = User::with([
       // お気に入りを最新５件取得
-      'likes' => function($query) {
-        $query->orderBy('created_at', 'desc')->limit(5);
+      'likes' => function($query) use($user) {
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc')
+              ->limit(5);
       },
       'likes.idea.category',
       'likes.idea.evaluations',
+      
+      // 購入したヒラメキを最新５件取得
+      'purchases' => function($query) use($user) {
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc')
+              ->limit(5);
+      },
+      'purchases.idea.category',
+      'purchases.idea.evaluations',
+
       // 出品したヒラメキを最新５件取得
-      'ideas' => function($query) {
-        $query->orderBy('created_at', 'desc')->limit(5);
+      'ideas' => function($query) use($user) {
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc')
+              ->limit(5);
       },
       'ideas.evaluations',
       'ideas.category',
@@ -51,7 +65,7 @@ class MyPageController extends Controller
 
 
     // 自分の出品したヒラメキに対する全評価のうち最新５件を取得
-    $idea = Idea::all();
+    // $idea = Idea::all();
     $evaluations = Evaluation::with([
       'user',
       'idea.category'
@@ -92,7 +106,20 @@ class MyPageController extends Controller
     // ユーザー情報を取得
     $user = Auth::user();
 
-    return view('mypage.purchases', compact('user'));
+    // 購入済みリストを取得
+    $user_data = User::with([
+      'purchases' => function($query) use($user){
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc');
+      },
+      'purchases.idea.category',
+      'purchases.idea.evaluations',
+    ])->get()->find($user->id);
+
+    $user_data = json_encode($user_data);
+    // dd($user_data);
+
+    return view('mypage.purchases', compact('user', 'user_data'));
   }
 
   // 気になる一覧表示
@@ -101,7 +128,20 @@ class MyPageController extends Controller
     // ユーザー情報を取得
     $user = Auth::user();
 
-    return view('mypage.likes', compact('user'));
+    // 気になるリストを取得
+    $user_data = User::with([
+      'likes' => function($query) use($user) {
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc');
+      },
+      'likes.idea.category',
+      'likes.idea.evaluations',
+    ])->get()->find($user->id);
+    
+    $user_data = json_encode($user_data);
+    // dd($user_data->toArray());  
+
+    return view('mypage.likes', compact('user','user_data'));
   }
 
   // ヒラメキ出品一覧表示
@@ -110,7 +150,20 @@ class MyPageController extends Controller
     // ユーザー情報を取得
     $user = Auth::user();
 
-    return view('mypage.lists', compact('user'));
+    // ヒラメキ出品一覧を取得
+    $user_data = User::with([
+      'ideas' => function($query) use($user){
+        $query->where('user_id', $user->id)
+              ->orderBy('created_at', 'desc');
+      },
+      'ideas.category',
+      'ideas.evaluations',
+    ])->get()->find($user->id);
+
+    $user_data = json_encode($user_data);
+    // dd($user_data->toArray());
+
+    return view('mypage.lists', compact('user', 'user_data'));
   }
 
   // レビュー一覧表示
@@ -119,7 +172,19 @@ class MyPageController extends Controller
     // ユーザー情報を取得
     $user = Auth::user();
 
-    return view('mypage.reviews', compact('user'));
+    // レビュー一覧を取得
+    $evaluations = Evaluation::with([
+      'user',
+      'idea.category',
+      'idea.evaluations',
+    ])->whereHas('idea', function($query) use ($user) {
+      $query->where('user_id', $user->id);
+    })->orderBy('created_at', 'desc')->get();
+
+    $user_data = json_encode($evaluations);
+    // dd($evaluations->toArray());
+
+    return view('mypage.reviews', compact('user', 'evaluations'));
   }
 
 }
