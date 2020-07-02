@@ -154,8 +154,29 @@ class IdeasController extends Controller
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
+    // ヒラメキ情報を取得
+    $idea = Idea::with([
+      'category',
+      'user',
+      'evaluations' => function($query){
+        $query->orderBy('created_at', 'desc');
+      }, 
+      'evaluations.user'
+    ])->get()->find($id);
+    
+    // ログイン済みの場合、自分のお気に入りリストと購入済みリストを取得
+    if(Auth::check()){
+      $likeLists = Auth::user()->likes()->pluck('idea_id');
+      $purchaseLists = Auth::user()->purchases()->pluck('idea_id');
 
-    return view('ideas.show');
+      return view('ideas.show', compact('idea', 'likeLists'));
+    } else {
+      // 未ログインの時
+      return view('ideas.show', compact('idea'));
+    }
+    // dd($idea->toArray());
+
+
   }
 
   // 気になるの着脱

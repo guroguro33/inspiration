@@ -26,6 +26,7 @@ Vue.component('likes-component', require('./components/LikesComponent.vue').defa
 Vue.component('purchases-component', require('./components/PurchasesComponent.vue').default);
 Vue.component('lists-component', require('./components/listsComponent.vue').default);
 Vue.component('reviews-component', require('./components/ReviewsComponent.vue').default);
+Vue.component('idea-info-component', require('./components/IdeaInfoComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
