@@ -12,8 +12,59 @@ use Illuminate\Support\Facades\Auth;
 class IdeasController extends Controller
 {
   // ヒラメキ一覧表示
-  public function index(){
-    return view('ideas.index');
+  public function index(Request $request){
+
+    // カテゴリ情報を取得
+    $categories = Category::all();
+    // dd($categories);
+
+    $query = Idea::query();
+
+    // 検索フォームに入力があったら絞り込み
+    if($request->input()){
+
+      // カテゴリーの選択があった場合
+      if(!empty($request->category)){
+        $query->where('category_id', $request->category);
+      }
+      // 価格(低)の入力があった場合
+      if(!empty($request->low)){
+        $query->where('idea_price', '>', $request->low);
+      }
+      // 価格(高)の選択があった場合
+      if(!empty($request->high)){
+        $query->where('idea_price', '<', $request->high);
+      }
+      // 出品日付の選択があった場合
+      if(!empty($request->day)){
+        if($request->day === '1'){
+          $query->orderBy('created_at', 'desc');
+        }else{
+          $query->orderBy('created_at', 'asc');
+        }
+      }
+      // 星の数の選択があった場合
+      // if(!empty($request->star)){
+      //   if($request->star === '1'){
+      //     $query->orderBy('created_at', 'desc');
+      //   }else{
+      //     $query->orderBy('created_at', 'asc');
+      //   }
+      // }
+
+      // dd($query);
+    }
+
+    $ideas = $query->with([
+      'user',
+      'category',
+      'evaluations'
+    ])->paginate(10)->appends($request->all());
+
+    $inputData = $request->all();
+    // dd($ideas);
+
+    return view('ideas.index', compact('categories', 'ideas', 'inputData'));
   }
 
   // ヒラメキ出品画面表示

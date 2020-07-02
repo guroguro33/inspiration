@@ -11,7 +11,7 @@
     <div class="u-mb-3l">
       <div v-for="sell in getItems" :key='sell.id' class="p-mypage__item u-pb-l u-mb-m">
         <div class="p-mypage__sub">
-          <p class="p-mypage__sub__date" ref="time">{{ sell.created_at | date }} </p>
+          <p class="p-mypage__sub__date">{{ sell.created_at | date }} </p>
           <p class="p-mypage__sub__date">{{ sell.created_at | time }}</p>
           <p class="p-mypage__sub__cat">{{ sell.category.category_name}}</p>
         </div>
@@ -40,9 +40,9 @@
     :prev-text="'＜'"
     :next-text="'＞'"
     :container-class="'c-pagination'"
-    :page-class="'c-pagination__page-item'"
-    :prev-class="'c-pagination__prev'"
-    :next-class="'c-pagination__next'">
+    :page-class="'c-pagination__page-item js-scrollTop'"
+    :prev-class="'c-pagination__prev js-scrollTop'"
+    :next-class="'c-pagination__next js-scrollTop'">
   </paginate>
     
   </div>

@@ -9,25 +9,32 @@
     </form>
 
     <div class="u-mb-3l">
-      <div v-for="purchase in getItems" :key='purchase.id' class="p-mypage__item u-pb-l u-mb-m">
+      <div v-for="evaluation in getItems" :key='evaluation.id' class="p-mypage__item u-pb-l u-mb-m">
         <div class="p-mypage__sub">
-          <p class="p-mypage__sub__date">{{ purchase.created_at | date }} </p>
-          <p class="p-mypage__sub__date">{{ purchase.created_at | time }}</p>
-          <p class="p-mypage__sub__cat">{{ purchase.idea.category.category_name}}</p>
+          <p class="p-mypage__sub__date">{{ evaluation.created_at | date }}</p>
+          <p class="p-mypage__sub__date">{{ evaluation.created_at | time }}</p>
+          <p class="p-mypage__sub__cat">{{ evaluation.idea.category.category_name}}</p>
         </div>
         <div class="p-mypage__desc c-desc">
-          <h3 class="c-desc__title">{{ purchase.idea.idea_title | substr32 }}</h3>
+          <h3 class="c-desc__title">{{ evaluation.idea_review | substr42 }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="/img/star.svg" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">3.5({{ purchase.idea.evaluations.length }}件)</span>
-            <span class="c-desc__price">{{ purchase.idea.idea_price.toLocaleString() }}円</span>
+            <span class="c-desc__point">{{ evaluation.five_rank }}</span>
+            <span class="c-desc__point">by {{ evaluation.user.name }}</span>
           </div>
-          <p class="c-desc__text u-pb-m">{{ purchase.idea.idea_description | substr42 }}</p>
-          <div class="p-mypage__link">
-            <a :href="'/ideas/' + purchase.idea.id +'/show'" class="c-btn__main--blue">詳細を見る</a>
+          <div class="c-desc c-desc u-bg__post">
+            <h3 class="c-desc__title">{{ evaluation.idea.idea_title | substr32 }}</h3>
+            <div class="c-desc__info u-pb-s">
+              <img src="/img/star.svg" alt="星のアイコン" class="c-desc__star">
+              <span class="c-desc__point">3.5({{ evaluation.idea.evaluations.length }}件)</span>
+              <span class="c-desc__price">{{ evaluation.idea.idea_price.toLocaleString() }}円</span>
+            </div>
+            <p class="c-desc__text u-pb-m">{{ evaluation.idea.idea_description | substr42 }}</p>
+            <a :href="'/ideas/' + evaluation.idea.id + '/show'" class="c-btn__main--blue">詳細を見る</a>
           </div>
         </div>
       </div>
+      
     </div>
 
     <paginate
@@ -48,13 +55,12 @@
 
 <script>
 export default {
-  props: ["userData"],
+  props: ["evaluations"],
   data: function() {
     return {
       sort: 1,
       parPage: 5,
-      currentPage: 1,
-      notLike_id: []
+      currentPage: 1
     };
   },
   filters: {
@@ -98,24 +104,24 @@ export default {
     }
   },
   computed: {
-    // 購入済みリスト
-    purchasedLists: function() {
+    // 評価一覧リスト
+    evaluationLists: function() {
       // ソート機能
       if (this.sort === 1) {
-        return this.userData.purchases;
+        return this.evaluations;
       } else {
-        return this.userData.purchases.reverse();
+        return this.evaluations.reverse();
       }
     },
     // ページネーションで現在のページで表示するリストを抽出
     getItems: function() {
       let current = this.currentPage * this.parPage;
       let start = current - this.parPage;
-      return this.purchasedLists.slice(start, current);
+      return this.evaluationLists.slice(start, current);
     },
     // ページネーションの全ページ数を計算
     getPageCount: function() {
-      return Math.ceil(this.purchasedLists.length / this.parPage);
+      return Math.ceil(this.evaluationLists.length / this.parPage);
     }
   },
   methods: {

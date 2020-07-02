@@ -11,11 +11,11 @@
     <h1 class="p-mypage__title u-pb-m">購入したヒラメキ</h1>
     <div class="u-mb-xxl">
       
-      <div id="app">
+      {{-- <div id="app"> --}}
 
         <purchases-component :user-data="{{ $user_data }}"></purchases-component>
 
-      </div>
+      {{-- </div> --}}
 
     </div>
 

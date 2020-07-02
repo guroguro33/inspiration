@@ -212,6 +212,10 @@ input.is-invalid {
   border: solid 1px #DD1B1B;
 }
 
+select {
+  outline: 0;
+}
+
 br {
   display: none;
 }
@@ -1042,6 +1046,12 @@ br {
 .c-pagination__next.active a {
   background-color: #525354;
   color: #FFFFFF;
+}
+
+.c-pagination__page-item span,
+.c-pagination__prev span,
+.c-pagination__next span {
+  padding: 5px 10px;
 }
 
 /*

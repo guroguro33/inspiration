@@ -81,7 +81,9 @@
   @endif
   
   <main>
-    @yield('content')
+    <div id="app">
+      @yield('content')
+    </div>
 
   </main>
   <footer id="footer" class="l-footer">

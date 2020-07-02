@@ -10,11 +10,11 @@
   <section class="l-sidebar__mypage">
     <h1 class="p-mypage__title u-pb-m">出品したヒラメキ</h1>
     <div class="u-mb-xxl">
-      <div id="app">
+      {{-- <div id="app"> --}}
 
         <lists-component :user-data="{{ $user_data }}"></lists-component>
 
-      </div>
+      {{-- </div> --}}
     </div>
   </section>
 

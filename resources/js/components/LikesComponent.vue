@@ -11,7 +11,7 @@
     <div class="u-mb-3l">
       <div v-for="like in getItems" :key='like.id' class="p-mypage__item u-pb-l u-mb-m">
         <div class="p-mypage__sub">
-          <p class="p-mypage__sub__date" ref="time">{{ like.created_at | date }} </p>
+          <p class="p-mypage__sub__date">{{ like.created_at | date }} </p>
           <p class="p-mypage__sub__date">{{ like.created_at | time }}</p>
           <p class="p-mypage__sub__cat">{{ like.idea.category.category_name}}</p>
         </div>
@@ -40,9 +40,9 @@
     :prev-text="'＜'"
     :next-text="'＞'"
     :container-class="'c-pagination'"
-    :page-class="'c-pagination__page-item'"
-    :prev-class="'c-pagination__prev'"
-    :next-class="'c-pagination__next'">
+    :page-class="'c-pagination__page-item js-scrollTop'"
+    :prev-class="'c-pagination__prev js-scrollTop'"
+    :next-class="'c-pagination__next js-scrollTop'">
   </paginate>
     
   </div>

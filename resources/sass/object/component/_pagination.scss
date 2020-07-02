@@ -22,5 +22,8 @@
       background-color: $color_bg3;
       color: $font-color_sub2;
     }
+    & span{
+      padding: $space_s $space_m;
+    }
   }
 }

@@ -41,7 +41,7 @@ $(function () {
 
   // ページネーションをクリックしたら、ページトップに移動する
   $(function () {
-    $('.c-pagination__page-item, .c-pagination__prev, .c-pagination__next').on('click', function () {
+    $('.js-scrollTop').on('click', function () {
       $("html, body").animate({ scrollTop: 0 }, 500);
     })
   })

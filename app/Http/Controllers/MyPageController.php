@@ -65,7 +65,7 @@ class MyPageController extends Controller
 
 
     // 自分の出品したヒラメキに対する全評価のうち最新５件を取得
-    $idea = Idea::all();
+    // $idea = Idea::all();
     $evaluations = Evaluation::with([
       'user',
       'idea.category'
@@ -151,7 +151,7 @@ class MyPageController extends Controller
     $user = Auth::user();
 
     // ヒラメキ出品一覧を取得
-    $user_data = user::with([
+    $user_data = User::with([
       'ideas' => function($query) use($user){
         $query->where('user_id', $user->id)
               ->orderBy('created_at', 'desc');
@@ -172,7 +172,19 @@ class MyPageController extends Controller
     // ユーザー情報を取得
     $user = Auth::user();
 
-    return view('mypage.reviews', compact('user'));
+    // レビュー一覧を取得
+    $evaluations = Evaluation::with([
+      'user',
+      'idea.category',
+      'idea.evaluations',
+    ])->whereHas('idea', function($query) use ($user) {
+      $query->where('user_id', $user->id);
+    })->orderBy('created_at', 'desc')->get();
+
+    $user_data = json_encode($evaluations);
+    // dd($evaluations->toArray());
+
+    return view('mypage.reviews', compact('user', 'evaluations'));
   }
 
 }

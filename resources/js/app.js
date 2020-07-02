@@ -25,6 +25,7 @@ Vue.component('paginate', Paginate)
 Vue.component('likes-component', require('./components/LikesComponent.vue').default);
 Vue.component('purchases-component', require('./components/PurchasesComponent.vue').default);
 Vue.component('lists-component', require('./components/listsComponent.vue').default);
+Vue.component('reviews-component', require('./components/ReviewsComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

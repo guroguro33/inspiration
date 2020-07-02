@@ -11,11 +11,11 @@
     <h1 class="p-mypage__title u-pb-m">気になるリスト</h1>
     <div class="u-mb-xxl">
       
-      <div id="app">
+      {{-- <div id="app"> --}}
 
         <likes-component :user-data="{{ $user_data }}"></likes-component>
 
-      </div>
+      {{-- </div> --}}
 
     </div>
   </section>
