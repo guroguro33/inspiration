@@ -18,9 +18,17 @@
           </div>
           <span>Tweet</span>
         </a>
-        <a @click="toggleLike(idea)" class="p-detail__btn--like u-opacity">
+        <!-- ログイン時はお気に入りボタンが有効 -->
+        <a v-if="isLogin" @click="toggleLike(idea)" class="p-detail__btn--like u-opacity">
           <div class="p-detail__btn--img">
             <i :class="[isLikeTrue === true ? 'fas fa-heart' : 'far fa-heart']"></i>
+          </div>
+          <span>お気に入り</span>
+        </a>
+        <!-- 非ログイン時はお気に入りボタンが無効 -->
+        <a v-else class="p-detail__btn--like">
+          <div class="p-detail__btn--img">
+            <i class="far fa-heart"></i>
           </div>
           <span>お気に入り</span>
         </a>
@@ -36,14 +44,15 @@
       <a :class="['p-detail__tab__btn', (isdetail)? 'u-border--bottom' : '']" @click="isdetail = true">詳細</a>
     </div>
     <div class="p-detail__text u-mb-xl" v-if="!isdetail">{{ idea.idea_description }}</div>
-    <div class="p-detail__text u-mb-xl" v-else-if="isdetail">購入後に表示されます</div>
+    <div class="p-detail__text u-mb-xl" v-else-if="isdetail && !isBought">購入後に表示されます</div>
+    <div class="p-detail__text u-mb-xl" v-else-if="isdetail && isBought">{{ idea.idea_detail}}</div>
 
   </div>
 </template>
 
 <script>
 export default {
-  props: ["idea", "likeLists"],
+  props: ["isLogin", "idea", "likeLists", "isBought"],
   data: function() {
     return {
       isdetail: false,
@@ -67,6 +76,10 @@ export default {
         year + "/" + month + "/" + day + " " + hour + ":" + minute;
       return formatDay;
     }
+  },
+  created() {
+    console.log("ログイン状態:" + this.isLogin);
+    console.log("購入済みかどうか:" + this.isBought);
   },
   methods: {
     // お気に入り着脱

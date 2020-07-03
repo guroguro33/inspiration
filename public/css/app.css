@@ -1813,6 +1813,7 @@ br {
   padding: 10px;
   font-weight: 700;
   color: #707F89;
+  cursor: pointer;
 }
 
 .p-detail__text {
@@ -1866,6 +1867,7 @@ br {
 
 .p-detail__review__text {
   font-size: 14px;
+  white-space: pre-wrap;
 }
 
 @media screen and (max-width: 896px) {

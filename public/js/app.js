@@ -1951,8 +1951,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["idea", "likeLists"],
+  props: ["isLogin", "idea", "likeLists", "isBought"],
   data: function data() {
     return {
       isdetail: false,
@@ -1973,6 +1982,10 @@ __webpack_require__.r(__webpack_exports__);
       var formatDay = year + "/" + month + "/" + day + " " + hour + ":" + minute;
       return formatDay;
     }
+  },
+  created: function created() {
+    console.log("ログイン状態:" + this.isLogin);
+    console.log("購入済みかどうか:" + this.isBought);
   },
   methods: {
     // お気に入り着脱
@@ -38172,28 +38185,34 @@ var render = function() {
       _c("div", { staticClass: "p-detail__btn" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "p-detail__btn--like u-opacity",
-            on: {
-              click: function($event) {
-                return _vm.toggleLike(_vm.idea)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "p-detail__btn--img" }, [
-              _c("i", {
-                class: [
-                  _vm.isLikeTrue === true ? "fas fa-heart" : "far fa-heart"
-                ]
-              })
-            ]),
-            _vm._v(" "),
-            _c("span", [_vm._v("お気に入り")])
-          ]
-        )
+        _vm.isLogin
+          ? _c(
+              "a",
+              {
+                staticClass: "p-detail__btn--like u-opacity",
+                on: {
+                  click: function($event) {
+                    return _vm.toggleLike(_vm.idea)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "p-detail__btn--img" }, [
+                  _c("i", {
+                    class: [
+                      _vm.isLikeTrue === true ? "fas fa-heart" : "far fa-heart"
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("span", [_vm._v("お気に入り")])
+              ]
+            )
+          : _c("a", { staticClass: "p-detail__btn--like" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("span", [_vm._v("お気に入り")])
+            ])
       ])
     ]),
     _vm._v(" "),
@@ -38235,9 +38254,13 @@ var render = function() {
       ? _c("div", { staticClass: "p-detail__text u-mb-xl" }, [
           _vm._v(_vm._s(_vm.idea.idea_description))
         ])
-      : _vm.isdetail
+      : _vm.isdetail && !_vm.isBought
       ? _c("div", { staticClass: "p-detail__text u-mb-xl" }, [
           _vm._v("購入後に表示されます")
+        ])
+      : _vm.isdetail && _vm.isBought
+      ? _c("div", { staticClass: "p-detail__text u-mb-xl" }, [
+          _vm._v(_vm._s(_vm.idea.idea_detail))
         ])
       : _vm._e()
   ])
@@ -38266,6 +38289,14 @@ var staticRenderFns = [
         _c("span", [_vm._v("Tweet")])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "p-detail__btn--img" }, [
+      _c("i", { staticClass: "far fa-heart" })
+    ])
   }
 ]
 render._withStripped = true

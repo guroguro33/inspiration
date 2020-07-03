@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Idea;
 use App\Like;
 use App\Category;
+use App\Purchase;
 use Illuminate\Http\Request;
 use App\Http\Requests\IdeaRequest;
 use Illuminate\Support\Facades\Auth;
@@ -164,18 +165,78 @@ class IdeasController extends Controller
       'evaluations.user'
     ])->get()->find($id);
     
-    // ログイン済みの場合、自分のお気に入りリストと購入済みリストを取得
+    // ログイン済みの場合、自分のお気に入りリストと購入済みか、レビュー済みかを取得
     if(Auth::check()){
-      $likeLists = Auth::user()->likes()->pluck('idea_id');
-      $purchaseLists = Auth::user()->purchases()->pluck('idea_id');
+      // ログイン状態
+      $isLogin = json_encode(true);
 
-      return view('ideas.show', compact('idea', 'likeLists'));
+      // ログインしているユーザー情報取得
+      $user = Auth::user();
+
+      // お気に入りリスト
+      $likeLists = $user->likes()->pluck('idea_id');
+      $likeLists = json_encode($likeLists);
+      
+      // 購入済みかどうか
+      if($user->purchases()->where('idea_id', $id)->first()){
+        $isBought = true;
+        // レビューデータを取得
+        $review = $user->evaluations()->where('idea_id', $id)->first();
+      }else{
+        $isBought = false;
+        // レビューデータが未定義にならないようnullを代入
+        $review = null;
+      };
+
+      // jsonに変換
+      $isBought = json_encode($isBought);
+      
+      // dd($review);
+
     } else {
-      // 未ログインの時
-      return view('ideas.show', compact('idea'));
-    }
-    // dd($idea->toArray());
+      // ログイン状態
+      $isLogin = json_encode(false);
 
+      // 未ログインの時、未定義にならないように0を代入
+      $likeLists = json_encode(array());
+      $isBought = json_encode(false);
+      $review = null;
+      // dd($likeLists);
+      
+    }
+      // dd($review);
+    return view('ideas.show', compact('isLogin', 'idea', 'likeLists', 'isBought', 'review'));
+    
+  }
+
+  // ヒラメキを購入する
+  public function buy($id){
+    // GETパラメータが数字かチェック
+    if(!ctype_digit($id)) {
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
+
+    // ログインしているユーザー情報取得
+    $user = Auth::user();
+
+    // 購入済みではないことを確認してpurchaseテーブルへ登録する
+    $isBought = $user->purchases()->where('idea_id', $id)->first();
+
+    if($isBought){
+      // 購入済みの場合、マイページへリダイレクト
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    } else {
+      // DBへ登録
+      $purchase = new Purchase;
+
+      $purchase->user_id = $user->id;
+      $purchase->idea_id = $id;
+      $purchase->save();
+    }
+
+    // リダイレクトする
+    // sessionフラッシュにメッセージ格納
+    return redirect("/ideas/$id/show/")->with('flash_message', __('Bought it'));
 
   }
 
@@ -191,8 +252,6 @@ class IdeasController extends Controller
     // お気に入りだった場合、お気に入りから削除
     if($like){
       $like->delete(); 
-      $isActive = ['isActive' => false];
-      return $isActive;
 
     } else{
       // お気に入りではない場合、お気に入りに登録
@@ -201,8 +260,6 @@ class IdeasController extends Controller
       $like->user_id = $user->id;
       $like->idea_id = $idea_id;
       $like->save();
-      $isActive = ['isActive' => true];
-      return $isActive;
       
     }
   }

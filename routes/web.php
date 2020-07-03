@@ -38,15 +38,17 @@ Route::group(['middleware' => 'auth'], function(){
   Route::post('/ideas/{id}/edit', 'IdeasController@update')->name('ideas.update');
   // ヒラメキ削除
   Route::get('/ideas/{id}/del', 'IdeasController@delete')->name('ideas.delete');
+  // ヒラメキ購入
+  Route::post('/ideas/{id}/buy', 'IdeasController@buy')->name('ideas.buy');
   // お気に入り着脱
   Route::post('/ideas/like', 'IdeasController@toggleLike')->name('ideas.toggleLike');
 });
 
 Route::group(['middleware' => 'auth'], function(){
   // レビュー登録
-  Route::post('/ideas/{id}', 'EvaluationsController@store')->name('evaluations.store');
-  // レビュー削除
-  Route::post('/ideas/{id}/del', 'EvaluationsController@delete')->name('evaluations.delete');
+  Route::post('/evaluations/{id}', 'EvaluationsController@store')->name('evaluations.store');
+  // レビュー更新
+  Route::post('/evaluations/{id}/update', 'EvaluationsController@update')->name('evaluations.update');
 });
 
 Route::group(['middleware' => 'auth'], function(){
