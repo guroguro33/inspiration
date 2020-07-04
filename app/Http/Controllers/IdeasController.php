@@ -9,6 +9,7 @@ use App\Purchase;
 use Illuminate\Http\Request;
 use App\Http\Requests\IdeaRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class IdeasController extends Controller
 {
@@ -73,11 +74,18 @@ class IdeasController extends Controller
 
     // ユーザー情報を取得
     $user = Auth::user();
+
     // カテゴリ情報を取得
     $categories = Category::all();
-    // dd($categories);
     
-    return view('ideas.create', compact('user', 'categories'));
+    // ユーザー画像の有無
+    $isImage = false;
+    // dd($user->toArray());
+    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+      $isImage = true;
+    }
+    
+    return view('ideas.create', compact('user', 'categories', 'isImage'));
   }
 
   // ヒラメキ出品登録
@@ -103,14 +111,22 @@ class IdeasController extends Controller
 
     // ユーザー情報を取得
     $user = Auth::user();
+    
     // カテゴリ情報を取得
     $categories = Category::all();
+    
+    // ユーザー画像の有無
+    $isImage = false;
+    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+      $isImage = true;
+    }
+
     // ヒラメキ詳細情を取得
     $idea = Idea::find($id);
 
     // dd($idea->toArray());
     
-    return view('ideas.edit', compact('user', 'categories', 'idea'));
+    return view('ideas.edit', compact('user', 'isImage', 'categories', 'idea'));
   }
 
   // ヒラメキ編集登録
@@ -204,7 +220,7 @@ class IdeasController extends Controller
       // dd($likeLists);
       
     }
-      // dd($review);
+      // dd($idea->toArray());
     return view('ideas.show', compact('isLogin', 'idea', 'likeLists', 'isBought', 'review'));
     
   }

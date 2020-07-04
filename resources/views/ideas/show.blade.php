@@ -10,28 +10,30 @@
       <h3 class="p-detail__review__heading u-pb-l">購入者からのレビュー</h3>
       <div class="p-detail__review__body">
 
-        @foreach($idea->evaluations as $evaluation)
-        {{-- @if($evaluation)
-          <p class="u-pb-m u-mb-xxl">
-            まだありません
-          </p>
-        @else --}}
-          <div class="p-detail__review__item u-pb-m u-mb-xxl">
-            <div class="p-detail__review__sub">
-              <p class="p-detail__review__date">{{ date('Y/m/d', strtotime($evaluation->created_at)) }}</p>
-              <p class="p-detail__review__date">{{ date('G:i', strtotime($evaluation->created_at))}}</p>
-            </div>
-            <div class="p-detail__review__desc">
-              <p class="p-detail__review__text u-pb-s">{{$evaluation->idea_review}}</p>
-              <div class="p-detail__review__info u-pb-s">
-                <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="p-detail__review__star">
-                <span class="p-detail__review__point">{{ $evaluation->five_rank }}</span>
-                <span class="p-detail__review__point">by {{ $evaluation->user->name }}</span>
+        {{-- レビューがない場合 --}}
+        @if($idea->evaluations == "[]")
+        <p class="u-pb-m u-mb-xxl">
+          まだありません
+        </p>
+        {{-- レビューがある場合 --}}
+        @else
+          @foreach($idea->evaluations as $evaluation)
+            <div class="p-detail__review__item u-pb-m u-mb-xxl">
+              <div class="p-detail__review__sub">
+                <p class="p-detail__review__date">{{ date('Y/m/d', strtotime($evaluation->created_at)) }}</p>
+                <p class="p-detail__review__date">{{ date('G:i', strtotime($evaluation->created_at))}}</p>
+              </div>
+              <div class="p-detail__review__desc">
+                <p class="p-detail__review__text u-pb-s">{{$evaluation->idea_review}}</p>
+                <div class="p-detail__review__info u-pb-s">
+                  <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="p-detail__review__star">
+                  <span class="p-detail__review__point">{{ $evaluation->five_rank }}</span>
+                  <span class="p-detail__review__point">by {{ $evaluation->user->name }}</span>
+                </div>
               </div>
             </div>
-          </div>
-          {{-- @endif --}}
-        @endforeach
+          @endforeach
+        @endif
         
       </div>
     </div>

@@ -7,6 +7,8 @@ use App\User;
 use App\Evaluation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileRequest;
+use Illuminate\Support\Facades\Storage;
 
 class MyPageController extends Controller
 {
@@ -16,6 +18,13 @@ class MyPageController extends Controller
     // ユーザー情報を取得
     $user = Auth::user();
     // dd($user->toArray());
+
+    // ユーザー画像の有無
+    $isImage = false;
+    // dd($user->toArray());
+    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+      $isImage = true;
+    }
 
     // お気に入りと出品リスト情報を取得
     $user_data = User::with([
@@ -77,7 +86,7 @@ class MyPageController extends Controller
     // dd($user_data->toArray());
     // dd($ave);
 
-    return view('mypage.index', compact('user', 'user_data', 'evaluations'));
+    return view('mypage.index', compact('user', 'isImage', 'user_data', 'evaluations'));
   }
 
   // プロフィール編集
@@ -86,14 +95,33 @@ class MyPageController extends Controller
     // ユーザー情報を取得
     $user = Auth::user();
 
-    return view('mypage.edit', compact('user'));
+    // ユーザー画像の有無
+    $isImage = false;
+    // dd($user->toArray());
+    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+      $isImage = true;
+    }
+
+    return view('mypage.edit', compact('user', 'isImage'));
   }
 
   // プロフィール編集登録
-  public function update(){
+  public function update(ProfileRequest $request){
 
-    // ユーザー情報を取得
+    
+    // ユーザー画像を更新
+    $file_name = $request->file('user_img')->getClientOriginalName();
+    // dd($file_name);
+    $request->user_img->storeAs('public/user_images', $file_name);
+    
+    // ユーザー情報を更新
+    // Auth::user()->fill($request->all())->save();
     $user = Auth::user();
+    $user->name = $request->name;
+    $user->user_introduce = $request->user_introduce;
+    $user->user_img = $file_name;
+    $user->email = $request->email;
+    $user->save();
 
     // リダイレクトする
     // sessionフラッシュにメッセージ格納
@@ -105,6 +133,13 @@ class MyPageController extends Controller
 
     // ユーザー情報を取得
     $user = Auth::user();
+
+    // ユーザー画像の有無
+    $isImage = false;
+    // dd($user->toArray());
+    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+      $isImage = true;
+    }
 
     // 購入済みリストを取得
     $user_data = User::with([
@@ -119,7 +154,7 @@ class MyPageController extends Controller
     $user_data = json_encode($user_data);
     // dd($user_data);
 
-    return view('mypage.purchases', compact('user', 'user_data'));
+    return view('mypage.purchases', compact('user', 'isImage', 'user_data'));
   }
 
   // 気になる一覧表示
@@ -127,6 +162,13 @@ class MyPageController extends Controller
 
     // ユーザー情報を取得
     $user = Auth::user();
+
+    // ユーザー画像の有無
+    $isImage = false;
+    // dd($user->toArray());
+    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+      $isImage = true;
+    }
 
     // 気になるリストを取得
     $user_data = User::with([
@@ -141,7 +183,7 @@ class MyPageController extends Controller
     $user_data = json_encode($user_data);
     // dd($user_data->toArray());  
 
-    return view('mypage.likes', compact('user','user_data'));
+    return view('mypage.likes', compact('user', 'isImage', 'user_data'));
   }
 
   // ヒラメキ出品一覧表示
@@ -149,6 +191,13 @@ class MyPageController extends Controller
 
     // ユーザー情報を取得
     $user = Auth::user();
+
+    // ユーザー画像の有無
+    $isImage = false;
+    // dd($user->toArray());
+    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+      $isImage = true;
+    }
 
     // ヒラメキ出品一覧を取得
     $user_data = User::with([
@@ -163,7 +212,7 @@ class MyPageController extends Controller
     $user_data = json_encode($user_data);
     // dd($user_data->toArray());
 
-    return view('mypage.lists', compact('user', 'user_data'));
+    return view('mypage.lists', compact('user', 'isImage', 'user_data'));
   }
 
   // レビュー一覧表示
@@ -171,6 +220,13 @@ class MyPageController extends Controller
 
     // ユーザー情報を取得
     $user = Auth::user();
+
+    // ユーザー画像の有無
+    $isImage = false;
+    // dd($user->toArray());
+    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+      $isImage = true;
+    }
 
     // レビュー一覧を取得
     $evaluations = Evaluation::with([
@@ -184,7 +240,7 @@ class MyPageController extends Controller
     $user_data = json_encode($evaluations);
     // dd($evaluations->toArray());
 
-    return view('mypage.reviews', compact('user', 'evaluations'));
+    return view('mypage.reviews', compact('user', 'isImage', 'evaluations'));
   }
 
 }

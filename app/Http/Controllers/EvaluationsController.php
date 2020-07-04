@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Evaluation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\EvaluationRequest;
 
 class EvaluationsController extends Controller
 {
@@ -21,17 +22,11 @@ class EvaluationsController extends Controller
   }
 
   // レビュー登録
-  public function store(Request $request, $id){
+  public function store(EvaluationRequest $request, $id){
     // GETパラメータが数字かチェック
     if(!ctype_digit($id)) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
-
-    // バリデーション
-    $request->validate([
-      'five_rank' => 'required|integer',
-      'idea_review' => 'required|string|max:1000'
-    ]);
 
     $evaluation = new Evaluation;
 
@@ -45,17 +40,11 @@ class EvaluationsController extends Controller
   }
 
   // レビュー更新
-  public function update(Request $request, $id){
+  public function update(EvaluationRequest $request, $id){
     // GETパラメータが数字かチェック
     if(!ctype_digit($id)) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
-
-    // バリデーション
-    $request->validate([
-      'five_rank' => 'required|integer',
-      'idea_review' => 'required|string|max:1000'
-    ]);
 
     // evaluationテーブルの更新
     $evaluation = Auth::user()->evaluations()->where('idea_id', $id)->first();

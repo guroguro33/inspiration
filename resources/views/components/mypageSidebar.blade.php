@@ -1,7 +1,7 @@
 <section class="l-sidebar__mymenu">
-  <div class="p-mymenu__img u-pb-s">
-    @if($user->user_img)
-    <img src="{{ $user->user_img }}" alt="ユーザーのアイコン">
+  <div class="p-mymenu__img u-mb-m">
+    @if($isImage)
+    <img src="{{ asset('/storage/user_images/' . $user->user_img) }}" alt="ユーザーのアイコン">
     @else
     <img src="{{ asset('./img/no-img2.svg') }}" alt="ユーザーのアイコン">
     @endif

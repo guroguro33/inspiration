@@ -119,6 +119,8 @@ return [
     'attributes' => [
       'email' => 'メールアドレス',
       'password' => 'パスワード',
+      'user_img' => 'ユーザー画像',
+      'user_introduce' => '自己紹介',
       'category_id' => 'カテゴリー',
       'idea_title' => 'タイトル',
       'idea_description' => '概要',

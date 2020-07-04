@@ -5,21 +5,25 @@
 
   @component('components.mypageSidebar')
     @slot('user', $user);
+    @slot('isImage', $isImage);
   @endcomponent
 
   <section class="l-sidebar__mypage">
     <h1 class="p-mypage__title u-pb-m">プロフィール編集</h1>
-    <form action="{{ route('mypage.update') }}" method="POST" class="c-form">
+    <form action="{{ route('mypage.update') }}" method="POST" class="c-form" enctype="multipart/form-data">
       @csrf
       <div class="u-mb-xxl">
-        <div class="p-mymenu__img u-pb-m">
-          @if($user->user_img)
-          <img src="{{ $user->user_img }}" alt="ユーザーのアイコン">
+        <div class="p-mymenu__img u-mb-m">
+          @if($isImage)
+          <img src="{{ asset('/storage/user_images/' . $user->user_img) }}" class="js-preview" alt="ユーザーのアイコン">
           @else
-          <img src="{{ asset('./img/no-img2.svg') }}" alt="ユーザーのアイコン">
+          <img src="{{ asset('./img/no-img2.svg') }}" class="js-preview" alt="ユーザーのアイコン">
           @endif
         </div>
-        <input type="file" name="user_img" class="c-form__file @error('user_img') is-invalid @enderror" value="ファイルを選択">
+        <input type="file" name="user_img" class="c-form__file" value="ファイルを選択">
+        @error('user_img')
+          <span class="c-form__item--alert">{{ $message }}</span>
+        @enderror
       </div>
       <ul>
         <li class="c-form__item u-pb-l">
