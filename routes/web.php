@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'], function(){
   // ヒラメキ更新
   Route::post('/ideas/{id}/edit', 'IdeasController@update')->name('ideas.update');
   // ヒラメキ削除
-  Route::get('/ideas/{id}/del', 'IdeasController@delete')->name('ideas.delete');
+  Route::post('/ideas/{id}/del', 'IdeasController@delete')->name('ideas.delete');
   // ヒラメキ購入
   Route::post('/ideas/{id}/buy', 'IdeasController@buy')->name('ideas.buy');
   // お気に入り着脱

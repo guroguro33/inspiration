@@ -2579,6 +2579,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["userData"],
   data: function data() {
@@ -39000,14 +39002,18 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "p-mypage__link" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "c-btn__main--gray2",
-                      attrs: { href: "/ideas/" + sell.id + "/edit" }
-                    },
-                    [_vm._v("編集する")]
-                  ),
+                  sell.purchases == ""
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "c-btn__main--gray2",
+                          attrs: { href: "/ideas/" + sell.id + "/edit" }
+                        },
+                        [_vm._v("編集する")]
+                      )
+                    : _c("a", { staticClass: "c-btn__main--blue2 u-mr-m" }, [
+                        _vm._v("編集できません")
+                      ]),
                   _vm._v(" "),
                   _c(
                     "a",

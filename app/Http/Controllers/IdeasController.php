@@ -54,7 +54,7 @@ class IdeasController extends Controller
       //   }
       // }
 
-      dd($query);
+      // dd($query);
     }
 
     // 表示するヒラメキ取得
@@ -63,14 +63,7 @@ class IdeasController extends Controller
       'category',
       'evaluations',
       'avgFive_rank' 
-      // =>function($query) {
-      //   if(!empty($request->star) && $request->star === '1'){
-      //     $query->orderBy('average', 'desc');
-      //   } elseif(!empty($request->star) && $request->star === '2'){
-      //     $query->orderBy('average', 'asc');
-      //   }
-      // }
-    ])->paginate(10)->appends($request->all());
+    ])->orderBy('created_at', 'desc')->paginate(10)->appends($request->all());
     // dd($ideas->toArray());
 
     // 絞り込み条件を再表示するため、取得
@@ -121,7 +114,22 @@ class IdeasController extends Controller
 
     // ユーザー情報を取得
     $user = Auth::user();
-    
+
+    // 自分の出品したもの以外の場合は編集不可
+    if(Idea::find($id)->user_id !== $user->id){
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    } 
+
+    // ヒラメキ詳細情を取得
+    $idea = Idea::find($id);
+    // dd($idea->toArray());
+
+    // 購入済みの場合は編集不可
+    $isBought = $idea->purchases()->first();
+    if(!empty($isBought)){
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
+
     // カテゴリ情報を取得
     $categories = Category::all();
     
@@ -130,11 +138,6 @@ class IdeasController extends Controller
     if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
       $isImage = true;
     }
-
-    // ヒラメキ詳細情を取得
-    $idea = Idea::find($id);
-
-    // dd($idea->toArray());
     
     return view('ideas.edit', compact('user', 'isImage', 'categories', 'idea'));
   }
@@ -143,6 +146,20 @@ class IdeasController extends Controller
   public function update(IdeaRequest $request, $id){
     // GETパラメータが数字かチェック
     if(!ctype_digit($id)) {
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
+
+    // ユーザー情報を取得
+    $user = Auth::user();
+
+    // 自分の出品したもの以外の場合は編集不可
+    if(Idea::find($id)->user_id !== $user->id){
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
+
+    // 購入済みの場合は編集不可
+    $isBought = Idea::find($id)->purchases()->first();
+    if(!empty($isBought)){
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -162,12 +179,22 @@ class IdeasController extends Controller
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
-    // 自分が出品したものだった場合、論理削除する（リファクタリングの余地がある）
-    if(empty(Auth::user()->ideas()->find($id))){
+    // ユーザー情報を取得
+    $user = Auth::user();
+
+    // 自分の出品したもの以外の場合は編集不可
+    if(Idea::find($id)->user_id !== $user->id){
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
-    } else {
-      Auth::user()->ideas()->find($id)->delete();
     }
+
+    // 購入済みの場合は編集不可
+    $isBought = Idea::find($id)->purchases()->first();
+    if(!empty($isBought)){
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
+
+    // 論理削除する
+    Idea::find($id)->delete();
 
     // リダイレクトする
     // sessionフラッシュにメッセージ格納
@@ -232,7 +259,7 @@ class IdeasController extends Controller
       
     }
       // dd($idea->toArray());
-    return view('ideas.show', compact('isLogin', 'idea', 'likeLists', 'isBought', 'review'));
+    return view('ideas.show', compact('isLogin', 'user', 'idea', 'likeLists', 'isBought', 'review'));
     
   }
 
@@ -245,6 +272,11 @@ class IdeasController extends Controller
 
     // ログインしているユーザー情報取得
     $user = Auth::user();
+
+    // 自分の出品したものを購入していないかチェック
+    if(Idea::find($id)->user_id === $user->id) {
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
 
     // 購入済みではないことを確認してpurchaseテーブルへ登録する
     $isBought = $user->purchases()->where('idea_id', $id)->first();

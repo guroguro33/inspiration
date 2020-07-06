@@ -7,6 +7,7 @@ use App\User;
 use App\Evaluation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -94,19 +95,39 @@ class MyPageController extends Controller
   // プロフィール編集登録
   public function update(ProfileRequest $request){
 
-    
-    // ユーザー画像を更新
-    $file_name = $request->file('user_img')->getClientOriginalName();
-    // dd($file_name);
-    $request->user_img->storeAs('public/user_images', $file_name);
+    if($request->file('user_img')){
+      // ユーザー画像を更新
+      $file_name = $request->file('user_img')->getClientOriginalName();
+      // dd($file_name);
+      $request->user_img->storeAs('public/user_images', $file_name);
+    };
     
     // ユーザー情報を更新
-    // Auth::user()->fill($request->all())->save();
     $user = Auth::user();
-    $user->name = $request->name;
-    $user->user_introduce = $request->user_introduce;
-    $user->user_img = $file_name;
-    $user->email = $request->email;
+    $user->fill([
+      'name' => $request->name,
+      'email' => $request->email
+    ]);
+    
+    // 新しいPWと確認PWが空ではない場合に変更処理する
+    if(!empty($request->new_password) && !empty($request->new_password_confirmation)){
+      $user->fill([
+        'password' => Hash::make($request->new_password)
+      ]);
+    }
+
+    // 自己紹介が入力されていた場合に変更する
+    if($request->user_introduce){
+      $user->fill([
+        'user_introduce' => $request->user_introduce,
+      ]);
+    }
+    // ユーザー画像がアップされた場合に変更する
+    if($request->file('user_img')){
+      $user->fill([
+        'user_img' => $file_name
+      ]);
+    }
     $user->save();
 
     // リダイレクトする
@@ -195,11 +216,12 @@ class MyPageController extends Controller
       },
       'ideas.category',
       'ideas.evaluations',
+      'ideas.purchases',
       'ideas.avgFive_rank',
     ])->get()->find($user->id);
 
     $user_data = json_encode($user_data);
-    // dd($user_data->toArray());
+    // dd($user_data);
 
     return view('mypage.lists', compact('user', 'isImage', 'user_data'));
   }

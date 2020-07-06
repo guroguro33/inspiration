@@ -45,6 +45,10 @@
       {{-- 未ログイン時 --}}
       @if($isLogin === 'false' && $isBought === 'false')
       <a href="{{ route('register') }}" class="c-btn__main--blue u-m-0auto">新規登録後、<br>購入できます</a>
+      {{-- ログインしているが、自分の出品したものの場合 --}}
+      @elseif($isLogin === 'true' && $idea->user_id === $user->id)
+      <button class="c-btn__main--blue2 u-m-0auto" disabled="true">購入できません</button>
+      </form>
       {{-- ログインしているが、未購入時 --}}
       @elseif($isLogin === 'true' && $isBought === 'false')
       <form action="{{ route('ideas.buy', $idea->id) }}" method="POST">

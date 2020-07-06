@@ -38,4 +38,5 @@ class Idea extends Model
                 ->selectRaw('avg(five_rank) as average, idea_id')
                 ->groupBy('idea_id');
   }
+
 }

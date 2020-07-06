@@ -12,6 +12,7 @@
   "E-Mail Address": "メールアドレス",
   "Password": "パスワード",
   "Confirm Password": "パスワード(確認用)",
+  "New Password": "新しいパスワード",
   "Remember Me": "ログイン状態を保存",
   "Hello!": "ご利用ありがとうございます。",
   "Reset Password Notification": "パスワード再設定のお知らせ",
@@ -25,5 +26,7 @@
   "Self Introduction": "自己紹介",
   "Registration": "登録する",
   "Invalid operation was performed.": "不正な操作が行われました",
-  "Bought it": "購入しました"
+  "Bought it": "購入しました",
+  "Delete": "削除する",
+  "Deleted.": "削除しました"
 }

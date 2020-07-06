@@ -4,7 +4,7 @@
     <form action="{{ route('ideas.store') }}" method="POST" class="c-form">
   @else
     <h1 class="p-mypage__title u-pb-m">ヒラメキを編集する</h1>
-    <form action="{{ route('ideas.update', $idea->id) }}" method="POST" class="c-form">
+    <form action="{{ route('ideas.update', $idea->id) }}" method="POST" class="c-form u-pb-0">
   @endif
     @csrf
 
@@ -58,8 +58,14 @@
     @if(empty($idea))
     <input type="submit" class="c-form__btn c-btn__main--gray1 u-mb-xxl" value="{{ __('Register') }}">
     @else
-    <input type="submit" class="c-form__btn c-btn__main--gray1 u-mb-xxl" value="{{ __('Registration') }}">
+    <input type="submit" class="c-form__btn c-btn__main--gray1" value="{{ __('Registration') }}">
     @endif
   </form>
+  @if(!empty($idea))
+  <form action="{{ route('ideas.delete', $idea->id) }}" method="post">
+  @csrf
+    <input type="submit" class="c-form__btn c-btn__main--red u-mb-xxl" value="{{ __('Delete') }}">
+  </form>
+  @endif
 
 </section>

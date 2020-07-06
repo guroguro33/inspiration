@@ -24,7 +24,9 @@
           </div>
           <p class="c-desc__text u-pb-m">{{ sell.idea_description | substr42 }}</p>
           <div class="p-mypage__link">
-            <a :href="'/ideas/' + sell.id +'/edit'" class="c-btn__main--gray2">編集する</a>
+            <!-- 購入されていたら編集できない -->
+            <a :href="'/ideas/' + sell.id +'/edit'" class="c-btn__main--gray2" v-if="sell.purchases == ''">編集する</a>
+            <a class="c-btn__main--blue2 u-mr-m" v-else>編集できません</a>
             
             <a :href="'/ideas/' + sell.id +'/show'" class="c-btn__main--blue">詳細を見る</a>
           </div>

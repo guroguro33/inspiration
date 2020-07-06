@@ -29,7 +29,7 @@
         <li class="c-form__item u-pb-l">
           <label class="c-form__item__name">
             {{ __('Name') }}{{ __('Required') }}
-            <input type="text" name="name" class="c-form__item__input u-mb-s @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}" placeholder="{{ __('Please Enter')}}" required>
+            <input type="text" name="name" class="c-form__item__input u-mb-s @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}" placeholder="{{ __('Please Enter')}}" required autocomplete="name">
           </label>
           @error('name')
           <span class="c-form__item--alert">{{ $message }}</span>
@@ -38,7 +38,7 @@
         <li class="c-form__item u-pb-l">
           <label class="c-form__item__name">
             {{ __('E-Mail Address') }}{{ __('Required') }}
-            <input type="email" name="email" class="c-form__item__input u-mb-s @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" placeholder="{{ __('Please Enter')}}" required>
+            <input type="email" name="email" class="c-form__item__input u-mb-s @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" placeholder="{{ __('Please Enter')}}" required autocomplete="email">
           </label>
           @error('email')
           <span class="c-form__item--alert">{{ $message }}</span>
@@ -46,23 +46,23 @@
         </li>
         <li class="c-form__item u-pb-l">
           <label class="c-form__item__name">
-            {{ __('Password')}}{{ __('Required') }}<span>※{{ __('8 characters or more')}}</span>
-            <input type="password" name="password" class="c-form__item__input u-mb-s @error('password') is-invalid @enderror" placeholder="{{ __('Please Enter')}}" required>
+            {{ __('New Password')}}<span>※{{ __('8 characters or more')}}</span>
+            <input type="password" name="new_password" class="c-form__item__input u-mb-s @error('new_password') is-invalid @enderror" placeholder="{{ __('Please Enter')}}" autocomplete="off">
           </label>
-          @error('password')
+          @error('new_password')
           <span class="c-form__item--alert">{{ $message }}</span>
           @enderror
         </li>
         <li class="c-form__item u-pb-l">
           <label class="c-form__item__name">
             {{ __('Confirm Password') }}
-            <input type="password" name="password_confirmation" class="c-form__item__input u-mb-s" placeholder="{{ __('Please Enter')}}">
+            <input type="password" name="new_password_confirmation" class="c-form__item__input u-mb-s" placeholder="{{ __('Please Enter')}}" autocomplete="off">
           </label>
         </li>
         <li class="c-form__item u-pb-l">
           <label class="c-form__item__name">
             {{ __('Self Introduction') }}
-            <textarea name="user_introduce" class="c-form__item__text" cols="20" rows="10" placeholder="{{ __('Please Enter')}}">{{ old('user_introduce', $user->user_introduce) }}</textarea>
+            <textarea name="user_introduce" class="c-form__item__text" cols="20" rows="10" placeholder="{{ __('Please Enter')}}" autocomplete="off">{{ old('user_introduce', $user->user_introduce) }}</textarea>
           </label>
           @error('user_introduce')
           <span class="c-form__item--alert">{{ $message }}</span>
