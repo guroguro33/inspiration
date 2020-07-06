@@ -5,6 +5,7 @@
 
   @component('components.mypageSidebar')
     @slot('user', $user);
+    @slot('isImage', $isImage);
   @endcomponent
 
   <section class="l-sidebar__mypage">
@@ -25,7 +26,7 @@
           <h3 class="c-desc__title">{{ mb_strimwidth($idea->idea_title, 0, 65, "…", "UTF-8") }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">4({{ count($idea->evaluations) }}件)</span>
+            <span class="c-desc__point">{{ (!empty($idea->avgFive_rank[0]->average))? round($idea->avgFive_rank[0]->average, 1) : '-'}} ({{ count($idea->evaluations) }}件)</span>
             <span class="c-desc__price">{{ number_format($idea->idea_price) }}円</span>
           </div>
           <p class="c-desc__text">{{ mb_strimwidth($idea->idea_description, 0, 83, "…", "UTF-8") }}</p>
@@ -79,7 +80,7 @@
           <h3 class="c-desc__title">{{ mb_strimwidth($purchase->idea->idea_title, 0, 65, "…", "UTF-8") }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">3.5({{ count($purchase->idea->evaluations) }}件)</span>
+            <span class="c-desc__point">{{ (!empty($purchase->idea->avgFive_rank[0]->average))? round($purchase->idea->avgFive_rank[0]->average, 1) : '-'}} ({{ count($purchase->idea->evaluations) }}件)</span>
             <span class="c-desc__price">{{ number_format($purchase->idea->idea_price) }}円</span>
           </div>
           <p class="c-desc__text">{{ mb_strimwidth($purchase->idea->idea_description, 0, 83, "…", "UTF-8") }}</p>
@@ -104,7 +105,7 @@
           <h3 class="c-desc__title">{{ mb_strimwidth($like->idea->idea_title, 0, 65, "…", "UTF-8") }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">3.5({{ count($like->idea->evaluations) }})</span>
+            <span class="c-desc__point">{{ (!empty($like->idea->avgFive_rank[0]->average))? round($like->idea->avgFive_rank[0]->average, 1) : '-'}} ({{ count($like->idea->evaluations) }}件)</span>
             <span class="c-desc__price">{{ number_format($like->idea->idea_price) }}円</span>
           </div>
           <p class="c-desc__text">{{ mb_strimwidth($like->idea->idea_description, 0, 83, "…", "UTF-8") }}</p>

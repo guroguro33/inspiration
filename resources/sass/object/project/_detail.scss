@@ -70,6 +70,7 @@
       padding: $space_m;
       font-weight: 700;
       color: $font-color_sub3;
+      cursor: pointer;
     }
   }
   &__text{
@@ -110,6 +111,7 @@
     }
     &__text{
       font-size: $font-size_m;
+      white-space: pre-wrap;
       @include mq(md){
         font-size: $font-size_xs;
       }

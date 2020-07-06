@@ -1055,6 +1055,31 @@ br {
 }
 
 /*
+* object/component/_fixed-sidebar.scss
+*/
+
+.c-fixed,
+.c-fixed__show,
+.c-fixed__mypage {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.c-fixed__mypage {
+  top: 150px;
+}
+
+@media screen and (max-width: 896px) {
+  .c-fixed__mypage {
+    top: 100px;
+  }
+}
+
+.c-fixed__show {
+  top: 80px;
+}
+
+/*
 * object/project/_menu.scss
 */
 
@@ -1661,6 +1686,10 @@ br {
   }
 }
 
+.p-index__icon {
+  flex-basis: 130px;
+}
+
 @media screen and (max-width: 480px) {
   .p-index__icon {
     display: none;
@@ -1671,6 +1700,7 @@ br {
   margin: 0 auto;
   max-width: 65px;
   width: 100%;
+  font-size: 10px;
 }
 
 .p-index__icon__name {
@@ -1684,7 +1714,7 @@ br {
 }
 
 .p-index__sub {
-  flex-basis: 120px;
+  flex-basis: 130px;
   font-size: 12px;
 }
 
@@ -1813,6 +1843,7 @@ br {
   padding: 10px;
   font-weight: 700;
   color: #707F89;
+  cursor: pointer;
 }
 
 .p-detail__text {
@@ -1866,6 +1897,7 @@ br {
 
 .p-detail__review__text {
   font-size: 14px;
+  white-space: pre-wrap;
 }
 
 @media screen and (max-width: 896px) {
@@ -2055,6 +2087,10 @@ br {
 
 .u-mb-4l {
   margin-bottom: 60px;
+}
+
+.u-mr-m {
+  margin-right: 10px;
 }
 
 /*

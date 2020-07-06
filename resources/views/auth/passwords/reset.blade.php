@@ -21,7 +21,7 @@
       <li class="c-form__item u-pb-l">
         <label class="c-form__item__name">
           {{ __('Password')}}{{ __('Required') }}<span>※{{ __('8 characters or more')}}</span>
-          <input type="password" name="password" class="c-form__item__input u-border u-mb-s @error('password') is-invalid @enderror" placeholder="{{ __('Please Enter')}}" required autocomplete="new-password" autofocus>
+          <input type="password" name="password" class="c-form__item__input u-border u-mb-s @error('password') is-invalid @enderror" placeholder="{{ __('Please Enter')}}" required autocomplete="off" autofocus>
         </label>
         @error('password')
         <span class="c-form__item--alert" role="alert">{{ $message }}</span>
@@ -32,7 +32,7 @@
         <label class="c-form__item__name">
           {{ __('Confirm Password') }}
           <input type="password" name="password_confirmation" class="c-form__item__input u-border u-mb-s @error('email') is-invalid @enderror"
-            placeholder="{{ __('Please Enter')}}" required autocomplete="new-password">
+            placeholder="{{ __('Please Enter')}}" required autocomplete="off">
         </label>
       </li>
 

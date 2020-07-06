@@ -1951,8 +1951,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["idea", "likeLists"],
+  props: ["isLogin", "idea", "likeLists", "isBought"],
   data: function data() {
     return {
       isdetail: false,
@@ -1972,6 +1981,19 @@ __webpack_require__.r(__webpack_exports__);
       minute = ("0" + minute).slice(-2);
       var formatDay = year + "/" + month + "/" + day + " " + hour + ":" + minute;
       return formatDay;
+    }
+  },
+  created: function created() {
+    console.log("ログイン状態:" + this.isLogin);
+    console.log("購入済みかどうか:" + this.isBought);
+  },
+  computed: {
+    avgFive_rank: function avgFive_rank() {
+      if (!this.idea.avg_five_rank[0]) {
+        return "-";
+      } else {
+        return Math.round(this.idea.avg_five_rank[0].average * 10) / 10;
+      }
     }
   },
   methods: {
@@ -2128,6 +2150,16 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return this.userData.likes.reverse();
       }
+    },
+    // 評価の平均点
+    avgFive_rank: function avgFive_rank() {
+      return function (idea) {
+        if (!idea.avg_five_rank[0]) {
+          return "-";
+        } else {
+          return Math.round(idea.avg_five_rank[0].average * 10) / 10;
+        }
+      };
     },
     // ページネーションで現在のページで表示するリストを抽出
     getItems: function getItems() {
@@ -2306,6 +2338,16 @@ __webpack_require__.r(__webpack_exports__);
         return this.userData.purchases.reverse();
       }
     },
+    // 評価の平均点
+    avgFive_rank: function avgFive_rank() {
+      return function (idea) {
+        if (!idea.avg_five_rank[0]) {
+          return "-";
+        } else {
+          return Math.round(idea.avg_five_rank[0].average * 10) / 10;
+        }
+      };
+    },
     // ページネーションで現在のページで表示するリストを抽出
     getItems: function getItems() {
       var current = this.currentPage * this.parPage;
@@ -2447,6 +2489,16 @@ __webpack_require__.r(__webpack_exports__);
         return this.evaluations.reverse();
       }
     },
+    // 評価の平均点
+    avgFive_rank: function avgFive_rank() {
+      return function (idea) {
+        if (!idea.avg_five_rank[0]) {
+          return "-";
+        } else {
+          return Math.round(idea.avg_five_rank[0].average * 10) / 10;
+        }
+      };
+    },
     // ページネーションで現在のページで表示するリストを抽出
     getItems: function getItems() {
       var current = this.currentPage * this.parPage;
@@ -2477,6 +2529,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2583,6 +2637,16 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return this.userData.ideas.reverse();
       }
+    },
+    // 評価の平均点
+    avgFive_rank: function avgFive_rank() {
+      return function (sell) {
+        if (!sell.avg_five_rank[0]) {
+          return "-";
+        } else {
+          return Math.round(sell.avg_five_rank[0].average * 10) / 10;
+        }
+      };
     },
     // ページネーションで現在のページで表示するリストを抽出
     getItems: function getItems() {
@@ -38161,7 +38225,12 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("span", { staticClass: "p-detail__note__text" }, [
-          _vm._v("3.5 (" + _vm._s(_vm.idea.evaluations.length) + "件)")
+          _vm._v(
+            _vm._s(_vm.avgFive_rank) +
+              " (" +
+              _vm._s(_vm.idea.evaluations.length) +
+              "件)"
+          )
         ]),
         _vm._v(" "),
         _c("span", { staticClass: "p-detail__note__text" }, [
@@ -38172,28 +38241,34 @@ var render = function() {
       _c("div", { staticClass: "p-detail__btn" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "p-detail__btn--like u-opacity",
-            on: {
-              click: function($event) {
-                return _vm.toggleLike(_vm.idea)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "p-detail__btn--img" }, [
-              _c("i", {
-                class: [
-                  _vm.isLikeTrue === true ? "fas fa-heart" : "far fa-heart"
-                ]
-              })
-            ]),
-            _vm._v(" "),
-            _c("span", [_vm._v("お気に入り")])
-          ]
-        )
+        _vm.isLogin
+          ? _c(
+              "a",
+              {
+                staticClass: "p-detail__btn--like u-opacity",
+                on: {
+                  click: function($event) {
+                    return _vm.toggleLike(_vm.idea)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "p-detail__btn--img" }, [
+                  _c("i", {
+                    class: [
+                      _vm.isLikeTrue === true ? "fas fa-heart" : "far fa-heart"
+                    ]
+                  })
+                ]),
+                _vm._v(" "),
+                _c("span", [_vm._v("お気に入り")])
+              ]
+            )
+          : _c("a", { staticClass: "p-detail__btn--like" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("span", [_vm._v("お気に入り")])
+            ])
       ])
     ]),
     _vm._v(" "),
@@ -38235,9 +38310,13 @@ var render = function() {
       ? _c("div", { staticClass: "p-detail__text u-mb-xl" }, [
           _vm._v(_vm._s(_vm.idea.idea_description))
         ])
-      : _vm.isdetail
+      : _vm.isdetail && !_vm.isBought
       ? _c("div", { staticClass: "p-detail__text u-mb-xl" }, [
           _vm._v("購入後に表示されます")
+        ])
+      : _vm.isdetail && _vm.isBought
+      ? _c("div", { staticClass: "p-detail__text u-mb-xl" }, [
+          _vm._v(_vm._s(_vm.idea.idea_detail))
         ])
       : _vm._e()
   ])
@@ -38266,6 +38345,14 @@ var staticRenderFns = [
         _c("span", [_vm._v("Tweet")])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "p-detail__btn--img" }, [
+      _c("i", { staticClass: "far fa-heart" })
+    ])
   }
 ]
 render._withStripped = true
@@ -38374,7 +38461,10 @@ var render = function() {
                   _vm._v(" "),
                   _c("span", { staticClass: "c-desc__point" }, [
                     _vm._v(
-                      "3.5(" + _vm._s(like.idea.evaluations.length) + "件)"
+                      _vm._s(_vm.avgFive_rank(like.idea)) +
+                        " (" +
+                        _vm._s(like.idea.evaluations.length) +
+                        "件)"
                     )
                   ]),
                   _vm._v(" "),
@@ -38547,7 +38637,10 @@ var render = function() {
                   _vm._v(" "),
                   _c("span", { staticClass: "c-desc__point" }, [
                     _vm._v(
-                      "3.5(" + _vm._s(purchase.idea.evaluations.length) + "件)"
+                      _vm._s(_vm.avgFive_rank(purchase.idea)) +
+                        " (" +
+                        _vm._s(purchase.idea.evaluations.length) +
+                        "件)"
                     )
                   ]),
                   _vm._v(" "),
@@ -38728,7 +38821,8 @@ var render = function() {
                     _vm._v(" "),
                     _c("span", { staticClass: "c-desc__point" }, [
                       _vm._v(
-                        "3.5(" +
+                        _vm._s(_vm.avgFive_rank(evaluation.idea)) +
+                          " (" +
                           _vm._s(evaluation.idea.evaluations.length) +
                           "件)"
                       )
@@ -38890,7 +38984,12 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("span", { staticClass: "c-desc__point" }, [
-                    _vm._v("3.5(" + _vm._s(sell.evaluations.length) + "件)")
+                    _vm._v(
+                      _vm._s(_vm.avgFive_rank(sell)) +
+                        " (" +
+                        _vm._s(sell.evaluations.length) +
+                        "件)"
+                    )
                   ]),
                   _vm._v(" "),
                   _c("span", { staticClass: "c-desc__price" }, [
@@ -38903,14 +39002,18 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "p-mypage__link" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "c-btn__main--gray2",
-                      attrs: { href: "/ideas/" + sell.id + "/edit" }
-                    },
-                    [_vm._v("編集する")]
-                  ),
+                  sell.purchases == ""
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "c-btn__main--gray2",
+                          attrs: { href: "/ideas/" + sell.id + "/edit" }
+                        },
+                        [_vm._v("編集する")]
+                      )
+                    : _c("a", { staticClass: "c-btn__main--blue2 u-mr-m" }, [
+                        _vm._v("編集できません")
+                      ]),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -51610,6 +51713,23 @@ $(function () {
         scrollTop: 0
       }, 500);
     });
+  }); // プロフィール画像を更新する際のプレビュー表示
+
+  $('form').on('change', 'input[type="file"]', function (event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    var $preview = $('.js-preview'); // 画像ファイル以外は処理停止
+
+    if (file.type.indexOf('image') < 0) {
+      return false;
+    } // ファイル読み込みが完了した際に発火するイベントを登録
+
+
+    reader.onload = function (e) {
+      $preview.attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(file);
   });
 });
 

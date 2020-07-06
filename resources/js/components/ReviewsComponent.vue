@@ -26,7 +26,7 @@
             <h3 class="c-desc__title">{{ evaluation.idea.idea_title | substr32 }}</h3>
             <div class="c-desc__info u-pb-s">
               <img src="/img/star.svg" alt="星のアイコン" class="c-desc__star">
-              <span class="c-desc__point">3.5({{ evaluation.idea.evaluations.length }}件)</span>
+              <span class="c-desc__point">{{ avgFive_rank(evaluation.idea) }} ({{ evaluation.idea.evaluations.length }}件)</span>
               <span class="c-desc__price">{{ evaluation.idea.idea_price.toLocaleString() }}円</span>
             </div>
             <p class="c-desc__text u-pb-m">{{ evaluation.idea.idea_description | substr42 }}</p>
@@ -112,6 +112,16 @@ export default {
       } else {
         return this.evaluations.reverse();
       }
+    },
+    // 評価の平均点
+    avgFive_rank: function() {
+      return function(idea) {
+        if (!idea.avg_five_rank[0]) {
+          return "-";
+        } else {
+          return Math.round(idea.avg_five_rank[0].average * 10) / 10;
+        }
+      };
     },
     // ページネーションで現在のページで表示するリストを抽出
     getItems: function() {

@@ -1,0 +1,21 @@
+@charset "utf-8";
+/*
+* object/component/_fixed-sidebar.scss
+*/
+.c-fixed{
+  position: sticky;
+  &__mypage{
+    @extend .c-fixed;
+    top: 150px;
+    @include mq(md){
+      top: 100px;
+    }
+  }
+  &__show{
+    @extend .c-fixed;
+    top: 80px;
+    // @include mq(md){
+    //   top: 100px;
+    // }
+  }
+}

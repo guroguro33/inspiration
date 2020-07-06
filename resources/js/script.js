@@ -46,4 +46,22 @@ $(function () {
     })
   })
 
+  // プロフィール画像を更新する際のプレビュー表示
+  $('form').on('change', 'input[type="file"]', event => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    const $preview = $('.js-preview');
+
+    // 画像ファイル以外は処理停止
+    if (file.type.indexOf('image') < 0) {
+      return false;
+    }
+    // ファイル読み込みが完了した際に発火するイベントを登録
+    reader.onload = function (e) {
+      $preview.attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(file);
+  })
+
 })

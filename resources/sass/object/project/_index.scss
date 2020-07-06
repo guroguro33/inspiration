@@ -21,6 +21,7 @@
     }
   }
   &__icon{
+    flex-basis: 130px;;
     @include mq(){
       display: none;
     }
@@ -28,6 +29,7 @@
       margin: 0 auto;
       max-width: 65px;
       width: 100%;
+      font-size: $font-size_xs;
     }
     &__name{
       font-size: $font-size_s;
@@ -37,7 +39,7 @@
     }
   }
   &__sub{
-    flex-basis: 120px;
+    flex-basis: 130px;
     font-size: $font-size_s;
     @include mq(md){
       font-size: $font-size_xs;

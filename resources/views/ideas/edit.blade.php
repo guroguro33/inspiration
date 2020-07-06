@@ -5,6 +5,7 @@
   
   @component('components.mypageSidebar')
     @slot('user', $user);
+    @slot('isImage', $isImage);
   @endcomponent
 
   @component('components.ideaForm')
