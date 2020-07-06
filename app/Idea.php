@@ -31,4 +31,11 @@ class Idea extends Model
   public function evaluations(){
     return $this->hasMany('App\Evaluation');
   }
+
+  // 平均点算出
+  public function avgFive_rank() {
+    return $this->evaluations()
+                ->selectRaw('avg(five_rank) as average, idea_id')
+                ->groupBy('idea_id');
+  }
 }

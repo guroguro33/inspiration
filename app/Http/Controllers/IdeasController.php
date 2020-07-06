@@ -48,23 +48,33 @@ class IdeasController extends Controller
       // 星の数の選択があった場合
       // if(!empty($request->star)){
       //   if($request->star === '1'){
-      //     $query->orderBy('created_at', 'desc');
+      //     $query->orderBy('average', 'desc');
       //   }else{
-      //     $query->orderBy('created_at', 'asc');
+      //     $query->orderBy('avg-five_rank', 'asc');
       //   }
       // }
 
-      // dd($query);
+      dd($query);
     }
 
+    // 表示するヒラメキ取得
     $ideas = $query->with([
       'user',
       'category',
-      'evaluations'
+      'evaluations',
+      'avgFive_rank' 
+      // =>function($query) {
+      //   if(!empty($request->star) && $request->star === '1'){
+      //     $query->orderBy('average', 'desc');
+      //   } elseif(!empty($request->star) && $request->star === '2'){
+      //     $query->orderBy('average', 'asc');
+      //   }
+      // }
     ])->paginate(10)->appends($request->all());
+    // dd($ideas->toArray());
 
+    // 絞り込み条件を再表示するため、取得
     $inputData = $request->all();
-    // dd($ideas);
 
     return view('ideas.index', compact('categories', 'ideas', 'inputData'));
   }
@@ -178,7 +188,8 @@ class IdeasController extends Controller
       'evaluations' => function($query){
         $query->orderBy('created_at', 'desc');
       }, 
-      'evaluations.user'
+      'evaluations.user',
+      'avgFive_rank',
     ])->get()->find($id);
     
     // ログイン済みの場合、自分のお気に入りリストと購入済みか、レビュー済みかを取得

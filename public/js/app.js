@@ -1987,6 +1987,15 @@ __webpack_require__.r(__webpack_exports__);
     console.log("ログイン状態:" + this.isLogin);
     console.log("購入済みかどうか:" + this.isBought);
   },
+  computed: {
+    avgFive_rank: function avgFive_rank() {
+      if (!this.idea.avg_five_rank[0]) {
+        return "-";
+      } else {
+        return Math.round(this.idea.avg_five_rank[0].average * 10) / 10;
+      }
+    }
+  },
   methods: {
     // お気に入り着脱
     toggleLike: function toggleLike(val) {
@@ -2141,6 +2150,16 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return this.userData.likes.reverse();
       }
+    },
+    // 評価の平均点
+    avgFive_rank: function avgFive_rank() {
+      return function (idea) {
+        if (!idea.avg_five_rank[0]) {
+          return "-";
+        } else {
+          return Math.round(idea.avg_five_rank[0].average * 10) / 10;
+        }
+      };
     },
     // ページネーションで現在のページで表示するリストを抽出
     getItems: function getItems() {
@@ -2319,6 +2338,16 @@ __webpack_require__.r(__webpack_exports__);
         return this.userData.purchases.reverse();
       }
     },
+    // 評価の平均点
+    avgFive_rank: function avgFive_rank() {
+      return function (idea) {
+        if (!idea.avg_five_rank[0]) {
+          return "-";
+        } else {
+          return Math.round(idea.avg_five_rank[0].average * 10) / 10;
+        }
+      };
+    },
     // ページネーションで現在のページで表示するリストを抽出
     getItems: function getItems() {
       var current = this.currentPage * this.parPage;
@@ -2460,6 +2489,16 @@ __webpack_require__.r(__webpack_exports__);
         return this.evaluations.reverse();
       }
     },
+    // 評価の平均点
+    avgFive_rank: function avgFive_rank() {
+      return function (idea) {
+        if (!idea.avg_five_rank[0]) {
+          return "-";
+        } else {
+          return Math.round(idea.avg_five_rank[0].average * 10) / 10;
+        }
+      };
+    },
     // ページネーションで現在のページで表示するリストを抽出
     getItems: function getItems() {
       var current = this.currentPage * this.parPage;
@@ -2596,6 +2635,16 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return this.userData.ideas.reverse();
       }
+    },
+    // 評価の平均点
+    avgFive_rank: function avgFive_rank() {
+      return function (sell) {
+        if (!sell.avg_five_rank[0]) {
+          return "-";
+        } else {
+          return Math.round(sell.avg_five_rank[0].average * 10) / 10;
+        }
+      };
     },
     // ページネーションで現在のページで表示するリストを抽出
     getItems: function getItems() {
@@ -38174,7 +38223,12 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("span", { staticClass: "p-detail__note__text" }, [
-          _vm._v("3.5 (" + _vm._s(_vm.idea.evaluations.length) + "件)")
+          _vm._v(
+            _vm._s(_vm.avgFive_rank) +
+              " (" +
+              _vm._s(_vm.idea.evaluations.length) +
+              "件)"
+          )
         ]),
         _vm._v(" "),
         _c("span", { staticClass: "p-detail__note__text" }, [
@@ -38405,7 +38459,10 @@ var render = function() {
                   _vm._v(" "),
                   _c("span", { staticClass: "c-desc__point" }, [
                     _vm._v(
-                      "3.5(" + _vm._s(like.idea.evaluations.length) + "件)"
+                      _vm._s(_vm.avgFive_rank(like.idea)) +
+                        " (" +
+                        _vm._s(like.idea.evaluations.length) +
+                        "件)"
                     )
                   ]),
                   _vm._v(" "),
@@ -38578,7 +38635,10 @@ var render = function() {
                   _vm._v(" "),
                   _c("span", { staticClass: "c-desc__point" }, [
                     _vm._v(
-                      "3.5(" + _vm._s(purchase.idea.evaluations.length) + "件)"
+                      _vm._s(_vm.avgFive_rank(purchase.idea)) +
+                        " (" +
+                        _vm._s(purchase.idea.evaluations.length) +
+                        "件)"
                     )
                   ]),
                   _vm._v(" "),
@@ -38759,7 +38819,8 @@ var render = function() {
                     _vm._v(" "),
                     _c("span", { staticClass: "c-desc__point" }, [
                       _vm._v(
-                        "3.5(" +
+                        _vm._s(_vm.avgFive_rank(evaluation.idea)) +
+                          " (" +
                           _vm._s(evaluation.idea.evaluations.length) +
                           "件)"
                       )
@@ -38921,7 +38982,12 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("span", { staticClass: "c-desc__point" }, [
-                    _vm._v("3.5(" + _vm._s(sell.evaluations.length) + "件)")
+                    _vm._v(
+                      _vm._s(_vm.avgFive_rank(sell)) +
+                        " (" +
+                        _vm._s(sell.evaluations.length) +
+                        "件)"
+                    )
                   ]),
                   _vm._v(" "),
                   _c("span", { staticClass: "c-desc__price" }, [

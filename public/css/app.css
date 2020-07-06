@@ -1661,6 +1661,10 @@ br {
   }
 }
 
+.p-index__icon {
+  flex-basis: 130px;
+}
+
 @media screen and (max-width: 480px) {
   .p-index__icon {
     display: none;
@@ -1671,6 +1675,7 @@ br {
   margin: 0 auto;
   max-width: 65px;
   width: 100%;
+  font-size: 10px;
 }
 
 .p-index__icon__name {
@@ -1684,7 +1689,7 @@ br {
 }
 
 .p-index__sub {
-  flex-basis: 120px;
+  flex-basis: 130px;
   font-size: 12px;
 }
 

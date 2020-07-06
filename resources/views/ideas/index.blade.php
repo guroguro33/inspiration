@@ -47,7 +47,7 @@
   <section class="p-index">
     <h1 class="p-index__title u-pb-m">ヒラメキ一覧</h1>
     <p class="p-index__sort-result u-pb-xxl">
-      {{ $ideas->total() }}件中　{{ $ideas->firstItem()}}件〜{{ $ideas->lastItem() }}件を表示
+      {{ $ideas->total() }}件中　{{ $ideas->firstItem()?? '0'}}件〜{{ $ideas->lastItem()?? '0'}}件を表示
     </p>
     <div class="p-index__body u-pb-3l">
 
@@ -55,7 +55,7 @@
       <a href="{{ route('ideas.show', $idea->id) }}" class="p-index__item u-pb-l u-mb-m">
         <div class="p-index__icon">
           <div class="p-index__icon__img">
-            <img src="{{ $idea->user->user_img }}" alt="人のアイコン">
+            <img src="{{ $idea->user->user_img ? asset('/storage/user_images/' . $idea->user->user_img) : asset('./img/no-img2.svg') }}" alt="人のアイコン">
           </div>
         <p class="p-index__icon__name">{{ $idea->user->name }}</p>
         </div>
@@ -68,7 +68,7 @@
           <h3 class="c-desc__title">{{ mb_strimwidth($idea->idea_title, 0 ,65, "…", "UTF-8") }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">3.5({{ count($idea->evaluations) }}件)</span>
+            <span class="c-desc__point">{{ (!empty($idea->avgFive_rank[0]->average))? round($idea->avgFive_rank[0]->average, 1) : '-'}} ({{ count($idea->evaluations) }}件)</span>
             <span class="c-desc__price">{{ number_format($idea->idea_price) }}円</span>
           </div>
           <p class="c-desc__text">

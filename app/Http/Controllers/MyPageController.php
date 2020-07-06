@@ -36,6 +36,7 @@ class MyPageController extends Controller
       },
       'likes.idea.category',
       'likes.idea.evaluations',
+      'likes.idea.avgFive_rank',
       
       // 購入したヒラメキを最新５件取得
       'purchases' => function($query) use($user) {
@@ -45,6 +46,7 @@ class MyPageController extends Controller
       },
       'purchases.idea.category',
       'purchases.idea.evaluations',
+      'purchases.idea.avgFive_rank',
 
       // 出品したヒラメキを最新５件取得
       'ideas' => function($query) use($user) {
@@ -54,37 +56,21 @@ class MyPageController extends Controller
       },
       'ideas.evaluations',
       'ideas.category',
+      'ideas.avgFive_rank',
     ])->get()->find($user->id);
 
-    // 出品したヒラメキの最新５件に対する評価点の平均を算出
-
-    // global $sum; 
-    // foreach($user_data->ideas as $idea){
-    //   // 評価の全件数
-    //   $total_evaluation = (count($idea->evaluations))? count($idea->evaluations) : 1;
-       
-    //   foreach($idea->evaluations as $evaluation){
-    //     // 評価点数の合計
-    //     $sum .=  $evaluation->five_rank;
-    //   }
-    //   // 評価の平均点を算出
-    //   $ave = $sum / $total_evaluation; 
-
-    // $ave = $user_data->selectRaw('ave(five_rank) as vale, ideas')->groupBy('ideas');
-
-
     // 自分の出品したヒラメキに対する全評価のうち最新５件を取得
-    // $idea = Idea::all();
     $evaluations = Evaluation::with([
       'user',
-      'idea.category'
+      'idea.category',
+      'idea.avgFive_rank',
     ])->whereHas('idea', function($query) use ($user) {
       $query->where('user_id', $user->id);
     })->orderBy('created_at', 'desc')->limit(5)->get();
 
 
     // dd($user_data->toArray());
-    // dd($ave);
+    // dd($evaluations->toArray());
 
     return view('mypage.index', compact('user', 'isImage', 'user_data', 'evaluations'));
   }
@@ -149,6 +135,7 @@ class MyPageController extends Controller
       },
       'purchases.idea.category',
       'purchases.idea.evaluations',
+      'purchases.idea.avgFive_rank',
     ])->get()->find($user->id);
 
     $user_data = json_encode($user_data);
@@ -178,6 +165,7 @@ class MyPageController extends Controller
       },
       'likes.idea.category',
       'likes.idea.evaluations',
+      'likes.idea.avgFive_rank',
     ])->get()->find($user->id);
     
     $user_data = json_encode($user_data);
@@ -207,6 +195,7 @@ class MyPageController extends Controller
       },
       'ideas.category',
       'ideas.evaluations',
+      'ideas.avgFive_rank',
     ])->get()->find($user->id);
 
     $user_data = json_encode($user_data);
@@ -233,6 +222,7 @@ class MyPageController extends Controller
       'user',
       'idea.category',
       'idea.evaluations',
+      'idea.avgFive_rank',
     ])->whereHas('idea', function($query) use ($user) {
       $query->where('user_id', $user->id);
     })->orderBy('created_at', 'desc')->get();

@@ -7,7 +7,7 @@
     <div class="p-detail__note u-pb-m">
       <div class="p-detail__note__info">
         <img src="/img/star.svg" alt="星のアイコン" class="p-detail__note__star">
-        <span class="p-detail__note__text">3.5 ({{ idea.evaluations.length }}件)</span>
+        <span class="p-detail__note__text">{{ avgFive_rank }} ({{ idea.evaluations.length }}件)</span>
         <span class="p-detail__note__text">by {{ idea.user.name }}</span>
       </div>
       <div class="p-detail__btn">
@@ -80,6 +80,15 @@ export default {
   created() {
     console.log("ログイン状態:" + this.isLogin);
     console.log("購入済みかどうか:" + this.isBought);
+  },
+  computed: {
+    avgFive_rank() {
+      if (!this.idea.avg_five_rank[0]) {
+        return "-";
+      } else {
+        return Math.round(this.idea.avg_five_rank[0].average * 10) / 10;
+      }
+    }
   },
   methods: {
     // お気に入り着脱
