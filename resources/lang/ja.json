@@ -6,7 +6,7 @@
   "Reset Password": "パスワード再設定",
   "Send Password Reset Link": "パスワード再設定URLを送信",
   "Please Enter": "入力してください",
-  "Required": "（必須）",
+  "Required": "必須",
   "8 characters or more": "８文字以上",
   "Name": "お名前",
   "E-Mail Address": "メールアドレス",
@@ -28,5 +28,15 @@
   "Invalid operation was performed.": "不正な操作が行われました",
   "Bought it": "購入しました",
   "Delete": "削除する",
-  "Deleted.": "削除しました"
+  "Deleted.": "削除しました",
+  "Please write review": "レビューをお願いします",
+  "Revise the review?": "レビューを修正しますか？",
+  "5-step evaluation": "５段階評価",
+  "Review": "レビュー",
+  "Sell ​​Hirameki": "ヒラメキを出品する",
+  "Edit ​Hirameki": "ヒラメキを編集する",
+  "Title": "タイトル",
+  "Category": "カテゴリー",
+  "Please select": "選択してください",
+  "Please enter": "入力してください"
 }

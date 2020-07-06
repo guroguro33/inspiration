@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -36,7 +37,7 @@ class Idea extends Model
   public function avgFive_rank() {
     return $this->evaluations()
                 ->selectRaw('avg(five_rank) as average, idea_id')
-                ->groupBy('idea_id');
+                ->groupBy(DB::raw('idea_id'));
   }
 
 }

@@ -8,6 +8,7 @@ use App\Category;
 use App\Purchase;
 use Illuminate\Http\Request;
 use App\Http\Requests\IdeaRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -48,9 +49,9 @@ class IdeasController extends Controller
       // 星の数の選択があった場合
       // if(!empty($request->star)){
       //   if($request->star === '1'){
-      //     $query->orderBy('average', 'desc');
+      //     $query->orderBy('average','desc');
       //   }else{
-      //     $query->orderBy('avg-five_rank', 'asc');
+      //     $query->orderBy('average', 'asc');
       //   }
       // }
 
@@ -58,13 +59,33 @@ class IdeasController extends Controller
     }
 
     // 表示するヒラメキ取得
+    // $ideas = Idea::with([
+    //   'user',
+    //   'category',
+    //   'evaluations',
+    //   'avgFive_rank'
+    // ])->get();
+    
+    // $value = $ideas->sortByDesc(function($idea){
+    //   return $idea->evaluations->avg('five_rank');
+    // });
+
+    // $value = $value->paginate(10)->appends($request->all());
+    // dd($value->toArray());
+    
     $ideas = $query->with([
       'user',
       'category',
       'evaluations',
-      'avgFive_rank' 
-    ])->orderBy('created_at', 'desc')->paginate(10)->appends($request->all());
-    // dd($ideas->toArray());
+      'avgFive_rank'
+    ])->latest()->paginate(10)->appends($request->all());
+
+    // $test = Idea::with(['evaluations'])->get();
+    // $ideas = $test->sortByDesc(function($idea){
+    //   return $idea->evaluations->avg('five_rank');
+    // });
+    // dd($ideas);
+
 
     // 絞り込み条件を再表示するため、取得
     $inputData = $request->all();

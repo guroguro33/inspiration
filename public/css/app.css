@@ -1055,6 +1055,31 @@ br {
 }
 
 /*
+* object/component/_fixed-sidebar.scss
+*/
+
+.c-fixed,
+.c-fixed__show,
+.c-fixed__mypage {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.c-fixed__mypage {
+  top: 150px;
+}
+
+@media screen and (max-width: 896px) {
+  .c-fixed__mypage {
+    top: 100px;
+  }
+}
+
+.c-fixed__show {
+  top: 80px;
+}
+
+/*
 * object/project/_menu.scss
 */
 
