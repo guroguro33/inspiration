@@ -18,13 +18,12 @@ class MyPageController extends Controller
 
     // ユーザー情報を取得
     $user = Auth::user();
-    // dd($user->toArray());
 
     // ユーザー画像の有無
-    $isImage = false;
-    // dd($user->toArray());
-    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+    if(!empty($user->user_img)){
       $isImage = true;
+    }else{
+      $isImage = false;
     }
 
     // お気に入りと出品リスト情報を取得
@@ -60,6 +59,8 @@ class MyPageController extends Controller
       'ideas.avgFive_rank',
     ])->get()->find($user->id);
 
+    // $user_data = json_encode($user_data);
+
     // 自分の出品したヒラメキに対する全評価のうち最新５件を取得
     $evaluations = Evaluation::with([
       'user',
@@ -69,8 +70,11 @@ class MyPageController extends Controller
       $query->where('user_id', $user->id);
     })->orderBy('created_at', 'desc')->limit(5)->get();
 
+    // $evaluations = json_encode($evaluations);
 
-    // dd($user_data->toArray());
+
+
+    // dd($user_data);
     // dd($evaluations->toArray());
 
     return view('mypage.index', compact('user', 'isImage', 'user_data', 'evaluations'));
@@ -83,10 +87,10 @@ class MyPageController extends Controller
     $user = Auth::user();
 
     // ユーザー画像の有無
-    $isImage = false;
-    // dd($user->toArray());
-    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+    if(!empty($user->user_img)){
       $isImage = true;
+    }else{
+      $isImage = false;
     }
 
     return view('mypage.edit', compact('user', 'isImage'));
@@ -142,10 +146,10 @@ class MyPageController extends Controller
     $user = Auth::user();
 
     // ユーザー画像の有無
-    $isImage = false;
-    // dd($user->toArray());
-    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+    if(!empty($user->user_img)){
       $isImage = true;
+    }else{
+      $isImage = false;
     }
 
     // 購入済みリストを取得
@@ -172,10 +176,10 @@ class MyPageController extends Controller
     $user = Auth::user();
 
     // ユーザー画像の有無
-    $isImage = false;
-    // dd($user->toArray());
-    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+    if(!empty($user->user_img)){
       $isImage = true;
+    }else{
+      $isImage = false;
     }
 
     // 気になるリストを取得
@@ -202,10 +206,10 @@ class MyPageController extends Controller
     $user = Auth::user();
 
     // ユーザー画像の有無
-    $isImage = false;
-    // dd($user->toArray());
-    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+    if(!empty($user->user_img)){
       $isImage = true;
+    }else{
+      $isImage = false;
     }
 
     // ヒラメキ出品一覧を取得
@@ -233,10 +237,10 @@ class MyPageController extends Controller
     $user = Auth::user();
 
     // ユーザー画像の有無
-    $isImage = false;
-    // dd($user->toArray());
-    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+    if(!empty($user->user_img)){
       $isImage = true;
+    }else{
+      $isImage = false;
     }
 
     // レビュー一覧を取得
@@ -250,8 +254,7 @@ class MyPageController extends Controller
     })->orderBy('created_at', 'desc')->get();
 
     $user_data = json_encode($evaluations);
-    // dd($evaluations->toArray());
-
+    // dd($evaluations);
     return view('mypage.reviews', compact('user', 'isImage', 'evaluations'));
   }
 

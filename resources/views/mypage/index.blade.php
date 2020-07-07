@@ -15,6 +15,9 @@
         <h2 class="p-mypage__heading__text">出品したヒラメキ（最新{{ count($user_data->ideas) }}件）</h2>
         <a href="{{ route('mypage.lists') }}" class="c-btn__sub--mypage">全件表示</a>
       </div>
+      @if(empty($user_data->ideas->toArray()))
+        <p>まだ何もありません</p>
+      @endif
       @foreach($user_data->ideas as $idea)
       <a href="{{ route('ideas.show', $idea->id) }}" class="p-mypage__item u-pb-l u-mb-m u-opacity">
         <div class="p-mypage__sub">
@@ -41,6 +44,9 @@
         <h2 class="p-mypage__heading__text">購入者からの<br>レビュー（最新{{ count($evaluations) }}件）</h2>
         <a href="{{ route('mypage.reviews') }}" class="c-btn__sub--mypage">全件表示</a>
       </div>
+      @if(empty($evaluations->toArray()))
+        <p>まだ何もありません</p>
+      @endif
       @foreach($evaluations as $evaluation)
       <a href="{{ route('ideas.show', $evaluation->idea->id) }}" class="p-mypage__item u-pb-l u-mb-m u-opacity">
         <div class="p-mypage__sub">
@@ -69,6 +75,9 @@
         <h2 class="p-mypage__heading__text">購入したヒラメキ（最新{{ count($user_data->purchases) }}件）</h2>
         <a href="{{ route('mypage.purchases') }}" class="c-btn__sub--mypage">全件表示</a>
       </div>
+      @if(empty($user_data->purchases->toArray()))
+        <p>まだ何もありません</p>
+      @endif
       @foreach($user_data->purchases as $purchase)
       <a href="{{ route('ideas.show', $purchase->idea_id) }}" class="p-mypage__item u-pb-l u-mb-m u-opacity">
         <div class="p-mypage__sub">
@@ -94,6 +103,9 @@
         <h2 class="p-mypage__heading__text">気になるリスト（最新{{ count($user_data->likes) }}件）</h2>
         <a href="{{ route('mypage.likes') }}" class="p-mypage__heading__link c-btn__sub--mypage">全件表示</a>
       </div>
+      @if(empty($user_data->likes->toArray()))
+        <p>まだ何もありません</p>
+      @endif
       @foreach($user_data->likes as $like)
       <a href="{{ route('ideas.show', $like->idea_id) }}" class="p-mypage__item u-pb-l u-mb-m u-opacity">
         <div class="p-mypage__sub">

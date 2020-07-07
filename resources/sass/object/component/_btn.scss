@@ -44,8 +44,14 @@
         transition: none;
         &:before{
           background-color: $color_bg4;
-          font-size: 12px;
-          content: "お気に入りに追加";
+          font-size: 14px;
+          content: "お気に入り追加";
+          @include mq(md){
+            font-size: $font_size_s;
+          }
+          @include mq(){
+            font-size: $font_size_xs;
+          }
         }
       }
     }

@@ -24,12 +24,14 @@ Route::get('/', 'EvaluationsController@index')->name('evaluations.index');
 
 // ヒラメキ一覧画面
 Route::get('/index', 'IdeasController@index')->name('ideas.index');
+
 // ヒラメキ詳細画面
 Route::get('/ideas/{id}/show', 'IdeasController@show')->name('ideas.show');
 
+// ヒラメキ出品画面
+Route::get('/ideas/new', 'IdeasController@create')->name('ideas.create');
+
 Route::group(['middleware' => 'auth'], function(){
-  // ヒラメキ出品画面
-  Route::get('/ideas/new', 'IdeasController@create')->name('ideas.create');
   // ヒラメキ登録
   Route::post('/ideas/new', 'IdeasController@store')->name('ideas.store');
   // ヒラメキ編集画面

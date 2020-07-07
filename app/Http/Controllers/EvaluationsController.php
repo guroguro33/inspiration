@@ -55,6 +55,7 @@ class EvaluationsController extends Controller
 
     // evaluationテーブルの更新
     $evaluation = Auth::user()->evaluations()->where('idea_id', $id)->first();
+    // dd($evaluation->toArray());
     $evaluation->fill($request->all())->save();
 
     // 更新後、出品者へメール送信する

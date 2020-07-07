@@ -8,6 +8,7 @@
     font-weight: 700;
     @include mq(md){
       font-size: $font-size_s;
+      word-wrap: break-word;
     }
   }
   &__info{

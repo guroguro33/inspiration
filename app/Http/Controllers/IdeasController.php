@@ -9,22 +9,20 @@ use App\Purchase;
 use App\Mail\PurchaseReport;
 use Illuminate\Http\Request;
 use App\Http\Requests\IdeaRequest;
+use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage;
 
 class IdeasController extends Controller
 {
   // ヒラメキ一覧表示
-  public function index(Request $request){
+  public function index(SearchRequest $request){
 
     // カテゴリ情報を取得
     $categories = Category::all();
-    // dd($categories);
 
     $query = Idea::query();
-    // dd($query);
 
     // 検索フォームに入力があったら絞り込み
     if($request->input()){
@@ -49,25 +47,20 @@ class IdeasController extends Controller
           $query->orderBy('created_at', 'asc');
         }
       }
-      // 星の数の選択があった場合
-      if(!empty($request->star)){
-        if($request->star === '1'){
-          $query->orderBy('evaluations.id','desc');
-        }else{
-          $query->orderBy('average', 'asc');
-        }
+      // タイトル検索があった場合
+      if(!empty($request->title)){
+          $query->where('idea_title', 'like', "%$request->title%");
       }
-
-      // dd($query);
     }
     
+    // ヒラメキ情報を取得
     $ideas = $query->with([
       'user',
       'category',
       'evaluations',
       'avgFive_rank'
     ])->latest()->paginate(10)->appends($request->all());
-
+    
     // 絞り込み条件を再表示するため、取得
     $inputData = $request->all();
 
@@ -77,6 +70,11 @@ class IdeasController extends Controller
   // ヒラメキ出品画面表示
   public function create(){
 
+    // 未ログインユーザーの場合、新規登録画面へ遷移
+    if(!Auth::check()){
+      return redirect('/register');
+    }
+
     // ユーザー情報を取得
     $user = Auth::user();
 
@@ -84,10 +82,10 @@ class IdeasController extends Controller
     $categories = Category::all();
     
     // ユーザー画像の有無
-    $isImage = false;
-    // dd($user->toArray());
-    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+    if(!empty($user->user_img)){
       $isImage = true;
+    }else{
+      $isImage = false;
     }
     
     return view('ideas.create', compact('user', 'categories', 'isImage'));
@@ -136,9 +134,10 @@ class IdeasController extends Controller
     $categories = Category::all();
     
     // ユーザー画像の有無
-    $isImage = false;
-    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+    if(!empty($user->user_img)){
       $isImage = true;
+    }else{
+      $isImage = false;
     }
     
     return view('ideas.edit', compact('user', 'isImage', 'categories', 'idea'));
@@ -224,14 +223,13 @@ class IdeasController extends Controller
     // ログイン済みの場合、自分のお気に入りリストと購入済みか、レビュー済みかを取得
     if(Auth::check()){
       // ログイン状態
-      $isLogin = json_encode(true);
+      $isLogin = true;
 
       // ログインしているユーザー情報取得
       $user = Auth::user();
 
       // お気に入りリスト
       $likeLists = $user->likes()->pluck('idea_id');
-      $likeLists = json_encode($likeLists);
       
       // 購入済みかどうか
       if($user->purchases()->where('idea_id', $id)->first()){
@@ -243,24 +241,26 @@ class IdeasController extends Controller
         // レビューデータが未定義にならないようnullを代入
         $review = null;
       };
-
-      // jsonに変換
-      $isBought = json_encode($isBought);
       
       // dd($review);
 
     } else {
       // ログイン状態
-      $isLogin = json_encode(false);
+      $isLogin = false;
 
       // 未ログインの時、未定義にならないように0を代入
-      $likeLists = json_encode(array());
-      $isBought = json_encode(false);
+      $likeLists = array();
+      $isBought = false;
       $review = null;
-      // dd($likeLists);
+      $user = null;
       
     }
-      // dd($idea->toArray());
+    // jsonに変換
+    $isLogin = json_encode($isLogin);
+    $isBought = json_encode($isBought);
+    $likeLists = json_encode($likeLists);
+
+    // dd($idea);
     return view('ideas.show', compact('isLogin', 'user', 'idea', 'likeLists', 'isBought', 'review'));
     
   }

@@ -2094,6 +2094,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["userData"],
   data: function data() {
@@ -2233,6 +2236,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2433,6 +2439,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["evaluations"],
   data: function data() {
@@ -2529,6 +2538,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -38493,7 +38505,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("気になるを解除")]
+                    [_vm._v("お気に入り解除")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -38512,20 +38524,22 @@ var render = function() {
         0
       ),
       _vm._v(" "),
-      _c("paginate", {
-        attrs: {
-          "page-count": _vm.getPageCount,
-          "page-range": 3,
-          "margin-pages": 2,
-          "click-handler": _vm.clickCallback,
-          "prev-text": "＜",
-          "next-text": "＞",
-          "container-class": "c-pagination",
-          "page-class": "c-pagination__page-item js-scrollTop",
-          "prev-class": "c-pagination__prev js-scrollTop",
-          "next-class": "c-pagination__next js-scrollTop"
-        }
-      })
+      _vm.userData.likes != ""
+        ? _c("paginate", {
+            attrs: {
+              "page-count": _vm.getPageCount,
+              "page-range": 3,
+              "margin-pages": 2,
+              "click-handler": _vm.clickCallback,
+              "prev-text": "＜",
+              "next-text": "＞",
+              "container-class": "c-pagination",
+              "page-class": "c-pagination__page-item js-scrollTop",
+              "prev-class": "c-pagination__prev js-scrollTop",
+              "next-class": "c-pagination__next js-scrollTop"
+            }
+          })
+        : _c("p", [_vm._v("まだ何もありません")])
     ],
     1
   )
@@ -38674,20 +38688,22 @@ var render = function() {
         0
       ),
       _vm._v(" "),
-      _c("paginate", {
-        attrs: {
-          "page-count": _vm.getPageCount,
-          "page-range": 3,
-          "margin-pages": 2,
-          "click-handler": _vm.clickCallback,
-          "prev-text": "＜",
-          "next-text": "＞",
-          "container-class": "c-pagination",
-          "page-class": "c-pagination__page-item js-scrollTop",
-          "prev-class": "c-pagination__prev js-scrollTop",
-          "next-class": "c-pagination__next js-scrollTop"
-        }
-      })
+      _vm.userData.purchases != ""
+        ? _c("paginate", {
+            attrs: {
+              "page-count": _vm.getPageCount,
+              "page-range": 3,
+              "margin-pages": 2,
+              "click-handler": _vm.clickCallback,
+              "prev-text": "＜",
+              "next-text": "＞",
+              "container-class": "c-pagination",
+              "page-class": "c-pagination__page-item js-scrollTop",
+              "prev-class": "c-pagination__prev js-scrollTop",
+              "next-class": "c-pagination__next js-scrollTop"
+            }
+          })
+        : _c("p", [_vm._v("まだ何もありません")])
     ],
     1
   )
@@ -38860,20 +38876,22 @@ var render = function() {
         0
       ),
       _vm._v(" "),
-      _c("paginate", {
-        attrs: {
-          "page-count": _vm.getPageCount,
-          "page-range": 3,
-          "margin-pages": 2,
-          "click-handler": _vm.clickCallback,
-          "prev-text": "＜",
-          "next-text": "＞",
-          "container-class": "c-pagination",
-          "page-class": "c-pagination__page-item js-scrollTop",
-          "prev-class": "c-pagination__prev js-scrollTop",
-          "next-class": "c-pagination__next js-scrollTop"
-        }
-      })
+      _vm.evaluations != ""
+        ? _c("paginate", {
+            attrs: {
+              "page-count": _vm.getPageCount,
+              "page-range": 3,
+              "margin-pages": 2,
+              "click-handler": _vm.clickCallback,
+              "prev-text": "＜",
+              "next-text": "＞",
+              "container-class": "c-pagination",
+              "page-class": "c-pagination__page-item js-scrollTop",
+              "prev-class": "c-pagination__prev js-scrollTop",
+              "next-class": "c-pagination__next js-scrollTop"
+            }
+          })
+        : _c("p", [_vm._v("まだ何もありません")])
     ],
     1
   )
@@ -39031,20 +39049,22 @@ var render = function() {
         0
       ),
       _vm._v(" "),
-      _c("paginate", {
-        attrs: {
-          "page-count": _vm.getPageCount,
-          "page-range": 3,
-          "margin-pages": 2,
-          "click-handler": _vm.clickCallback,
-          "prev-text": "＜",
-          "next-text": "＞",
-          "container-class": "c-pagination",
-          "page-class": "c-pagination__page-item js-scrollTop",
-          "prev-class": "c-pagination__prev js-scrollTop",
-          "next-class": "c-pagination__next js-scrollTop"
-        }
-      })
+      _vm.userData.ideas != ""
+        ? _c("paginate", {
+            attrs: {
+              "page-count": _vm.getPageCount,
+              "page-range": 3,
+              "margin-pages": 2,
+              "click-handler": _vm.clickCallback,
+              "prev-text": "＜",
+              "next-text": "＞",
+              "container-class": "c-pagination",
+              "page-class": "c-pagination__page-item js-scrollTop",
+              "prev-class": "c-pagination__prev js-scrollTop",
+              "next-class": "c-pagination__next js-scrollTop"
+            }
+          })
+        : _c("p", [_vm._v("まだ何もありません")])
     ],
     1
   )

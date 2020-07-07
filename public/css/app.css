@@ -208,6 +208,10 @@ textarea.is-invalid {
   border: solid 1px #DD1B1B;
 }
 
+input {
+  outline: 0;
+}
+
 input.is-invalid {
   border: solid 1px #DD1B1B;
 }
@@ -838,8 +842,20 @@ br {
 
 .c-btn__main--gray2.is-notlike:before {
   background-color: #29A8E1;
-  font-size: 12px;
-  content: "\304A\6C17\306B\5165\308A\306B\8FFD\52A0";
+  font-size: 14px;
+  content: "\304A\6C17\306B\5165\308A\8FFD\52A0";
+}
+
+@media screen and (max-width: 896px) {
+  .c-btn__main--gray2.is-notlike:before {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .c-btn__main--gray2.is-notlike:before {
+    font-size: 10px;
+  }
 }
 
 .c-btn__main--blue {
@@ -939,6 +955,7 @@ br {
 @media screen and (max-width: 896px) {
   .c-desc__title {
     font-size: 12px;
+    word-wrap: break-word;
   }
 }
 

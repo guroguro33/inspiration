@@ -4,7 +4,7 @@
 <div class="l-container l-sidebar">
   <section class="l-sidebar__detail">
     
-    <idea-info-component :is-login="{{ $isLogin }}" :idea="{{ $idea }}" :like-lists="{{ $likeLists }}" :is-bought="{{ $isBought}}"></idea-info-component>
+    <idea-info-component :is-login="{{ $isLogin }}" :idea="{{ json_encode($idea) }}" :like-lists="{{ $likeLists }}" :is-bought="{{ $isBought }}"></idea-info-component>
 
     <div class="p-detail__review">
       <h3 class="p-detail__review__heading u-pb-l">購入者からのレビュー</h3>

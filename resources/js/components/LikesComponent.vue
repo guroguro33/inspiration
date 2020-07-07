@@ -24,7 +24,7 @@
           </div>
           <p class="c-desc__text u-pb-m">{{ like.idea.idea_description | substr42 }}</p>
           <div class="p-mypage__link">
-            <a @click="toggleLike(like)" :class="['c-btn__main--gray2', notLike_id.includes(like.idea.id) ? 'is-notlike' : '']">気になるを解除</a>
+            <a @click="toggleLike(like)" :class="['c-btn__main--gray2', notLike_id.includes(like.idea.id) ? 'is-notlike' : '']">お気に入り解除</a>
             
             <a :href="'/ideas/' + like.idea.id +'/show'" class="c-btn__main--blue">詳細を見る</a>
           </div>
@@ -33,18 +33,21 @@
     </div>
 
     <paginate
-    :page-count="getPageCount"
-    :page-range="3"
-    :margin-pages="2"
-    :click-handler="clickCallback"
-    :prev-text="'＜'"
-    :next-text="'＞'"
-    :container-class="'c-pagination'"
-    :page-class="'c-pagination__page-item js-scrollTop'"
-    :prev-class="'c-pagination__prev js-scrollTop'"
-    :next-class="'c-pagination__next js-scrollTop'">
-  </paginate>
+      v-if="userData.likes != ''"
+      :page-count="getPageCount"
+      :page-range="3"
+      :margin-pages="2"
+      :click-handler="clickCallback"
+      :prev-text="'＜'"
+      :next-text="'＞'"
+      :container-class="'c-pagination'"
+      :page-class="'c-pagination__page-item js-scrollTop'"
+      :prev-class="'c-pagination__prev js-scrollTop'"
+      :next-class="'c-pagination__next js-scrollTop'">
+    </paginate>
     
+    <p v-else>まだ何もありません</p>
+
   </div>
 </template>
 

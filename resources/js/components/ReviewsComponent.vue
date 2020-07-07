@@ -38,17 +38,20 @@
     </div>
 
     <paginate
-    :page-count="getPageCount"
-    :page-range="3"
-    :margin-pages="2"
-    :click-handler="clickCallback"
-    :prev-text="'＜'"
-    :next-text="'＞'"
-    :container-class="'c-pagination'"
-    :page-class="'c-pagination__page-item js-scrollTop'"
-    :prev-class="'c-pagination__prev js-scrollTop'"
-    :next-class="'c-pagination__next js-scrollTop'">
-  </paginate>
+      v-if="evaluations != ''"
+      :page-count="getPageCount"
+      :page-range="3"
+      :margin-pages="2"
+      :click-handler="clickCallback"
+      :prev-text="'＜'"
+      :next-text="'＞'"
+      :container-class="'c-pagination'"
+      :page-class="'c-pagination__page-item js-scrollTop'"
+      :prev-class="'c-pagination__prev js-scrollTop'"
+      :next-class="'c-pagination__next js-scrollTop'">
+    </paginate>
+
+    <p v-else>まだ何もありません</p>
     
   </div>
 </template>

@@ -8,7 +8,7 @@
     <div class="p-sort__body u-pb-l">
       <div class="p-sort__item">
         <p class="p-sort__item__title u-pb-s">カテゴリ</p>
-        <select name="category" class="p-sort__item__select u-border">
+        <select name="category" class="p-sort__item__select u-border @error('category') is-invalid @enderror">
           <option value="">選択してください</option>
           @foreach($categories as $category)
             <option value="{{ $category->id }}" @if((!empty($inputData['category'])? $inputData['category'] : '') == $category->id) selected @endif>{{ $category->category_name}}</option>
@@ -18,27 +18,23 @@
       <div class="p-sort__price">
         <p class="p-sort__item__title u-pb-s">価格</p>
         <div class="p-sort__price__body">
-          <input type="number" name="low" class="p-sort__price__number" min="1" value="{{ !empty($inputData['low'])? $inputData['low'] : '' }}">
+          <input type="number" name="low" class="p-sort__price__number @error('low') is-invalid @enderror" min="1" value="{{ !empty($inputData['low'])? $inputData['low'] : '' }}">
           <span>円から</span>
-          <input type="number" name="high" class="p-sort__price__number" min="1" value="{{ !empty($inputData['high'])? $inputData['high'] : '' }}">
+          <input type="number" name="high" class="p-sort__price__number @error('hight') is-invalid @enderror" min="1" value="{{ !empty($inputData['high'])? $inputData['high'] : '' }}">
           <span>円まで</span>
         </div>
       </div>
       <div class="p-sort__item">
         <p class="p-sort__item__title u-pb-s">出品日付</p>
-        <select name="day" class="p-sort__item__select u-border">
+        <select name="day" class="p-sort__item__select u-border @error('day') is-invalid @enderror">
           <option value="">選択してください</option>
           <option value="1" @if((!empty($inputData['day'])? $inputData['day'] : '') === '1') selected @endif>新しい順</option>
           <option value="2" @if((!empty($inputData['day'])? $inputData['day'] : '') === '2') selected @endif>古い順</option>
         </select>
       </div>
       <div class="p-sort__item">
-        <p class="p-sort__item__title u-pb-s">星の数</p>
-        <select name="star" class="p-sort__item__select u-border">
-          <option value="">選択してください</option>
-          <option value="1" @if((!empty($inputData['star'])? $inputData['star'] : '') === '1') selected @endif>多い順</option>
-          <option value="2" @if((!empty($inputData['star'])? $inputData['star'] : '') === '2') selected @endif>少ない順</option>
-        </select>
+        <p class="p-sort__item__title u-pb-s">タイトル検索</p>
+        <input type="text" name="title" class="p-sort__item__select @error('title') is-invalid @enderror" value="{{ old('title',!empty($inputData['title'])? $inputData['title'] : '') }}" placeholder="入力してください" >
       </div>
     </div>
     <input type="submit" class="c-btn__main--gray1 u-mb-m" value="絞り込む">
