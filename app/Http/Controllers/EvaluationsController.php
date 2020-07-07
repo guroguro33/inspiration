@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Idea;
 use App\Evaluation;
 use Illuminate\Http\Request;
+use App\Mail\EvaluationReport;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\EvaluationRequest;
 
 class EvaluationsController extends Controller
@@ -28,11 +31,15 @@ class EvaluationsController extends Controller
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
+    // レビューをevaluationテーブルへ登録
     $evaluation = new Evaluation;
 
     $evaluation->idea_id = $id;
     Auth::user()->evaluations()->save($evaluation->fill($request->all()));
 
+    // 登録後、出品者へメール送信する
+    $user = Idea::find($id)->user;
+    Mail::to($user->email)->send(new EvaluationReport($user, $evaluation, $isFirstReview = true));
 
     // リダイレクトする
     // sessionフラッシュにメッセージ格納
@@ -49,6 +56,10 @@ class EvaluationsController extends Controller
     // evaluationテーブルの更新
     $evaluation = Auth::user()->evaluations()->where('idea_id', $id)->first();
     $evaluation->fill($request->all())->save();
+
+    // 更新後、出品者へメール送信する
+    $user = Idea::find($id)->user;
+    Mail::to($user->email)->send(new EvaluationReport($user, $evaluation, $isFirstReview = false));
 
     // リダイレクトする
     // sessionフラッシュにメッセージ格納

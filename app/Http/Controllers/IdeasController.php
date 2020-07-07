@@ -6,10 +6,12 @@ use App\Idea;
 use App\Like;
 use App\Category;
 use App\Purchase;
+use App\Mail\PurchaseReport;
 use Illuminate\Http\Request;
 use App\Http\Requests\IdeaRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class IdeasController extends Controller
@@ -22,6 +24,7 @@ class IdeasController extends Controller
     // dd($categories);
 
     $query = Idea::query();
+    // dd($query);
 
     // 検索フォームに入力があったら絞り込み
     if($request->input()){
@@ -47,31 +50,16 @@ class IdeasController extends Controller
         }
       }
       // 星の数の選択があった場合
-      // if(!empty($request->star)){
-      //   if($request->star === '1'){
-      //     $query->orderBy('average','desc');
-      //   }else{
-      //     $query->orderBy('average', 'asc');
-      //   }
-      // }
+      if(!empty($request->star)){
+        if($request->star === '1'){
+          $query->orderBy('evaluations.id','desc');
+        }else{
+          $query->orderBy('average', 'asc');
+        }
+      }
 
       // dd($query);
     }
-
-    // 表示するヒラメキ取得
-    // $ideas = Idea::with([
-    //   'user',
-    //   'category',
-    //   'evaluations',
-    //   'avgFive_rank'
-    // ])->get();
-    
-    // $value = $ideas->sortByDesc(function($idea){
-    //   return $idea->evaluations->avg('five_rank');
-    // });
-
-    // $value = $value->paginate(10)->appends($request->all());
-    // dd($value->toArray());
     
     $ideas = $query->with([
       'user',
@@ -79,13 +67,6 @@ class IdeasController extends Controller
       'evaluations',
       'avgFive_rank'
     ])->latest()->paginate(10)->appends($request->all());
-
-    // $test = Idea::with(['evaluations'])->get();
-    // $ideas = $test->sortByDesc(function($idea){
-    //   return $idea->evaluations->avg('five_rank');
-    // });
-    // dd($ideas);
-
 
     // 絞り込み条件を再表示するため、取得
     $inputData = $request->all();
@@ -295,7 +276,9 @@ class IdeasController extends Controller
     $user = Auth::user();
 
     // 自分の出品したものを購入していないかチェック
-    if(Idea::find($id)->user_id === $user->id) {
+    $idea = Idea::find($id);
+  
+    if($idea->user_id === $user->id) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -313,6 +296,11 @@ class IdeasController extends Controller
       $purchase->idea_id = $id;
       $purchase->save();
     }
+
+    // 購入が完了したら、購入者にメール送信を行う
+    Mail::to($user->email)->send(new PurchaseReport($user, $idea, $isBuyer = true));
+    // 続いて、販売者にメール送信を行う
+    Mail::to($idea->user->email)->send(new PurchaseReport($idea->user, $idea, $isBuyer = false));
 
     // リダイレクトする
     // sessionフラッシュにメッセージ格納

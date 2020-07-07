@@ -67,3 +67,8 @@ Route::group(['middleware' => 'auth'], function(){
   // 貰ったレビュー一覧
   Route::get('/mypage/reviews', 'MyPageController@reviews')->name('mypage.reviews');
 });
+
+// 購入通知メールのプレビュー
+Route::get('test/mail', function(){
+  return new App\Mail\purchaseReport();
+});
