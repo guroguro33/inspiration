@@ -19,6 +19,6 @@ class IdeasTableSeeder extends Seeder
       DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
       // データの挿入
-      factory(Idea::class, 40)->create();
+      factory(Idea::class, 150)->create();
     }
 }

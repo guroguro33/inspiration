@@ -243,7 +243,7 @@
                   -------------------------------------------------------------------------------------------------------
                 </p>
                 <h4>{{ $idea->idea_title }}</h4>
-                <h5>{{ number_format($idea->idea_price) }}円</h5>
+                <h5>{{ number_format($idea->idea_price) }}{{ __('yen') }}</h5>
                 <p>{{ $idea->idea_description }}</p>
                 <!-- Callout Panel -->
                 <p class="callout">
@@ -275,7 +275,7 @@
                           <td>
 
                             <h5 class="">{{ __('Contact Us') }}:</h5>
-                            <p>Phone: <strong>000-000-0000</strong><br />
+                            <p>Phone: <strong>03-1234-5678</strong><br />
                               Email: <strong><a href="emailto:info@inspiration.com">info@inspiration.com</a></strong>
                             </p>
 

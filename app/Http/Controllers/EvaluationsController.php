@@ -12,19 +12,22 @@ use App\Http\Requests\EvaluationRequest;
 
 class EvaluationsController extends Controller
 {
+  // --------------------------------------------
   // TOP画面表示（レビューのうち高評価なものを５つ取得して表示）
+  // --------------------------------------------
   public function index(){
 
+    // 高評価なレビューを５つ取得
     $evaluations = Evaluation::with([
       'user'
     ])->orderByRaw('five_rank desc , created_at desc')->limit(5)->get();
 
-    // dd($evaluations->toArray());
-
     return view('top', compact('evaluations'));
   }
 
+  // --------------------------------------------
   // レビュー登録
+  // --------------------------------------------
   public function store(EvaluationRequest $request, $id){
     // GETパラメータが数字かチェック
     if(!ctype_digit($id)) {
@@ -46,7 +49,9 @@ class EvaluationsController extends Controller
     return redirect("/ideas/$id/show/")->with('flash_message', __('Registered'));
   }
 
+  // --------------------------------------------
   // レビュー更新
+  // --------------------------------------------
   public function update(EvaluationRequest $request, $id){
     // GETパラメータが数字かチェック
     if(!ctype_digit($id)) {
@@ -55,7 +60,6 @@ class EvaluationsController extends Controller
 
     // evaluationテーブルの更新
     $evaluation = Auth::user()->evaluations()->where('idea_id', $id)->first();
-    // dd($evaluation->toArray());
     $evaluation->fill($request->all())->save();
 
     // 更新後、出品者へメール送信する

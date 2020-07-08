@@ -98,7 +98,7 @@
         <p class="l-footer__contact__lead">{{ __('Contact Us') }}</p>
         <div class="l-footer__contact__body">
           <a href="tel:0312345678">03-1234-5678</a>
-          <a href="mailto:info@mail.com">info@mail.com</a>
+          <a href="mailto:info@mail.com">info@inspiration.com</a>
         </div>
       </div>
     </div>

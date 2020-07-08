@@ -278,7 +278,7 @@
                           <td>
 
                             <h5 class="">{{ __('Contact Us') }}:</h5>
-                            <p>Phone: <strong>000-000-0000</strong><br />
+                            <p>Phone: <strong>03-1234-5678</strong><br />
                               Email: <strong><a href="emailto:info@inspiration.com">info@inspiration.com</a></strong>
                             </p>
 

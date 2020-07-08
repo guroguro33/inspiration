@@ -42,7 +42,7 @@
   <section class="l-sidebar__sub">
     <div class="c-fixed__show">
       <div class="p-checkout__pay u-mb-l">
-        <p class="p-checkout__price u-pb-xl">{{ number_format($idea->idea_price) }}円</p>
+        <p class="p-checkout__price u-pb-xl">{{ number_format($idea->idea_price) }}{{ __('yen') }}</p>
         {{-- 未ログイン時 --}}
         @if($isLogin === 'false' && $isBought === 'false')
         <a href="{{ route('login') }}" class="c-btn__main--blue u-m-0auto">{{ __('After login,') }}<br>{{ __('You can buy') }}</a>

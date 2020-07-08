@@ -19,6 +19,6 @@ class EvaluationsTableSeeder extends Seeder
     DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
     // データの挿入
-    factory(Evaluation::class, 40)->create();
+    factory(Evaluation::class, 100)->create();
   }
 }

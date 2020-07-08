@@ -9,7 +9,7 @@
 --------------------------------------------
 {{ $idea->idea_title }}
 
-{{ number_format($idea->idea_price) }}円
+{{ number_format($idea->idea_price) }}{{ __('yen') }}
 
 {{ $idea->idea_description }}
 --------------------------------------------
@@ -19,5 +19,5 @@ https://inspiration.com/idea/{{ $idea->id }}/show/
 
 {{ __('Contact Us') }}:
 Inspiration
-Phone: 000-000-0000
+Phone: 03-1234-5678
 email: info@inspiration.com

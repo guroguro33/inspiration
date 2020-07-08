@@ -3,7 +3,7 @@
     <h1 class="p-mypage__title u-pb-m">{{ __('Sell ​​Hirameki') }}</h1>
     <form action="{{ route('ideas.store') }}" method="POST" class="c-form">
   @else
-    <h1 class="p-mypage__title u-pb-m">{{ __('Edit ​​Hirameki') }}</h1>
+    <h1 class="p-mypage__title u-pb-m">{{ __('Edit ​Hirameki') }}</h1>
     <form action="{{ route('ideas.update', $idea->id) }}" method="POST" class="c-form u-pb-0">
   @endif
     @csrf
@@ -49,7 +49,7 @@
     
     <div class="c-form__item u-pb-l">
       <p class="c-form__item__name u-pb-s">{{ __("Price") }}（{{ __("Required") }}）</p>
-      <input type="number" name="idea_price" class="c-form__item__price u-mb-s @error('idea_price') is-invalid @enderror" value="{{ old('idea_price', !empty($idea)? $idea->idea_price : '') }}" placeholder="{{ __('Please select') }}" autocomplete="off" required>円
+      <input type="number" name="idea_price" class="c-form__item__price u-mb-s @error('idea_price') is-invalid @enderror" value="{{ old('idea_price', !empty($idea)? $idea->idea_price : '') }}" placeholder="{{ __('Please select') }}" autocomplete="off" required>{{ __('yen') }}
       @error('idea_price')
       <span class="c-form__item--alert">{{ $message }}</span>
       @enderror

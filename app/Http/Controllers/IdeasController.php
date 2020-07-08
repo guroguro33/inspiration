@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Mail;
 
 class IdeasController extends Controller
 {
+  // --------------------------------------------
   // ヒラメキ一覧表示
+  // --------------------------------------------
   public function index(SearchRequest $request){
 
     // カテゴリ情報を取得
@@ -59,7 +61,7 @@ class IdeasController extends Controller
       'category',
       'evaluations',
       'avgFive_rank'
-    ])->latest()->paginate(10)->appends($request->all());
+    ])->latest()->paginate(20)->appends($request->all());
     
     // 絞り込み条件を再表示するため、取得
     $inputData = $request->all();
@@ -67,7 +69,9 @@ class IdeasController extends Controller
     return view('ideas.index', compact('categories', 'ideas', 'inputData'));
   }
 
+  // --------------------------------------------
   // ヒラメキ出品画面表示
+  // --------------------------------------------
   public function create(){
 
     // 未ログインユーザーの場合、新規登録画面へ遷移
@@ -91,7 +95,9 @@ class IdeasController extends Controller
     return view('ideas.create', compact('user', 'categories', 'isImage'));
   }
 
+  // --------------------------------------------
   // ヒラメキ出品登録
+  // --------------------------------------------
   public function store(IdeaRequest $request){
 
     // インスタンス生成
@@ -105,7 +111,9 @@ class IdeasController extends Controller
     return redirect('/mypage')->with('flash_message', __('Registered'));
   }
 
+  // --------------------------------------------
   // ヒラメキ編集画面表示
+  // --------------------------------------------
   public function edit($id){
     // GETパラメータが数字かチェック
     if(!ctype_digit($id)) {
@@ -122,7 +130,6 @@ class IdeasController extends Controller
 
     // ヒラメキ詳細情を取得
     $idea = Idea::find($id);
-    // dd($idea->toArray());
 
     // 購入済みの場合は編集不可
     $isBought = $idea->purchases()->first();
@@ -143,7 +150,9 @@ class IdeasController extends Controller
     return view('ideas.edit', compact('user', 'isImage', 'categories', 'idea'));
   }
 
+  // --------------------------------------------
   // ヒラメキ編集登録
+  // --------------------------------------------
   public function update(IdeaRequest $request, $id){
     // GETパラメータが数字かチェック
     if(!ctype_digit($id)) {
@@ -173,7 +182,9 @@ class IdeasController extends Controller
     return redirect('/mypage')->with('flash_message', __('Registered'));
   }
 
+  // --------------------------------------------
   // ヒラメキ削除
+  // --------------------------------------------
   public function delete($id){
     // GETパラメータが数字かチェック
     if(!ctype_digit($id)) {
@@ -202,7 +213,9 @@ class IdeasController extends Controller
     return redirect('/mypage')->with('flash_message', __('Deleted.'));
   }
 
+  // --------------------------------------------
   // ヒラメキ詳細画面表示
+  // --------------------------------------------
   public function show($id){
     // GETパラメータが数字かチェック
     if(!ctype_digit($id)) {
@@ -242,8 +255,6 @@ class IdeasController extends Controller
         $review = null;
       };
       
-      // dd($review);
-
     } else {
       // ログイン状態
       $isLogin = false;
@@ -260,12 +271,12 @@ class IdeasController extends Controller
     $isBought = json_encode($isBought);
     $likeLists = json_encode($likeLists);
 
-    // dd($idea);
     return view('ideas.show', compact('isLogin', 'user', 'idea', 'likeLists', 'isBought', 'review'));
-    
   }
 
+  // --------------------------------------------
   // ヒラメキを購入する
+  // --------------------------------------------
   public function buy($id){
     // GETパラメータが数字かチェック
     if(!ctype_digit($id)) {
@@ -308,7 +319,9 @@ class IdeasController extends Controller
 
   }
 
+  // --------------------------------------------
   // 気になるの着脱
+  // --------------------------------------------
   public function toggleLike(Request $request){
     // 当該のヒラメキのidを代入
     $idea_id = $request->id;

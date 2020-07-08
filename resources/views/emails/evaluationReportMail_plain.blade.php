@@ -17,5 +17,5 @@ https://inspiration.com/idea/{{ $evaluation->idea_id }}/show/
 
 {{ __('Contact Us') }}:
 Inspiration
-Phone: 000-000-0000
+Phone: 03-1234-5678
 email: info@inspiration.com

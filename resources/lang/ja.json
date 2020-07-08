@@ -35,6 +35,8 @@
   "Review": "レビュー",
   "Sell ​​Hirameki": "ヒラメキを出品する",
   "Edit ​Hirameki": "ヒラメキを編集する",
+  "Edit": "編集する",
+  "Can't edit": "編集できません",
   "Title": "タイトル",
   "Category": "カテゴリー",
   "Please select": "選択してください",
@@ -115,5 +117,12 @@
   "Please see this page for details of the review": "レビューの詳細はこちらのページをご覧ください",
   "Exhibitor menu": "出品者メニュー",
   "Buyer menu": "購入者メニュー",
-  "Link": "リンクマーク"
+  "Link": "リンクマーク",
+  "Like": "お気に入り",
+  "Remove like": "お気に入り解除",
+  "Registration date": "登録日",
+  "Description": "概要",
+  "Detail": "詳細",
+  "view the details": "詳細を見る",
+  "Displayed after purchase": "購入後に表示されます"
 }
