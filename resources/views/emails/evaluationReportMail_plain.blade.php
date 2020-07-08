@@ -1,21 +1,21 @@
-レビュー受領通知
+{{ __('Review receipt notification') }}
 
-こんにちは, {{ $user->name }}さん
+{{ __('Hello!!')}} {{ $user->name }}{{ __('!')}}
 @if($isFirstReview === true)
-販売したヒラメキに対してレビューを受けましたので、お知らせします。
+{{ __('We would like to inform you that we have received reviews of the inspiration you sold.') }}
 @else
-販売したヒラメキに対してレビューの更新がありましたので、お知らせします。
+{{ __('We would like to inform you that there was an update on the inspiration you sold.')}}
 @endif
 --------------------------------------------
 {{ $evaluation->idea_review }}
 
-評価の点数：{{ $evaluation->five_rank }}
+{{ __('Evaluation points')}}：{{ $evaluation->five_rank }}
 --------------------------------------------
 
-レビューの詳細はこちらのページをご覧ください 
+{{ __('Please see this page for details of the review') }} 
 https://inspiration.com/idea/{{ $evaluation->idea_id }}/show/
 
-連絡先:
+{{ __('Contact Us') }}:
 Inspiration
 Phone: 000-000-0000
 email: info@inspiration.com

@@ -71,6 +71,6 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 // 購入通知メールのプレビュー
-Route::get('test/mail', function(){
-  return new App\Mail\purchaseReport();
-});
+// Route::get('test/mail', function(){
+//   return new App\Mail\purchaseReport();
+// });

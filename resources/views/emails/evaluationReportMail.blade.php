@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>レビュー受領通知</title>
+  <title>{{ __('Review receipt notification') }}</title>
 
   {{-- <link rel="stylesheet" href="{{ asset('css/email.css')}}" /> --}}
   <style>
@@ -233,24 +233,24 @@
           <table>
             <tr>
               <td>
-              <h3>こんにちは, {{ $user->name }}さん</h3>
+              <h3>{{ __('Hello!!')}} {{ $user->name }}{{ __('!')}}</h3>
                 @if($isFirstReview === true)
-                <p class="lead">販売したヒラメキに対してレビューを受けましたので、お知らせします。</p>
+                <p class="lead">{{ __('We would like to inform you that we have received reviews of the inspiration you sold.') }}</p>
                 @else
-                <p class="lead">販売したヒラメキに対してレビューの更新がありましたので、お知らせします。</p>
+                <p class="lead">{{ __('We would like to inform you that there was an update on the inspiration you sold.')}}</p>
                 @endif
                 <p>
                   -------------------------------------------------------------------------------------------------------
                 </p>
                 <h5>{{ $evaluation->idea_review }}</h5>
                 <h6>
-                  評価の点数：<span>{{ $evaluation->five_rank }}</span>
+                  {{ __('Evaluation points')}}：<span>{{ $evaluation->five_rank }}</span>
                 </h6>
               
                 <!-- Callout Panel -->
                 <p class="callout">
 
-                  レビューの詳細はこちらのページをご覧ください <a href="https://inspiration.com/idea/{{$evaluation->idea_id}}/show/">Click it! &raquo;</a>
+                  {{ __('Please see this page for details of the review') }} <a href="https://inspiration.com/idea/{{$evaluation->idea_id}}/show/">Click it! &raquo;</a>
                 </p><!-- /Callout Panel -->
 
                 <!-- social & contact -->
@@ -263,7 +263,7 @@
                         <tr>
                           <td>
 
-                            <h5 class="">ソーシャルメディア:</h5>
+                            <h5 class="">{{ __('Social media') }}:</h5>
                             <p class=""><a href="#" class="soc-btn fb">Facebook</a> <a href="#"
                                 class="soc-btn tw">Twitter</a> <a href="#" class="soc-btn in">Instagram</a></p>
 
@@ -277,7 +277,7 @@
                         <tr>
                           <td>
 
-                            <h5 class="">連絡先:</h5>
+                            <h5 class="">{{ __('Contact Us') }}:</h5>
                             <p>Phone: <strong>000-000-0000</strong><br />
                               Email: <strong><a href="emailto:info@inspiration.com">info@inspiration.com</a></strong>
                             </p>

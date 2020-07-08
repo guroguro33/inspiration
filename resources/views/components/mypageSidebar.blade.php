@@ -2,53 +2,53 @@
   <div class="c-fixed__mypage">
     <div class="p-mymenu__img u-mb-m">
       @if($isImage)
-      <img src="{{ asset('/storage/user_images/' . $user->user_img) }}" alt="ユーザーのアイコン">
+      <img src="{{ asset('/storage/user_images/' . $user->user_img) }}" alt="{{ __('Icon of User') }}">
       @else
-      <img src="{{ asset('./img/no-img2.svg') }}" alt="ユーザーのアイコン">
+      <img src="{{ asset('./img/no-img2.svg') }}" alt="{{ __('Icon of User') }}">
       @endif
     </div>
     <p class="p-mymenu__name u-pb-s">{{ $user->name }}</p>
-    <a href="{{ route('mypage.edit')}}" class="p-mymenu__prof u-mb-xl">プロフィール編集 &gt;</a>
+    <a href="{{ route('mypage.edit')}}" class="p-mymenu__prof u-mb-xl">{{ __('Edit profile') }} &gt;</a>
     <div class="p-mymenu__body u-pb-xl">
-      <p class="p-mymenu__body__heading u-pb-s u-mb-m">出品者メニュー</p>
+      <p class="p-mymenu__body__heading u-pb-s u-mb-m">{{ __('Exhibitor menu')}}</p>
       <ul>
         <li>
           <a href="{{ route('ideas.create')}}" class="p-mymenu__body__link u-mb-m">
-            <span>ヒラメキを出品する</span>
-            <img src="{{ asset('./img/arrow-right.svg') }}" class="p-mymenu__body__arrow" alt="リンクマーク">
+            <span>{{ __('Sell ​​Hirameki')}}</span>
+            <img src="{{ asset('./img/arrow-right.svg') }}" class="p-mymenu__body__arrow" alt="{{ __('Link') }}">
           </a>
         </li>
         <li>
           <a href="{{ route('mypage.lists')}}" class="p-mymenu__body__link u-mb-m">
-            <span>出品したものの管理</span>
-            <img src="{{ asset('./img/arrow-right.svg') }}" class="p-mymenu__body__arrow" alt="リンクマーク">
+            <span>{{ __('Manage inspirations') }}</span>
+            <img src="{{ asset('./img/arrow-right.svg') }}" class="p-mymenu__body__arrow" alt="{{ __('Link') }}">
           </a>
         </li>
         <li>
           <a href="{{ route('mypage.reviews')}}" class="p-mymenu__body__link u-mb-m">
-            <span>購入者からのレビュー</span>
-            <img src="{{ asset('./img/arrow-right.svg') }}" class="p-mymenu__body__arrow" alt="リンクマーク">
+            <span>{{ __('Reviews from buyers')}}</span>
+            <img src="{{ asset('./img/arrow-right.svg') }}" class="p-mymenu__body__arrow" alt="{{ __('Link') }}">
           </a>
         </li>
       </ul>
     </div>
     <div class="p-mymenu__body u-pb-xl">
-      <p class="p-mymenu__body__heading u-pb-s u-mb-m">購入者メニュー</p>
+      <p class="p-mymenu__body__heading u-pb-s u-mb-m">{{ __('Buyer menu')}}</p>
       <ul>
         <li>
           <a href="{{ route('mypage.purchases')}}" class="p-mymenu__body__link u-mb-m">
-            <span>購入したヒラメキ</span>
-            <img src="{{ asset('./img/arrow-right.svg') }}" class="p-mymenu__body__arrow" alt="リンクマーク">
+            <span>{{ __('Purchased inspirations')}}</span>
+            <img src="{{ asset('./img/arrow-right.svg') }}" class="p-mymenu__body__arrow" alt="{{ __('Link') }}">
           </a>
         </li>
         <li>
           <a href="{{ route('mypage.likes')}}" class="p-mymenu__body__link u-mb-m">
-            <span>気になるリスト</span>
-            <img src="{{ asset('./img/arrow-right.svg') }}" class="p-mymenu__body__arrow" alt="リンクマーク">
+            <span>{{ __('Anxious list')}}</span>
+            <img src="{{ asset('./img/arrow-right.svg') }}" class="p-mymenu__body__arrow" alt="{{ __('Link') }}">
           </a>
         </li>
       </ul>
     </div>
-    <a href="{{ URL::previous() }}" class="p-mymenu__back u-pb-m">&lt; 戻る</a>
+    <a href="{{ URL::previous() }}" class="p-mymenu__back u-pb-m">&lt; {{ __('Back')}}</a>
   </div>
 </section>

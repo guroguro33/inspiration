@@ -1,10 +1,10 @@
-購入通知
+{{ __('Purchase notification') }}
 
-こんにちは, {{ $user->name }}さん
+{{ __('Hello!!')}} {{ $user->name }}{{ __('!')}}
 @if($isBuyer === true)
-下記ヒラメキを購入しましたので、お知らせします。
+{{ __('I will inform you that you have purchased Inspiration.')}}
 @else
-下記ヒラメキの購入がありましたので、お知らせします。
+{{ __('We would like to inform you that the customer has purchased the inspiration.')}}
 @endif
 --------------------------------------------
 {{ $idea->idea_title }}
@@ -14,10 +14,10 @@
 {{ $idea->idea_description }}
 --------------------------------------------
 
-ヒラメキの詳細はこちらのページをご覧ください 
+{{ __('For details of inspiration, please see this page')}} 
 https://inspiration.com/idea/{{ $idea->id }}/show/
 
-連絡先:
+{{ __('Contact Us') }}:
 Inspiration
 Phone: 000-000-0000
 email: info@inspiration.com

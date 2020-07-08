@@ -9,7 +9,7 @@
   @endcomponent
 
   <section class="l-sidebar__mypage">
-    <h1 class="p-mypage__title u-pb-m">出品したヒラメキ</h1>
+    <h1 class="p-mypage__title u-pb-m">{{ __('Exhibited inspirations') }}</h1>
     <div class="u-mb-xxl">
       {{-- <div id="app"> --}}
 

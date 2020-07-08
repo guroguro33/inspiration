@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>購入通知</title>
+  <title>{{ __('Purchase notification') }}</title>
 
   {{-- <link rel="stylesheet" href="{{ asset('css/email.css')}}" /> --}}
   <style>
@@ -233,11 +233,11 @@
           <table>
             <tr>
               <td>
-              <h3>こんにちは, {{ $user->name }}さん</h3>
+              <h3>{{ __('Hello!!')}} {{ $user->name }}{{ __('!')}}</h3>
                 @if($isBuyer === true)
-                <p class="lead">下記ヒラメキを購入しましたので、お知らせします。</p>
+                <p class="lead">{{ __('I will inform you that you have purchased Inspiration.') }}</p>
                 @else
-                <p class="lead">下記ヒラメキの購入がありましたので、お知らせします。</p>
+                <p class="lead">{{ __('We would like to inform you that the customer has purchased the inspiration.') }}</p>
                 @endif
                 <p>
                   -------------------------------------------------------------------------------------------------------
@@ -247,7 +247,7 @@
                 <p>{{ $idea->idea_description }}</p>
                 <!-- Callout Panel -->
                 <p class="callout">
-                  ヒラメキの詳細はこちらのページをご覧ください <a href="https://inspiration.com/idea/{{$idea->id}}/show/">Click it! &raquo;</a>
+                  {{ __('For details of inspiration, please see this page')}} <a href="https://inspiration.com/idea/{{$idea->id}}/show/">Click it! &raquo;</a>
                 </p><!-- /Callout Panel -->
 
                 <!-- social & contact -->
@@ -260,7 +260,7 @@
                         <tr>
                           <td>
 
-                            <h5 class="">ソーシャルメディア:</h5>
+                            <h5 class="">{{ __('Social media') }}:</h5>
                             <p class=""><a href="#" class="soc-btn fb">Facebook</a> <a href="#"
                                 class="soc-btn tw">Twitter</a> <a href="#" class="soc-btn in">Instagram</a></p>
 
@@ -274,7 +274,7 @@
                         <tr>
                           <td>
 
-                            <h5 class="">連絡先:</h5>
+                            <h5 class="">{{ __('Contact Us') }}:</h5>
                             <p>Phone: <strong>000-000-0000</strong><br />
                               Email: <strong><a href="emailto:info@inspiration.com">info@inspiration.com</a></strong>
                             </p>

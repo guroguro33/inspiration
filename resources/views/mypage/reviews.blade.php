@@ -9,7 +9,7 @@
   @endcomponent
 
   <section class="l-sidebar__mypage">
-    <h1 class="p-mypage__title u-pb-m">購入者からのレビュー</h1>
+    <h1 class="p-mypage__title u-pb-m">{{ __('Reviews from buyers') }}</h1>
     <div class="u-mb-xxl">
       
       <reviews-component :evaluations="{{ $evaluations }}"></reviews-component>
