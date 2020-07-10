@@ -6,8 +6,8 @@
 
     <div class="p-detail__note u-pb-m">
       <div class="p-detail__note__info">
-        <img src="/img/star.svg" alt="星のアイコン" class="p-detail__note__star">
-        <span class="p-detail__note__text">{{ avgFive_rank }} ({{ idea.evaluations.length }}件)</span>
+        <img src="/img/star.svg" alt="Icon of star" class="p-detail__note__star">
+        <span class="p-detail__note__text">{{ avgFive_rank }} ({{ idea.evaluations.length }}{{ $t('case') }})</span>
         <span class="p-detail__note__text">by {{ idea.user.name }}</span>
       </div>
       <div class="p-detail__btn">
@@ -23,28 +23,33 @@
           <div class="p-detail__btn--img">
             <i :class="[isLikeTrue === true ? 'fas fa-heart' : 'far fa-heart']"></i>
           </div>
-          <span>お気に入り</span>
+          <span>{{ $t("Like") }}</span>
         </a>
         <!-- 非ログイン時はお気に入りボタンが無効 -->
         <a v-else class="p-detail__btn--like">
           <div class="p-detail__btn--img">
             <i class="far fa-heart"></i>
           </div>
-          <span>お気に入り</span>
+          <span>{{ $t("Like") }}</span>
         </a>
       </div>
     </div>
 
     <div class="p-detail__date u-pb-xxl">
-      登録日：{{ idea.created_at | date }}
+      {{ $t("Registration date") }}：{{ idea.created_at | date }}
     </div>
 
+    <!-- 概要と詳細のタブ切り替え -->
     <div class="p-detail__tab u-mb-l">
-      <a :class="['p-detail__tab__btn', (isdetail)? '' : 'u-border--bottom']" @click="isdetail = false">概要</a>
-      <a :class="['p-detail__tab__btn', (isdetail)? 'u-border--bottom' : '']" @click="isdetail = true">詳細</a>
+      <a :class="['p-detail__tab__btn', (isdetail)? '' : 'u-border--bottom']" @click="isdetail = false">{{ $t("Description") }}</a>
+      <a :class="['p-detail__tab__btn', (isdetail)? 'u-border--bottom' : '']" @click="isdetail = true">{{ $t("Detail") }}</a>
     </div>
+
+    <!-- 概要表示 -->
     <div class="p-detail__text u-mb-xl" v-if="!isdetail">{{ idea.idea_description }}</div>
-    <div class="p-detail__text u-mb-xl" v-else-if="isdetail && !isBought">購入後に表示されます</div>
+    <!-- 購入後、作用再表示する旨の表示 -->
+    <div class="p-detail__text u-mb-xl" v-else-if="isdetail && !isBought">{{ $t('Displayed after purchase')}}</div>
+    <!-- 購入後の詳細表示 -->
     <div class="p-detail__text u-mb-xl" v-else-if="isdetail && isBought">{{ idea.idea_detail}}</div>
 
   </div>
@@ -78,10 +83,11 @@ export default {
     }
   },
   created() {
-    console.log("ログイン状態:" + this.isLogin);
-    console.log("購入済みかどうか:" + this.isBought);
+    // console.log("ログイン状態:" + this.isLogin);
+    // console.log("購入済みかどうか:" + this.isBought);
   },
   computed: {
+    // ５段階評価の平均値算出
     avgFive_rank() {
       if (!this.idea.avg_five_rank[0]) {
         return "-";
@@ -99,27 +105,27 @@ export default {
           id: val.id
         })
         .then(res => {
-          console.log("axios成功");
+          // console.log("axios成功");
           this.isLikeTrue = !this.isLikeTrue;
         })
         .catch(function(error) {
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data);
-            console.log(error.response.status); // 例：400
-            console.log(error.response.statusText); // Bad Request
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log("Error", error.message);
-          }
-          console.log(error.config);
+          // if (error.response) {
+          //   // The request was made and the server responded with a status code
+          //   // that falls out of the range of 2xx
+          //   console.log(error.response.data);
+          //   console.log(error.response.status); // 例：400
+          //   console.log(error.response.statusText); // Bad Request
+          //   console.log(error.response.headers);
+          // } else if (error.request) {
+          //   // The request was made but no response was received
+          //   // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          //   // http.ClientRequest in node.js
+          //   console.log(error.request);
+          // } else {
+          //   // Something happened in setting up the request that triggered an Error
+          //   console.log("Error", error.message);
+          // }
+          // console.log(error.config);
         });
     }
   }

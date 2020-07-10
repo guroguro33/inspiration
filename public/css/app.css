@@ -208,6 +208,10 @@ textarea.is-invalid {
   border: solid 1px #DD1B1B;
 }
 
+input {
+  outline: 0;
+}
+
 input.is-invalid {
   border: solid 1px #DD1B1B;
 }
@@ -667,7 +671,7 @@ br {
 
 .c-form__item__text {
   padding: 10px;
-  width: calc(100% - 15px * 2);
+  width: calc(100% - 10px * 2);
   border: none;
   font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF   Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
   font-size: 14px;
@@ -838,8 +842,20 @@ br {
 
 .c-btn__main--gray2.is-notlike:before {
   background-color: #29A8E1;
-  font-size: 12px;
-  content: "\304A\6C17\306B\5165\308A\306B\8FFD\52A0";
+  font-size: 14px;
+  content: "\304A\6C17\306B\5165\308A\8FFD\52A0";
+}
+
+@media screen and (max-width: 896px) {
+  .c-btn__main--gray2.is-notlike:before {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .c-btn__main--gray2.is-notlike:before {
+    font-size: 10px;
+  }
 }
 
 .c-btn__main--blue {
@@ -857,9 +873,10 @@ br {
 
 .c-btn__main--blue2 {
   margin: 0;
-  padding: 10px 20px;
+  padding: 8px 15px;
   width: 150px;
   border: solid 2px #29A8E1;
+  background-color: inherit;
   color: #29A8E1;
   cursor: default;
 }
@@ -939,6 +956,7 @@ br {
 @media screen and (max-width: 896px) {
   .c-desc__title {
     font-size: 12px;
+    word-wrap: break-word;
   }
 }
 
@@ -970,6 +988,7 @@ br {
 
 .c-desc__text {
   font-size: 12px;
+  word-break: break-word;
 }
 
 @media screen and (max-width: 896px) {
@@ -1395,6 +1414,7 @@ br {
 .p-mymenu__body__link {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .p-mymenu__body__link:hover {
@@ -1610,6 +1630,22 @@ br {
   font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF   Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
 }
 
+.p-sort__item__select ::-moz-placeholder {
+  color: #3B4043;
+}
+
+.p-sort__item__select :-ms-input-placeholder {
+  color: #3B4043;
+}
+
+.p-sort__item__select ::-ms-input-placeholder {
+  color: #3B4043;
+}
+
+.p-sort__item__select ::placeholder {
+  color: #3B4043;
+}
+
 .p-sort__price {
   width: 35%;
 }
@@ -1629,7 +1665,7 @@ br {
 .p-sort__price__number {
   padding: 5px 10px;
   width: 20%;
-  font-size: 12px;
+  font-size: 10px;
   font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF   Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
 }
 
@@ -1753,6 +1789,7 @@ br {
 .p-detail__title {
   font-size: 24px;
   font-weight: 700;
+  word-break: break-word;
 }
 
 @media screen and (max-width: 896px) {
@@ -1853,6 +1890,7 @@ br {
   border-radius: 10px;
   white-space: pre-wrap;
   font-size: 14px;
+  word-break: break-word;
 }
 
 @media screen and (max-width: 896px) {
@@ -1898,6 +1936,7 @@ br {
 .p-detail__review__text {
   font-size: 14px;
   white-space: pre-wrap;
+  word-break: break-word;
 }
 
 @media screen and (max-width: 896px) {

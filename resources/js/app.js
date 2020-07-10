@@ -6,9 +6,19 @@
 
 require('./bootstrap');
 require('./script');
+import VueI18n from 'vue-i18n';
 var Paginate = require('vuejs-paginate')
 
 window.Vue = require('vue');
+
+// 多言語化
+Vue.use(VueI18n);
+const i18n = new VueI18n({
+  locale: 'ja',
+  messages: {
+    ja: require('../../resources/lang/ja.json')
+  },
+})
 
 Vue.component('paginate', Paginate)
 /**
@@ -36,4 +46,5 @@ Vue.component('idea-info-component', require('./components/IdeaInfoComponent.vue
 
 const app = new Vue({
   el: '#app',
+  i18n: i18n
 });

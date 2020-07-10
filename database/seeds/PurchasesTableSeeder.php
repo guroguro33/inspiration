@@ -19,6 +19,6 @@ class PurchasesTableSeeder extends Seeder
     DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
     // データの挿入
-    factory(Purchase::class, 40)->create();
+    factory(Purchase::class, 150)->create();
   }
 }

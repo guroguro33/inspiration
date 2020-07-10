@@ -19,6 +19,7 @@
 
       <li class="c-form__item u-pb-l">
         <label class="c-form__item__name">
+          {{ __('Password') }}
           <input type="password" name="password" class="c-form__item__input u-border u-mb-s  @error('password') is-invalid @enderror" placeholder="{{ __('Please Enter')}}" required autocomplete="current-password">
         </label>
         @error('password')

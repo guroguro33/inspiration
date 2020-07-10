@@ -6,20 +6,23 @@ use App\Idea;
 use App\Like;
 use App\Category;
 use App\Purchase;
+use App\Mail\PurchaseReport;
 use Illuminate\Http\Request;
 use App\Http\Requests\IdeaRequest;
+use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 class IdeasController extends Controller
 {
+  // --------------------------------------------
   // ヒラメキ一覧表示
-  public function index(Request $request){
+  // --------------------------------------------
+  public function index(SearchRequest $request){
 
     // カテゴリ情報を取得
     $categories = Category::all();
-    // dd($categories);
 
     $query = Idea::query();
 
@@ -46,55 +49,35 @@ class IdeasController extends Controller
           $query->orderBy('created_at', 'asc');
         }
       }
-      // 星の数の選択があった場合
-      // if(!empty($request->star)){
-      //   if($request->star === '1'){
-      //     $query->orderBy('average','desc');
-      //   }else{
-      //     $query->orderBy('average', 'asc');
-      //   }
-      // }
-
-      // dd($query);
+      // タイトル検索があった場合
+      if(!empty($request->title)){
+          $query->where('idea_title', 'like', "%$request->title%");
+      }
     }
-
-    // 表示するヒラメキ取得
-    // $ideas = Idea::with([
-    //   'user',
-    //   'category',
-    //   'evaluations',
-    //   'avgFive_rank'
-    // ])->get();
     
-    // $value = $ideas->sortByDesc(function($idea){
-    //   return $idea->evaluations->avg('five_rank');
-    // });
-
-    // $value = $value->paginate(10)->appends($request->all());
-    // dd($value->toArray());
-    
+    // ヒラメキ情報を取得
     $ideas = $query->with([
       'user',
       'category',
       'evaluations',
       'avgFive_rank'
-    ])->latest()->paginate(10)->appends($request->all());
-
-    // $test = Idea::with(['evaluations'])->get();
-    // $ideas = $test->sortByDesc(function($idea){
-    //   return $idea->evaluations->avg('five_rank');
-    // });
-    // dd($ideas);
-
-
+    ])->latest()->paginate(20)->appends($request->all());
+    
     // 絞り込み条件を再表示するため、取得
     $inputData = $request->all();
 
     return view('ideas.index', compact('categories', 'ideas', 'inputData'));
   }
 
+  // --------------------------------------------
   // ヒラメキ出品画面表示
+  // --------------------------------------------
   public function create(){
+
+    // 未ログインユーザーの場合、新規登録画面へ遷移
+    if(!Auth::check()){
+      return redirect('/register');
+    }
 
     // ユーザー情報を取得
     $user = Auth::user();
@@ -103,16 +86,18 @@ class IdeasController extends Controller
     $categories = Category::all();
     
     // ユーザー画像の有無
-    $isImage = false;
-    // dd($user->toArray());
-    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+    if(!empty($user->user_img)){
       $isImage = true;
+    }else{
+      $isImage = false;
     }
     
     return view('ideas.create', compact('user', 'categories', 'isImage'));
   }
 
+  // --------------------------------------------
   // ヒラメキ出品登録
+  // --------------------------------------------
   public function store(IdeaRequest $request){
 
     // インスタンス生成
@@ -126,10 +111,12 @@ class IdeasController extends Controller
     return redirect('/mypage')->with('flash_message', __('Registered'));
   }
 
+  // --------------------------------------------
   // ヒラメキ編集画面表示
+  // --------------------------------------------
   public function edit($id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty($idea = Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -137,13 +124,9 @@ class IdeasController extends Controller
     $user = Auth::user();
 
     // 自分の出品したもの以外の場合は編集不可
-    if(Idea::find($id)->user_id !== $user->id){
+    if($idea->user_id !== $user->id){
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     } 
-
-    // ヒラメキ詳細情を取得
-    $idea = Idea::find($id);
-    // dd($idea->toArray());
 
     // 購入済みの場合は編集不可
     $isBought = $idea->purchases()->first();
@@ -155,18 +138,21 @@ class IdeasController extends Controller
     $categories = Category::all();
     
     // ユーザー画像の有無
-    $isImage = false;
-    if(Storage::disk('local')->exists('public/user_images/' . $user->user_img)){
+    if(!empty($user->user_img)){
       $isImage = true;
+    }else{
+      $isImage = false;
     }
     
     return view('ideas.edit', compact('user', 'isImage', 'categories', 'idea'));
   }
 
+  // --------------------------------------------
   // ヒラメキ編集登録
+  // --------------------------------------------
   public function update(IdeaRequest $request, $id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty($idea = Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -174,7 +160,7 @@ class IdeasController extends Controller
     $user = Auth::user();
 
     // 自分の出品したもの以外の場合は編集不可
-    if(Idea::find($id)->user_id !== $user->id){
+    if($idea->user_id !== $user->id){
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -193,10 +179,12 @@ class IdeasController extends Controller
     return redirect('/mypage')->with('flash_message', __('Registered'));
   }
 
+  // --------------------------------------------
   // ヒラメキ削除
+  // --------------------------------------------
   public function delete($id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty($idea = Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -204,7 +192,7 @@ class IdeasController extends Controller
     $user = Auth::user();
 
     // 自分の出品したもの以外の場合は編集不可
-    if(Idea::find($id)->user_id !== $user->id){
+    if($idea->user_id !== $user->id){
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -222,10 +210,12 @@ class IdeasController extends Controller
     return redirect('/mypage')->with('flash_message', __('Deleted.'));
   }
 
+  // --------------------------------------------
   // ヒラメキ詳細画面表示
+  // --------------------------------------------
   public function show($id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty(Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -243,14 +233,13 @@ class IdeasController extends Controller
     // ログイン済みの場合、自分のお気に入りリストと購入済みか、レビュー済みかを取得
     if(Auth::check()){
       // ログイン状態
-      $isLogin = json_encode(true);
+      $isLogin = true;
 
       // ログインしているユーザー情報取得
       $user = Auth::user();
 
       // お気に入りリスト
       $likeLists = $user->likes()->pluck('idea_id');
-      $likeLists = json_encode($likeLists);
       
       // 購入済みかどうか
       if($user->purchases()->where('idea_id', $id)->first()){
@@ -262,32 +251,32 @@ class IdeasController extends Controller
         // レビューデータが未定義にならないようnullを代入
         $review = null;
       };
-
-      // jsonに変換
-      $isBought = json_encode($isBought);
       
-      // dd($review);
-
     } else {
       // ログイン状態
-      $isLogin = json_encode(false);
+      $isLogin = false;
 
       // 未ログインの時、未定義にならないように0を代入
-      $likeLists = json_encode(array());
-      $isBought = json_encode(false);
+      $likeLists = array();
+      $isBought = false;
       $review = null;
-      // dd($likeLists);
+      $user = null;
       
     }
-      // dd($idea->toArray());
+    // jsonに変換
+    $isLogin = json_encode($isLogin);
+    $isBought = json_encode($isBought);
+    $likeLists = json_encode($likeLists);
+
     return view('ideas.show', compact('isLogin', 'user', 'idea', 'likeLists', 'isBought', 'review'));
-    
   }
 
+  // --------------------------------------------
   // ヒラメキを購入する
+  // --------------------------------------------
   public function buy($id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty(Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -295,7 +284,9 @@ class IdeasController extends Controller
     $user = Auth::user();
 
     // 自分の出品したものを購入していないかチェック
-    if(Idea::find($id)->user_id === $user->id) {
+    $idea = Idea::find($id);
+  
+    if($idea->user_id === $user->id) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -314,13 +305,20 @@ class IdeasController extends Controller
       $purchase->save();
     }
 
+    // 購入が完了したら、購入者にメール送信を行う
+    Mail::to($user->email)->send(new PurchaseReport($user, $idea, $isBuyer = true));
+    // 続いて、販売者にメール送信を行う
+    Mail::to($idea->user->email)->send(new PurchaseReport($idea->user, $idea, $isBuyer = false));
+
     // リダイレクトする
     // sessionフラッシュにメッセージ格納
     return redirect("/ideas/$id/show/")->with('flash_message', __('Bought it'));
 
   }
 
+  // --------------------------------------------
   // 気になるの着脱
+  // --------------------------------------------
   public function toggleLike(Request $request){
     // 当該のヒラメキのidを代入
     $idea_id = $request->id;

@@ -19,13 +19,8 @@ use Faker\Generator as Faker;
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'user_introduce' => $faker->paragraphs($nb = 3, $asText = true),
-        'user_img' => $faker->imageUrl($width = 640,
-                                    $height = 480,
-                                    $category = null,
-                                    $randomize = true,
-                                    $word = null,
-                                    $gray = false),
+        'user_introduce' => $faker->realText($faker->numberBetween(100, 200)),
+        'user_img' => null,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

@@ -46,15 +46,15 @@
       <nav class="p-menu">
         @guest
           <ul class="p-menu__list">
-            <li class="p-menu__item"><a href="{{ route('ideas.index')}}" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
+            <li class="p-menu__item"><a href="{{ route('ideas.index')}}" class="p-menu__link js-menu-link">{{ __('See inspirations') }}</a></li>
             <li class="p-menu__item"><a href="{{ route('login') }}" class="p-menu__link js-menu-link">{{ __('Login') }}</a></li>
             <li class="p-menu__item"><a href="{{ route('register') }}" class="p-menu__link js-menu-link">{{ __('Register') }}</a></li>
           </ul>
         @else
           <ul class="p-menu__list">
-            <li class="p-menu__item"><a href="{{ route('mypage.index')}}" class="p-menu__link js-menu-link">マイページ</a></li>
-            <li class="p-menu__item"><a href="{{ route('ideas.index')}}" class="p-menu__link js-menu-link">ヒラメキを見る</a></li>
-            <li class="p-menu__item"><a href="{{ route('ideas.create')}}" class="p-menu__link js-menu-link">ヒラメキを売る</a></li>
+            <li class="p-menu__item"><a href="{{ route('mypage.index')}}" class="p-menu__link js-menu-link">{{ __('MyPage') }}</a></li>
+            <li class="p-menu__item"><a href="{{ route('ideas.index')}}" class="p-menu__link js-menu-link">{{ __('See inspirations') }}</a></li>
+            <li class="p-menu__item"><a href="{{ route('ideas.create')}}" class="p-menu__link js-menu-link">{{ __('Sell inspirations') }}</a></li>
             <li class="p-menu__item"><a href="{{ route('logout') }}" class="p-menu__link js-menu-link" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -76,7 +76,7 @@
   {{-- エラー時 --}}
   @if(count($errors) > 0)
     <div class="c-alert__register--error js-flash-msg" role="alert">
-      エラーがあります
+      {{ __('There is an error') }}
     </div>
   @endif
   
@@ -95,10 +95,10 @@
         <a href="" class="l-footer__icon"><i class="fab fa-facebook"></i></a>
       </div>
       <div class="l-footer__contact">
-        <p class="l-footer__contact__lead">お問い合わせ</p>
+        <p class="l-footer__contact__lead">{{ __('Contact Us') }}</p>
         <div class="l-footer__contact__body">
           <a href="tel:0312345678">03-1234-5678</a>
-          <a href="mailto:info@mail.com">info@mail.com</a>
+          <a href="mailto:info@mail.com">info@inspiration.com</a>
         </div>
       </div>
     </div>

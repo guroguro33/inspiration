@@ -10,7 +10,7 @@
     <ul>
       <li class="c-form__item u-pb-l">
         <label class="c-form__item__name">
-          {{ __('E-Mail Address') }}{{ __('Required') }}
+          {{ __('E-Mail Address') }}（{{ __('Required') }}）
           <input type="email" name="email" class="c-form__item__input u-border u-mb-s @error('email') is-invalid @enderror"  value="{{ $email ?? old('email') }}" placeholder="{{ __('Please Enter')}}" required autocomplete="email">
         </label>
         @error('email')
@@ -20,7 +20,7 @@
 
       <li class="c-form__item u-pb-l">
         <label class="c-form__item__name">
-          {{ __('Password')}}{{ __('Required') }}<span>※{{ __('8 characters or more')}}</span>
+          {{ __('Password')}}（{{ __('Required') }}）<span>※{{ __('8 characters or more')}}</span>
           <input type="password" name="password" class="c-form__item__input u-border u-mb-s @error('password') is-invalid @enderror" placeholder="{{ __('Please Enter')}}" required autocomplete="off" autofocus>
         </label>
         @error('password')

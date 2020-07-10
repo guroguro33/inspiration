@@ -4,16 +4,16 @@
 <div class="l-container l-sidebar">
   <section class="l-sidebar__detail">
     
-    <idea-info-component :is-login="{{ $isLogin }}" :idea="{{ $idea }}" :like-lists="{{ $likeLists }}" :is-bought="{{ $isBought}}"></idea-info-component>
+    <idea-info-component :is-login="{{ $isLogin }}" :idea="{{ json_encode($idea) }}" :like-lists="{{ $likeLists }}" :is-bought="{{ $isBought }}"></idea-info-component>
 
     <div class="p-detail__review">
-      <h3 class="p-detail__review__heading u-pb-l">購入者からのレビュー</h3>
+      <h3 class="p-detail__review__heading u-pb-l">{{ __('Reviews from buyers') }}</h3>
       <div class="p-detail__review__body">
 
         {{-- レビューがない場合 --}}
         @if($idea->evaluations == "[]")
         <p class="u-pb-m u-mb-xxl">
-          まだありません
+          {{ __ ('Nothing yet') }}
         </p>
         {{-- レビューがある場合 --}}
         @else
@@ -26,7 +26,7 @@
               <div class="p-detail__review__desc">
                 <p class="p-detail__review__text u-pb-s">{{$evaluation->idea_review}}</p>
                 <div class="p-detail__review__info u-pb-s">
-                  <img src="{{ asset('./img/star.svg') }}" alt="星のアイコン" class="p-detail__review__star">
+                  <img src="{{ asset('./img/star.svg') }}" alt="{{ __('Icon of Star') }}" class="p-detail__review__star">
                   <span class="p-detail__review__point">{{ $evaluation->five_rank }}</span>
                   <span class="p-detail__review__point">by {{ $evaluation->user->name }}</span>
                 </div>
@@ -42,23 +42,23 @@
   <section class="l-sidebar__sub">
     <div class="c-fixed__show">
       <div class="p-checkout__pay u-mb-l">
-        <p class="p-checkout__price u-pb-xl">{{ number_format($idea->idea_price) }}円</p>
+        <p class="p-checkout__price u-pb-xl">{{ number_format($idea->idea_price) }}{{ __('yen') }}</p>
         {{-- 未ログイン時 --}}
         @if($isLogin === 'false' && $isBought === 'false')
-        <a href="{{ route('register') }}" class="c-btn__main--blue u-m-0auto">新規登録後、<br>購入できます</a>
+        <a href="{{ route('login') }}" class="c-btn__main--blue u-m-0auto">{{ __('After login,') }}<br>{{ __('You can buy') }}</a>
         {{-- ログインしているが、自分の出品したものの場合 --}}
         @elseif($isLogin === 'true' && $idea->user_id === $user->id)
-        <button class="c-btn__main--blue2 u-m-0auto" disabled="true">購入できません</button>
+        <button class="c-btn__main--blue2 u-m-0auto" disabled="true">{{ __("Can't buy")}}</button>
         </form>
         {{-- ログインしているが、未購入時 --}}
         @elseif($isLogin === 'true' && $isBought === 'false')
         <form action="{{ route('ideas.buy', $idea->id) }}" method="POST">
           @csrf
-          <input type="submit" class="c-btn__main--blue u-m-0auto" value="購入する">
+          <input type="submit" class="c-btn__main--blue u-m-0auto" value="{{ __('To buy') }}">
         </form>
         {{-- 購入済み時 --}}
         @elseif($isLogin === 'true' && $isBought === 'true')
-        <button class="c-btn__main--blue2 u-m-0auto" disabled="true">購入済み</button>
+        <button class="c-btn__main--blue2 u-m-0auto" disabled="true">{{ __('Purchased') }}</button>
         @endif
       </div>
       {{-- 購入済みでまだレビューしていない時はレビューが可能 --}}
@@ -79,7 +79,7 @@
         @endcomponent
       </form>
       @endif
-      <a href="{{ URL::previous() }}" class="p-mymenu__back u-pb-m">&lt; 戻る</a>
+      <a href="{{ URL::previous() }}" class="p-mymenu__back u-pb-m">&lt; {{ __('Back') }}</a>
     </div>
   </section>
 

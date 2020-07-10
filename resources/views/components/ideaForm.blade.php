@@ -3,7 +3,7 @@
     <h1 class="p-mypage__title u-pb-m">{{ __('Sell ​​Hirameki') }}</h1>
     <form action="{{ route('ideas.store') }}" method="POST" class="c-form">
   @else
-    <h1 class="p-mypage__title u-pb-m">{{ __('Edit ​​Hirameki') }}</h1>
+    <h1 class="p-mypage__title u-pb-m">{{ __('Edit ​Hirameki') }}</h1>
     <form action="{{ route('ideas.update', $idea->id) }}" method="POST" class="c-form u-pb-0">
   @endif
     @csrf
@@ -33,7 +33,7 @@
 
     <div class="c-form__item u-pb-l">
       <p class="c-form__item__name u-pb-s">概要（購入前に表示されます）（{{ __("Required") }}）</p>
-      <textarea name="idea_description" class="c-form__item__text @error('idea_description') is-invalid @enderror" cols="20" rows="8" placeholder="入力してください" autocomplete="off" required>{{ old('idea_description', !empty($idea)? $idea->idea_description : '') }}</textarea>
+      <textarea name="idea_description" class="c-form__item__text @error('idea_description') is-invalid @enderror" cols="20" rows="8" placeholder="{{ __('Please enter') }}" autocomplete="off" required>{{ old('idea_description', !empty($idea)? $idea->idea_description : '') }}</textarea>
       @error('idea_description')
       <span class="c-form__item--alert">{{ $message }}</span>
       @enderror
@@ -41,15 +41,15 @@
 
     <div class="c-form__item u-pb-l">
       <p class="c-form__item__name u-pb-s">詳細（購入後に表示されます）（{{ __("Required") }}）</p>
-      <textarea name="idea_detail" class="c-form__item__text @error('idea_detail') is-invalid @enderror" cols="20" rows="12" placeholder="入力してください" autocomplete="off" required>{{ old('idea_detail', !empty($idea)? $idea->idea_detail : '') }}</textarea>
+      <textarea name="idea_detail" class="c-form__item__text @error('idea_detail') is-invalid @enderror" cols="20" rows="12" placeholder="{{ __('Please enter') }}" autocomplete="off" required>{{ old('idea_detail', !empty($idea)? $idea->idea_detail : '') }}</textarea>
       @error('idea_detail')
       <span class="c-form__item--alert">{{ $message }}</span>
       @enderror
     </div>
     
     <div class="c-form__item u-pb-l">
-      <p class="c-form__item__name u-pb-s">価格{{ __("Required") }}</p>
-      <input type="number" name="idea_price" class="c-form__item__price u-mb-s @error('idea_price') is-invalid @enderror" value="{{ old('idea_price', !empty($idea)? $idea->idea_price : '') }}" placeholder="入力してください" autocomplete="off" required>円
+      <p class="c-form__item__name u-pb-s">{{ __("Price") }}（{{ __("Required") }}）</p>
+      <input type="number" name="idea_price" class="c-form__item__price u-mb-s @error('idea_price') is-invalid @enderror" value="{{ old('idea_price', !empty($idea)? $idea->idea_price : '') }}" placeholder="{{ __('Please enter') }}" autocomplete="off" required>{{ __('yen') }}
       @error('idea_price')
       <span class="c-form__item--alert">{{ $message }}</span>
       @enderror

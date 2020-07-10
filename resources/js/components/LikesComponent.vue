@@ -3,8 +3,8 @@
     <form action="" method="" class="p-mypage__heading u-pb-m u-mb-l">
       <h2 class="p-mypage__heading__text"></h2>
       <select name="" class="p-mypage__heading__select" v-model="sort">
-        <option value="1">新しい順</option>
-        <option value="2">古い順</option>
+        <option value="1">{{ $t('new order') }}</option>
+        <option value="2">{{ $t('old order') }}</option>
       </select>
     </form>
 
@@ -18,33 +18,37 @@
         <div class="p-mypage__desc c-desc">
           <h3 class="c-desc__title">{{ like.idea.idea_title | substr32 }}</h3>
           <div class="c-desc__info u-pb-s">
-            <img src="/img/star.svg" alt="星のアイコン" class="c-desc__star">
-            <span class="c-desc__point">{{ avgFive_rank(like.idea) }} ({{ like.idea.evaluations.length }}件)</span>
-            <span class="c-desc__price">{{ like.idea.idea_price.toLocaleString() }}円</span>
+            <img src="/img/star.svg" alt="Icon of star" class="c-desc__star">
+            <span class="c-desc__point">{{ avgFive_rank(like.idea) }} ({{ like.idea.evaluations.length }}{{ $t('case') }})</span>
+            <span class="c-desc__price">{{ like.idea.idea_price.toLocaleString() }}{{ $t('yen') }}</span>
           </div>
           <p class="c-desc__text u-pb-m">{{ like.idea.idea_description | substr42 }}</p>
           <div class="p-mypage__link">
-            <a @click="toggleLike(like)" :class="['c-btn__main--gray2', notLike_id.includes(like.idea.id) ? 'is-notlike' : '']">気になるを解除</a>
-            
-            <a :href="'/ideas/' + like.idea.id +'/show'" class="c-btn__main--blue">詳細を見る</a>
+            <!-- お気に入り追加ボタン -->
+            <a @click="toggleLike(like)" :class="['c-btn__main--gray2', notLike_id.includes(like.idea.id) ? 'is-notlike' : '']">{{ $t('Remove like') }}</a>
+            <!-- 詳細を見るボタン -->
+            <a :href="'/ideas/' + like.idea.id +'/show'" class="c-btn__main--blue">{{ $t('view the details') }}</a>
           </div>
         </div>
       </div>
     </div>
 
     <paginate
-    :page-count="getPageCount"
-    :page-range="3"
-    :margin-pages="2"
-    :click-handler="clickCallback"
-    :prev-text="'＜'"
-    :next-text="'＞'"
-    :container-class="'c-pagination'"
-    :page-class="'c-pagination__page-item js-scrollTop'"
-    :prev-class="'c-pagination__prev js-scrollTop'"
-    :next-class="'c-pagination__next js-scrollTop'">
-  </paginate>
+      v-if="userData.likes != ''"
+      :page-count="getPageCount"
+      :page-range="3"
+      :margin-pages="2"
+      :click-handler="clickCallback"
+      :prev-text="'＜'"
+      :next-text="'＞'"
+      :container-class="'c-pagination'"
+      :page-class="'c-pagination__page-item js-scrollTop'"
+      :prev-class="'c-pagination__prev js-scrollTop'"
+      :next-class="'c-pagination__next js-scrollTop'">
+    </paginate>
     
+    <p v-else>{{ $t('Nothing yet') }}</p>
+
   </div>
 </template>
 
@@ -139,7 +143,7 @@ export default {
           id: val.idea.id
         })
         .then(res => {
-          console.log("axios成功");
+          // console.log("axios成功");
           // 配列notLike_idにお気に入りから外れたideaのidを加える
           if (this.notLike_id.includes(val.idea.id)) {
             this.notLike_id = this.notLike_id.filter(n => {
@@ -148,26 +152,25 @@ export default {
           } else {
             this.notLike_id.push(val.idea.id);
           }
-          console.log(this.notLike_id);
         })
         .catch(function(error) {
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data);
-            console.log(error.response.status); // 例：400
-            console.log(error.response.statusText); // Bad Request
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log("Error", error.message);
-          }
-          console.log(error.config);
+          // if (error.response) {
+          //   // The request was made and the server responded with a status code
+          //   // that falls out of the range of 2xx
+          //   console.log(error.response.data);
+          //   console.log(error.response.status); // 例：400
+          //   console.log(error.response.statusText); // Bad Request
+          //   console.log(error.response.headers);
+          // } else if (error.request) {
+          //   // The request was made but no response was received
+          //   // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          //   // http.ClientRequest in node.js
+          //   console.log(error.request);
+          // } else {
+          //   // Something happened in setting up the request that triggered an Error
+          //   console.log("Error", error.message);
+          // }
+          // console.log(error.config);
         });
     },
     // ページネーション
