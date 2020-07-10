@@ -18,9 +18,9 @@
       <div class="p-sort__price">
         <p class="p-sort__item__title u-pb-s">{{ __("Price") }}</p>
         <div class="p-sort__price__body">
-          <input type="number" name="low" class="p-sort__price__number @error('low') is-invalid @enderror" min="1" value="{{ !empty($inputData['low'])? $inputData['low'] : '' }}">
+          <input type="number" name="low" class="p-sort__price__number u-border @error('low') is-invalid @enderror" min="1" value="{{ !empty($inputData['low'])? $inputData['low'] : '' }}">
           <span>{{ __('yen or more') }}</span>
-          <input type="number" name="high" class="p-sort__price__number @error('hight') is-invalid @enderror" min="1" value="{{ !empty($inputData['high'])? $inputData['high'] : '' }}">
+          <input type="number" name="high" class="p-sort__price__number u-border @error('hight') is-invalid @enderror" min="1" value="{{ !empty($inputData['high'])? $inputData['high'] : '' }}">
           <span>{{ __('yen or less') }}</span>
         </div>
       </div>
@@ -34,7 +34,7 @@
       </div>
       <div class="p-sort__item">
         <p class="p-sort__item__title u-pb-s">{{ __('Title search') }}</p>
-        <input type="text" name="title" class="p-sort__item__select @error('title') is-invalid @enderror" value="{{ old('title',!empty($inputData['title'])? $inputData['title'] : '') }}" placeholder="{{ __('Please enter') }}" >
+        <input type="text" name="title" class="p-sort__item__select u-border @error('title') is-invalid @enderror" value="{{ old('title',!empty($inputData['title'])? $inputData['title'] : '') }}" placeholder="{{ __('Please enter') }}" >
         @error('title')
           <span class="c-form__item--alert" role="alert">{{ $message }}</span>
         @enderror

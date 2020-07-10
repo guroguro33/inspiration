@@ -876,6 +876,7 @@ br {
   padding: 8px 15px;
   width: 150px;
   border: solid 2px #29A8E1;
+  background-color: inherit;
   color: #29A8E1;
   cursor: default;
 }
@@ -987,6 +988,7 @@ br {
 
 .c-desc__text {
   font-size: 12px;
+  word-break: break-word;
 }
 
 @media screen and (max-width: 896px) {
@@ -1412,6 +1414,7 @@ br {
 .p-mymenu__body__link {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .p-mymenu__body__link:hover {
@@ -1662,7 +1665,7 @@ br {
 .p-sort__price__number {
   padding: 5px 10px;
   width: 20%;
-  font-size: 12px;
+  font-size: 10px;
   font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF   Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
 }
 
