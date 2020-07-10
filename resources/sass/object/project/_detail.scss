@@ -6,6 +6,7 @@
   &__title{
     font-size: $font-size_xl;
     font-weight: 700;
+    word-break: break-word;
     @include mq(md){
       font-size: $font-size_default;
     }
@@ -80,6 +81,7 @@
     border-radius: 10px;
     white-space: pre-wrap;
     font-size: $font-size_m;
+    word-break: break-word;
     @include mq(md){
       font-size: $font-size_s;
     }
@@ -112,6 +114,7 @@
     &__text{
       font-size: $font-size_m;
       white-space: pre-wrap;
+      word-break: break-word;
       @include mq(md){
         font-size: $font-size_xs;
       }

@@ -34,7 +34,10 @@
       </div>
       <div class="p-sort__item">
         <p class="p-sort__item__title u-pb-s">{{ __('Title search') }}</p>
-        <input type="text" name="title" class="p-sort__item__select @error('title') is-invalid @enderror" value="{{ old('title',!empty($inputData['title'])? $inputData['title'] : '') }}" placeholder="{{ __('Please select') }}" >
+        <input type="text" name="title" class="p-sort__item__select @error('title') is-invalid @enderror" value="{{ old('title',!empty($inputData['title'])? $inputData['title'] : '') }}" placeholder="{{ __('Please enter') }}" >
+        @error('title')
+          <span class="c-form__item--alert" role="alert">{{ $message }}</span>
+        @enderror
       </div>
     </div>
     <input type="submit" class="c-btn__main--gray1 u-mb-m" value="{{ __('Narrow down') }}">

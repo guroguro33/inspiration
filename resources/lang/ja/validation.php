@@ -117,6 +117,7 @@ return [
     */
 
     'attributes' => [
+      'name' => '名前',
       'email' => 'メールアドレス',
       'password' => 'パスワード',
       'new_password' => '新しいパスワード',
@@ -129,6 +130,7 @@ return [
       'idea_price' => '金額',
       'idea_review' => 'レビュー',
       'five_rank' => '5段階評価',
+      'title' => 'タイトル検索',
     ],
 
 ];

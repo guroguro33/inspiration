@@ -26,13 +26,13 @@
           <p class="p-mypage__sub__cat">{{ $idea->category->category_name}}</p>
         </div>
         <div class="p-mypage__desc c-desc">
-          <h3 class="c-desc__title">{{ mb_strimwidth($idea->idea_title, 0, 65, "…", "UTF-8") }}</h3>
+          <h3 class="c-desc__title">{{ mb_substr($idea->idea_title, 0, 32, "UTF-8") }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="{{ asset('./img/star.svg') }}" alt="{{ __('Icon of Star') }}" class="c-desc__star">
             <span class="c-desc__point">{{ (!empty($idea->avgFive_rank[0]->average))? round($idea->avgFive_rank[0]->average, 1) : '-'}} ({{ count($idea->evaluations) }}{{ __('case') }})</span>
             <span class="c-desc__price">{{ number_format($idea->idea_price) }}{{ __('yen') }}</span>
           </div>
-          <p class="c-desc__text">{{ mb_strimwidth($idea->idea_description, 0, 83, "…", "UTF-8") }}</p>
+          <p class="c-desc__text">{{ mb_substr($idea->idea_description, 0, 41, "UTF-8") }}</p>
         </div>
       </a>
       @endforeach
@@ -55,14 +55,14 @@
           <p class="p-mypage__sub__cat">{{ $evaluation->idea->category->category_name}}</p>
         </div>
         <div class="p-mypage__desc c-desc">
-          <h3 class="c-desc__title">{{ mb_strimwidth($evaluation->idea_review, 0, 65, "…", "UTF-8") }}</h3>
+          <h3 class="c-desc__title">{{ mb_substr($evaluation->idea_review, 0, 32, "UTF-8") }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="{{ asset('./img/star.svg') }}" alt="{{ __('Icon of Star') }}" class="c-desc__star">
             <span class="c-desc__point">{{ $evaluation->five_rank}}</span>
             <span class="c-desc__point">by {{ $evaluation->user->name }}</span>
           </div>
           <div class="p-mypage__desc__post">
-            <p class="c-desc__text">{{ mb_strimwidth($evaluation->idea->idea_title, 0, 65, "…", "UTF-8") }}</p>
+            <p class="c-desc__text">{{ mb_substr($evaluation->idea->idea_title, 0, 32, "UTF-8") }}</p>
             <span class="c-desc__price">{{ number_format($evaluation->idea->idea_price) }}{{ __('yen') }}</span>
           </div>
         </div>
@@ -86,13 +86,13 @@
           <p class="p-mypage__sub__cat">{{ $purchase->idea->category->category_name}}</p>
         </div>
         <div class="p-mypage__desc c-desc">
-          <h3 class="c-desc__title">{{ mb_strimwidth($purchase->idea->idea_title, 0, 65, "…", "UTF-8") }}</h3>
+          <h3 class="c-desc__title">{{ mb_substr($purchase->idea->idea_title, 0, 32, "UTF-8") }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="{{ asset('./img/star.svg') }}" alt="{{ __('Icon of Star') }}" class="c-desc__star">
             <span class="c-desc__point">{{ (!empty($purchase->idea->avgFive_rank[0]->average))? round($purchase->idea->avgFive_rank[0]->average, 1) : '-'}} ({{ count($purchase->idea->evaluations) }}{{ __('case') }})</span>
             <span class="c-desc__price">{{ number_format($purchase->idea->idea_price) }}{{ __('yen') }}</span>
           </div>
-          <p class="c-desc__text">{{ mb_strimwidth($purchase->idea->idea_description, 0, 83, "…", "UTF-8") }}</p>
+          <p class="c-desc__text">{{ mb_substr($purchase->idea->idea_description, 0, 41, "UTF-8") }}</p>
         </div>
       </a>
       @endforeach
@@ -114,13 +114,13 @@
           <p class="p-mypage__sub__cat">{{ $like->idea->category->cateogry_id }}</p>
         </div>
         <div class="p-mypage__desc c-desc">
-          <h3 class="c-desc__title">{{ mb_strimwidth($like->idea->idea_title, 0, 65, "…", "UTF-8") }}</h3>
+          <h3 class="c-desc__title">{{ mb_substr($like->idea->idea_title, 0, 32, "UTF-8") }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="{{ asset('./img/star.svg') }}" alt="{{ __('Icon of Star') }}" class="c-desc__star">
             <span class="c-desc__point">{{ (!empty($like->idea->avgFive_rank[0]->average))? round($like->idea->avgFive_rank[0]->average, 1) : '-'}} ({{ count($like->idea->evaluations) }}{{ __('case') }})</span>
             <span class="c-desc__price">{{ number_format($like->idea->idea_price) }}{{ __('yen') }}</span>
           </div>
-          <p class="c-desc__text">{{ mb_strimwidth($like->idea->idea_description, 0, 83, "…", "UTF-8") }}</p>
+          <p class="c-desc__text">{{ mb_substr($like->idea->idea_description, 0, 41, "UTF-8") }}</p>
         </div>
       </a>
       @endforeach

@@ -115,8 +115,8 @@ class IdeasController extends Controller
   // ヒラメキ編集画面表示
   // --------------------------------------------
   public function edit($id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty($idea = Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -124,12 +124,9 @@ class IdeasController extends Controller
     $user = Auth::user();
 
     // 自分の出品したもの以外の場合は編集不可
-    if(Idea::find($id)->user_id !== $user->id){
+    if($idea->user_id !== $user->id){
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     } 
-
-    // ヒラメキ詳細情を取得
-    $idea = Idea::find($id);
 
     // 購入済みの場合は編集不可
     $isBought = $idea->purchases()->first();
@@ -154,8 +151,8 @@ class IdeasController extends Controller
   // ヒラメキ編集登録
   // --------------------------------------------
   public function update(IdeaRequest $request, $id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty($idea = Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -163,7 +160,7 @@ class IdeasController extends Controller
     $user = Auth::user();
 
     // 自分の出品したもの以外の場合は編集不可
-    if(Idea::find($id)->user_id !== $user->id){
+    if($idea->user_id !== $user->id){
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -186,8 +183,8 @@ class IdeasController extends Controller
   // ヒラメキ削除
   // --------------------------------------------
   public function delete($id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty($idea = Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -195,7 +192,7 @@ class IdeasController extends Controller
     $user = Auth::user();
 
     // 自分の出品したもの以外の場合は編集不可
-    if(Idea::find($id)->user_id !== $user->id){
+    if($idea->user_id !== $user->id){
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -217,8 +214,8 @@ class IdeasController extends Controller
   // ヒラメキ詳細画面表示
   // --------------------------------------------
   public function show($id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty(Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -278,8 +275,8 @@ class IdeasController extends Controller
   // ヒラメキを購入する
   // --------------------------------------------
   public function buy($id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty(Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 

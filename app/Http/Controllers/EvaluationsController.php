@@ -29,8 +29,8 @@ class EvaluationsController extends Controller
   // レビュー登録
   // --------------------------------------------
   public function store(EvaluationRequest $request, $id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty(Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 
@@ -53,8 +53,8 @@ class EvaluationsController extends Controller
   // レビュー更新
   // --------------------------------------------
   public function update(EvaluationRequest $request, $id){
-    // GETパラメータが数字かチェック
-    if(!ctype_digit($id)) {
+    // GETパラメータが数字か、また存在する商品かチェック
+    if(!ctype_digit($id) || empty(Idea::find($id))) {
       return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
     }
 

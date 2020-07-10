@@ -76,7 +76,7 @@
   {{-- エラー時 --}}
   @if(count($errors) > 0)
     <div class="c-alert__register--error js-flash-msg" role="alert">
-      {{ session('There is an error') }}
+      {{ __('There is an error') }}
     </div>
   @endif
   

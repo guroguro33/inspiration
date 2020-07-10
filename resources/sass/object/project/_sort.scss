@@ -45,6 +45,9 @@
       width: 100%;
       font-size: $font-size_xs;
       font-family: $font-family_main;
+      ::placeholder{
+        color: $font-color_default;
+      }
     }
   }
   &__price{

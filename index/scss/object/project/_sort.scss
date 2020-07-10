@@ -42,9 +42,12 @@
     }
     &__select{
       padding: $space_s $space_m;
-      width: 100%;
+      width: 80%;
       font-size: $font-size_xs;
       font-family: $font-family_main;
+      &::placeholder{
+        color: red;
+      }
     }
   }
   &__price{
