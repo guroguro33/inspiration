@@ -68,7 +68,7 @@ export default {
   filters: {
     // 年月日を取り出して表示
     date(val) {
-      const date = new Date(val);
+      const date = new Date(val.replace(/-/g, "/"));
 
       const year = date.getFullYear();
       const month = date.getMonth() + 1;
@@ -79,7 +79,7 @@ export default {
     },
     // 時間を取り出して表示
     time(val) {
-      const date = new Date(val);
+      const date = new Date(val.replace(/-/g, "/"));
 
       let hour = date.getHours();
       hour = ("0" + hour).slice(-2);

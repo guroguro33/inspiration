@@ -247,7 +247,7 @@
                 <p>{{ $idea->idea_description }}</p>
                 <!-- Callout Panel -->
                 <p class="callout">
-                  {{ __('For details of inspiration, please see this page')}} <a href="https://inspiration.com/idea/{{$idea->id}}/show/">Click it! &raquo;</a>
+                  {{ __('For details of inspiration, please see this page')}} <a href="{{ url("/ideas/$idea->id/show/") }}">Click it! &raquo;</a>
                 </p><!-- /Callout Panel -->
 
                 <!-- social & contact -->
