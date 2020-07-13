@@ -5,6 +5,12 @@
 Laravelとvue.jsを使ったアイデアを売買できるサイトです。
 [デモページ](https://inspiration-heroku.herokuapp.com/)
 
+デモページでご利用ください
+
+ログインID：ito.hideki@example.com
+
+パスワード：password
+
 ## 画面イメージ ##
  
 ![TOPイメージ](https://user-images.githubusercontent.com/48667277/87261630-eec0da00-c4f1-11ea-97c7-08e09710255b.png)
@@ -39,12 +45,6 @@ Laravelとvue.jsを使ったアイデアを売買できるサイトです。
 - webpack: 4.43.0
  
 ## 使い方
-
-デモサイトでご利用ください
-
-ログインIDito.hideki@example.com
-
-パスワード：password
 
 ### 買うとき
 1. トップページから出品されたヒラメキ（アイデア）の一覧を見る
