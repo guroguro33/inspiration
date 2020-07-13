@@ -42,7 +42,7 @@ Laravelとvue.jsを使ったアイデアを売買できるサイトです。
 
 デモサイトでご利用ください
 
-ログインID：ito.hideki@example.com
+ログインIDito.hideki@example.com
 
 パスワード：password
 
@@ -62,6 +62,7 @@ Laravelとvue.jsを使ったアイデアを売買できるサイトです。
  
 1. [要件定義](https://docs.google.com/spreadsheets/d/1piRnf7Fa1SdBqLWNyC4xSxoPCJLuCKwS26w3g9L8aYk/edit?usp=sharing)
 2. [ER図](inspiration_ER図.drawio.pdf)
+3. [テストケース](https://docs.google.com/spreadsheets/d/1gL3SI_5ySqqq4TMyr4XSRMHnCHmjCPQ_018HXRUT_Wo/edit?usp=sharing)
   
 ## 作者
 
