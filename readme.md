@@ -1,72 +1,71 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Inspiration（インスピレーション）
+ 
+## アプリケーションの概要
+ 
+Laravelとvue.jsを使ったアイデアを売買できるサイトです。
+[デモページ](https://inspiration-heroku.herokuapp.com/)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## 画面イメージ ##
+ 
+![TOPイメージ](https://user-images.githubusercontent.com/48667277/87261630-eec0da00-c4f1-11ea-97c7-08e09710255b.png)
+ 
+## 機能と環境
+ 
+- 新規登録・ログイン・ログアウト・パスワードリマインダ
+- ヒラメキ（アイデア）の出品に関するCRUD機能
+- 模擬購入し、５段階評価とレビューの投稿機能
+- ソート機能（Eloquent ORM）
+- マイページ
+- プロフィール編集機能
+- プロフィール画像の保存（AWS S3）
+- ページネーション（vuejs-paginate）
+- 購入時や評価時のメール送信機能（Gmail SMTP）
+- Twitterシェア機能
+- お気に入り機能（axios）
+- 多言語化対応（en,ja）
+- 開発環境: laravel homestead（VirtualBox + Vagrant + Homestead）
+- データベース: MySQL
+- デモページ環境: heroku,AWS S3
+ 
+## 必要要件
+ 
+- php: 7.1.3
+- Laravel: 5.8
+- axios: 0.19
+- jQuery: 3.2
+- sass: 1.15.2
+- vue: 2.5.17
+- vue-i18n: 8.18.2
+- webpack: 4.43.0
+ 
+## 使い方
 
-## About Laravel
+デモサイトでご利用ください
+ログインID：ito.hideki@example.com
+パスワード：password
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 買うとき
+1. トップページから出品されたヒラメキ（アイデア）の一覧を見る
+2. 気になるヒラメキをクリックして詳細画面を確認（購入前は概要のみ閲覧可能）
+3. ログイン後、購入可能
+4. 購入後は、ヒラメキの詳細情報を見ることができる
+5. 購入後は５段階評価やレビューを書き込みすることができる
+6. ヒラメキ詳細画面にお気に入りボタンやTwitterシェアボタン有り
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 売るとき 
+1. ログイン後、「ヒラメキを売る」をクリックし、出品画面を表示
+2. タイトル、カテゴリー、概要、詳細、価格を入力し、出品する
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 設計資料
+ 
+1. [要件定義](https://docs.google.com/spreadsheets/d/1piRnf7Fa1SdBqLWNyC4xSxoPCJLuCKwS26w3g9L8aYk/edit?usp=sharing)
+2. [ER図](inspiration_ER図.drawio.pdf)
+  
+## 作者
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* 作成者：くろすけ
+* Twitter：[@guroguro33](https://twitter.com/guroguro33)
+ 
+## ライセンス
+ 
+"inspiration" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
