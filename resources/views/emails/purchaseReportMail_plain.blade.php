@@ -15,7 +15,7 @@
 --------------------------------------------
 
 {{ __('For details of inspiration, please see this page')}} 
-https://inspiration.com/idea/{{ $idea->id }}/show/
+{{ url("/ideas/$idea->id/show/") }}
 
 {{ __('Contact Us') }}:
 Inspiration

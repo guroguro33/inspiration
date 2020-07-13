@@ -250,7 +250,7 @@
                 <!-- Callout Panel -->
                 <p class="callout">
 
-                  {{ __('Please see this page for details of the review') }} <a href="https://inspiration.com/idea/{{$evaluation->idea_id}}/show/">Click it! &raquo;</a>
+                  {{ __('Please see this page for details of the review') }} <a href="{{ url("/ideas/$evaluation->idea_id/show/") }}">Click it! &raquo;</a>
                 </p><!-- /Callout Panel -->
 
                 <!-- social & contact -->

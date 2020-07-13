@@ -13,7 +13,7 @@
 --------------------------------------------
 
 {{ __('Please see this page for details of the review') }} 
-https://inspiration.com/idea/{{ $evaluation->idea_id }}/show/
+{{ url("/ideas/$evaluation->idea_id/show/") }}
 
 {{ __('Contact Us') }}:
 Inspiration

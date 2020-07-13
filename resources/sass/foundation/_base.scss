@@ -106,6 +106,9 @@ input {
     border: solid 1px $font-color_alert;
   }
 }
+input[type="submit"] {
+  -webkit-appearance: none;
+}
 select{
   outline: 0;
 }
