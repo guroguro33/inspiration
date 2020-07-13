@@ -41,7 +41,9 @@ Laravelとvue.jsを使ったアイデアを売買できるサイトです。
 ## 使い方
 
 デモサイトでご利用ください
+
 ログインID：ito.hideki@example.com
+
 パスワード：password
 
 ### 買うとき
