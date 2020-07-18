@@ -3,11 +3,11 @@
 ## アプリケーションの概要
  
 Laravelとvue.jsを使ったアイデアを売買できるサイトです。
-[デモページ](https://inspiration-heroku.herokuapp.com/)
+[デモページ](https://inspiration-web.net/)
 
 デモページでご利用ください
 
-ログインID：ito.hideki@example.com
+ログインID：kobayashi.kaori@example.net
 
 パスワード：password
 
@@ -31,12 +31,13 @@ Laravelとvue.jsを使ったアイデアを売買できるサイトです。
 - 多言語化対応（en,ja）
 - 開発環境: laravel homestead（VirtualBox + Vagrant + Homestead）
 - データベース: MySQL
-- デモページ環境: heroku,AWS S3
+- デモページ環境: AWS EC2,RDS,S3
  
 ## 必要要件
  
 - php: 7.1.3
 - Laravel: 5.8
+- league/flysystem-aws-s3-v3: 1.0
 - axios: 0.19
 - jQuery: 3.2
 - sass: 1.15.2
