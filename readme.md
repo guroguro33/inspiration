@@ -7,7 +7,7 @@ Laravelとvue.jsを使ったアイデアを売買できるサイトです。
 
 デモページでご利用ください
 
-ログインID：kobayashi.kaori@example.net
+ログインID：lkudo@example.com
 
 パスワード：password
 
