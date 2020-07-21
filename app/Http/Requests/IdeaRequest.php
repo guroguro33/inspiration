@@ -27,7 +27,7 @@ class IdeaRequest extends FormRequest
       'idea_title' => 'required|string|max:255',
       'idea_description' => 'required|string|max:2000',
       'idea_detail' => 'required|string|max:4000',
-      'idea_price' => 'required|integer|min:1',
+      'idea_price' => 'required|integer|min:1|max:100000000',
     ];
   }
 }

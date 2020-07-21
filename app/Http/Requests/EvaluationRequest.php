@@ -24,7 +24,7 @@ class EvaluationRequest extends FormRequest
   public function rules()
   {
     return [
-      'five_rank' => 'required|integer',
+      'five_rank' => 'required|integer|min:1|max:5',
       'idea_review' => 'required|string|max:1000'
     ];
   }

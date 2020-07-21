@@ -64,4 +64,26 @@ $(function () {
     reader.readAsDataURL(file);
   })
 
+  // ヒラメキ出品＆編集の概要文字カウンター
+  if ($('.js-count-desc').length) {
+    let count = $('.js-count-desc').val().length;
+    $('.js-counter-desc').text(count);
+  }
+
+  $('.js-count-desc').on('keyup', function () {
+    let count = $(this).val().length;
+    $('.js-counter-desc').text(count);
+  });
+
+  // ヒラメキ出品＆編集の詳細文字カウンター
+  if ($('.js-count-detail').length) {
+    let count = $('.js-count-detail').val().length;
+    $('.js-counter-detail').text(count);
+  }
+
+  $('.js-count-detail').on('keyup', function () {
+    let count = $(this).val().length;
+    $('.js-counter-detail').text(count);
+  });
+
 })

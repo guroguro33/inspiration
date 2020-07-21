@@ -25,10 +25,21 @@ class SearchRequest extends FormRequest
   {
     return [
         'category' => 'nullable|integer|between:1,7',
-        'low' => 'nullable|integer|min:1',
-        'hight' => 'nullable|integer|min:1',
+        'low' => 'nullable|integer|min:1|max:100000000',
+        'high' => 'nullable|integer|min:1|max:100000000',
         'day' => 'nullable|integer|between:1,2',
         'title' => 'nullable|string|max:255',
+    ];
+  }
+
+  // エラーメッセージ
+  public function messages()
+  {
+    return [
+      'category.integer' => 'カテゴリーに不正な入力がありました',
+      'category.between' => 'カテゴリーに不正な入力がありました',
+      'day.integer' => '出品日付に不正な入力がありました',
+      'day.between' => '出品日付に不正な入力がありました'
     ];
   }
 }

@@ -11,26 +11,38 @@
         <select name="category" class="p-sort__item__select u-border @error('category') is-invalid @enderror">
           <option value="">{{ __('Please select') }}</option>
           @foreach($categories as $category)
-            <option value="{{ $category->id }}" @if((!empty($inputData['category'])? $inputData['category'] : '') == $category->id) selected @endif>{{ $category->category_name}}</option>
+            <option value="{{ $category->id }}" @if(old('category', !empty($inputData['category'])? $inputData['category'] : '') == $category->id) selected @endif>{{ $category->category_name}}</option>
           @endforeach
         </select>
+        @error('category')
+          <span class="c-form__item--alert" role="alert">{{ $message }}</span>
+        @enderror
       </div>
       <div class="p-sort__price">
         <p class="p-sort__item__title u-pb-s">{{ __("Price") }}</p>
         <div class="p-sort__price__body">
-          <input type="number" name="low" class="p-sort__price__number u-border @error('low') is-invalid @enderror" min="1" value="{{ !empty($inputData['low'])? $inputData['low'] : '' }}">
+          <input type="number" name="low" class="p-sort__price__number u-border @error('low') is-invalid @enderror" min="1" value="{{ old('low', !empty($inputData['low'])? $inputData['low'] : '') }}">
           <span>{{ __('yen or more') }}</span>
-          <input type="number" name="high" class="p-sort__price__number u-border @error('hight') is-invalid @enderror" min="1" value="{{ !empty($inputData['high'])? $inputData['high'] : '' }}">
+          <input type="number" name="high" class="p-sort__price__number u-border @error('high') is-invalid @enderror" min="1" value="{{ old('high', !empty($inputData['high'])? $inputData['high'] : '') }}">
           <span>{{ __('yen or less') }}</span>
         </div>
+        @error('low')
+          <span class="c-form__item--alert" role="alert">{{ $message }}</span>
+        @enderror
+        @error('high')
+          <span class="c-form__item--alert" role="alert">{{ $message }}</span>
+        @enderror
       </div>
       <div class="p-sort__item">
         <p class="p-sort__item__title u-pb-s">{{ __('Exhibition date') }}</p>
         <select name="day" class="p-sort__item__select u-border @error('day') is-invalid @enderror">
           <option value="">{{ __('Please select') }}</option>
-          <option value="1" @if((!empty($inputData['day'])? $inputData['day'] : '') === '1') selected @endif>{{ __('new order')}}</option>
-          <option value="2" @if((!empty($inputData['day'])? $inputData['day'] : '') === '2') selected @endif>{{ __('old order')}}</option>
+          <option value="1" @if(old('day', !empty($inputData['day'])? $inputData['day'] : '') === '1') selected @endif>{{ __('new order')}}</option>
+          <option value="2" @if(old('day', !empty($inputData['day'])? $inputData['day'] : '') === '2') selected @endif>{{ __('old order')}}</option>
         </select>
+        @error('day')
+          <span class="c-form__item--alert" role="alert">{{ $message }}</span>
+        @enderror
       </div>
       <div class="p-sort__item">
         <p class="p-sort__item__title u-pb-s">{{ __('Title search') }}</p>

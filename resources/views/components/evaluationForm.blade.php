@@ -14,6 +14,9 @@
       <option value="5" @if(old('five_rank', !empty($review)? $review->five_rank : '') == "5") selected @endif>5</option>
     </select>
   </label>
+  @error('five_rank')
+  <span class="c-form__item--alert u-pb-l">{{ $message }}</span>
+  @enderror
   <label class="p-checkout__review__comment-area">
     <p class="u-pb-m">{{ __('Review') }}</p>
     <textarea name="idea_review" cols="18" rows="10" class="p-checkout__review__comment u-mb-m @error('idea_review') is-invalid @enderror" placeholder="{{ __('Please write review') }}"  autocomplete="off" required>{{ old('idea_review', !empty($review)? $review->idea_review : '') }}</textarea>

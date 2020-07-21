@@ -32,16 +32,18 @@
     </div>
 
     <div class="c-form__item u-pb-l">
-      <p class="c-form__item__name u-pb-s">概要（購入前に表示されます）（{{ __("Required") }}）</p>
-      <textarea name="idea_description" class="c-form__item__text @error('idea_description') is-invalid @enderror" cols="20" rows="8" placeholder="{{ __('Please enter') }}" autocomplete="off" required>{{ old('idea_description', !empty($idea)? $idea->idea_description : '') }}</textarea>
+      <p class="c-form__item__name u-pb-s">{{ __('Description(display before purchase)')}}（{{ __("Required") }}）</p>
+      <textarea name="idea_description" class="c-form__item__text js-count-desc @error('idea_description') is-invalid @enderror" cols="20" rows="8" placeholder="{{ __('Please enter') }}" autocomplete="off" required>{{ old('idea_description', !empty($idea)? $idea->idea_description : '') }}</textarea>
+      <p class="c-form__item__counter"><span class="js-counter-desc">0</span>/2000{{ __('characters')}}</p>
       @error('idea_description')
       <span class="c-form__item--alert">{{ $message }}</span>
       @enderror
     </div>
 
     <div class="c-form__item u-pb-l">
-      <p class="c-form__item__name u-pb-s">詳細（購入後に表示されます）（{{ __("Required") }}）</p>
-      <textarea name="idea_detail" class="c-form__item__text @error('idea_detail') is-invalid @enderror" cols="20" rows="12" placeholder="{{ __('Please enter') }}" autocomplete="off" required>{{ old('idea_detail', !empty($idea)? $idea->idea_detail : '') }}</textarea>
+      <p class="c-form__item__name u-pb-s">{{ __('Detail(display after purchase)') }}（{{ __("Required") }}）</p>
+      <textarea name="idea_detail" class="c-form__item__text js-count-detail @error('idea_detail') is-invalid @enderror" cols="20" rows="12" placeholder="{{ __('Please enter') }}" autocomplete="off" required>{{ old('idea_detail', !empty($idea)? $idea->idea_detail : '') }}</textarea>
+      <p class="c-form__item__counter"><span class="js-counter-detail">0</span>/4000{{ __('characters')}}</p>
       @error('idea_detail')
       <span class="c-form__item--alert">{{ $message }}</span>
       @enderror
