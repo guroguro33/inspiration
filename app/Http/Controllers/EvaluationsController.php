@@ -16,6 +16,10 @@ class EvaluationsController extends Controller
   // TOP画面表示（レビューのうち高評価なものを５つ取得して表示）
   // --------------------------------------------
   public function index(){
+    // ログイン済みの場合、マイページへリダイレクトする
+    if(Auth::check()){
+      return redirect("/mypage");
+    }
 
     // 高評価なレビューを５つ取得
     $evaluations = Evaluation::with([

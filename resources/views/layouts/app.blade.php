@@ -4,23 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="ヒラメキを売り買いできるマーケットサイトです。">
-  <meta name="keywords" content="">
+  <meta name="description" content="@yield('description')">
+  <meta name="keywords" content="アイデア販売,アイデア購入,WEBサービス,ひらめき,儲かる">
+  <title>@yield('title') | ヒラメキ売買サイト {{ config('app.name', 'Inspiration') }}</title>
+  
   <!-- ファビコン -->
   <link rel="apple-touch-icon" type="image/png" href="{{ asset('img/apple-touch-icon-180x180.png') }}">
   <link rel="icon" type="image/png" href="{{ asset('img/icon-192x192.png') }}">
-  <!-- Twitterカード -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <!-- <meta name="twitter:site" content="@guroguro33" />
-  <meta property="og:url" content="https://kurosuke-web.com/" />
-  <meta property="og:title" content="kurosukeのポートフォリオ" />
-  <meta property="og:description" content="プロフィール、スキル、制作実績など掲載" />
-  <meta property="og:image" content="https://kurosuke-web.com/twitter-card.jpg" /> -->
-
+  
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-
-  <title>{{ config('app.name', 'Inspiration') }}</title>
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>

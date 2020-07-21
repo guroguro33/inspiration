@@ -39,6 +39,9 @@
   "Can't edit": "編集できません",
   "Title": "タイトル",
   "Category": "カテゴリー",
+  "Description(display before purchase)": "概要（購入前に表示されます）",
+  "Detail(display after purchase)": "詳細（購入後に表示されます）",
+  "characters": "文字",
   "Please select": "選択してください",
   "Please enter": "入力してください",
   "See inspirations": "ヒラメキを買う",
@@ -66,7 +69,7 @@
   "'I have an idea, but I can't shape it because I don't have business funds.' 'I can't make a service because I don't have programming skills.'": "「アイデアはあるけど事業資金がなく形にできない」、「プログラミングスキルがないからサービスが作れない」",
   "Want to sell that inspiration?": "そのヒラメキを売ってみませんか？",
   "'I can't think of WEB services at all', 'I always think of similar services'": "「WEBサービスが全然思いつかない」、「いつも同じようなサービスしか思いつかない」",
-  "Want to buy another person's inspiration?": "他の人のひらめきを買ってみませんか？",
+  "Want to buy another person's inspiration?": "他の人のヒラメキを買ってみませんか？",
   "Reviews received": "寄せられたレビュー",
   "Introducing some of the reviews of those who actually purchased": "実際に購入した方のレビューの一部をご紹介",
   "Icon of User": "ユーザーのアイコン",
@@ -124,5 +127,8 @@
   "Description": "概要",
   "Detail": "詳細",
   "view the details": "詳細を見る",
-  "Displayed after purchase": "購入後に表示されます"
+  "Displayed after purchase": "購入後に表示されます",
+  "Inspiration is a market site for buying and selling ideas. If you have an idea but can't shape it, why not sell that inspiration? If you can't think of an idea for a web service at all, why not buy inspiration for another person? It is a service that matches such people.": "アイデア売買サイト「インスピレーション」はヒラめいたアイデアを売買するマーケットサイトです。アイデアはあるけど形にできない人は、そのヒラメキを売ってみませんか？WEBサービスのアイデアが全然思いつかない人は、他の人のヒラメキを買ってみませんか？そんな人達をマッチングするサービスです。",
+  "This is a list of reviews we received from people who purchased our products.": "購入してくれた人達から頂いたレビューの一覧です。",
+  "This is a list of the purchased flounders.": "購入したヒラメキの一覧です。"
 }

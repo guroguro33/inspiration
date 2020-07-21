@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Inspiration')
+
+@section('description')
+{{ __("Inspiration is a market site for buying and selling ideas. If you have an idea but can't shape it, why not sell that inspiration? If you can't think of an idea for a web service at all, why not buy inspiration for another person? It is a service that matches such people.")}}
+@endsection
+
 @section('content')
 <section class="p-hero l-container js-float-menu-target">
   <div class="p-hero__content">

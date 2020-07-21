@@ -69,10 +69,14 @@
       font-family: $font-family_main;
       font-size: $font-size_m;
     }
-
+    &__counter{
+      text-align: right;
+      color: $font-color_sub3;
+    }
     &--alert{
       display: block;
       font-size: $font-size_s;
+      text-align: left;
       color: $font-color_alert;
       @include mq(){
         font-size: $font-size_xs;

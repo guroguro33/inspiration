@@ -111,6 +111,9 @@ input[type="submit"] {
 }
 select{
   outline: 0;
+  &.is-invalid{
+    border: solid 1px $font-color_alert;
+  }
 }
 br {
   display: none;

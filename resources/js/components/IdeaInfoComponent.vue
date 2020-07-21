@@ -47,17 +47,17 @@
 
     <!-- 概要表示 -->
     <div class="p-detail__text u-mb-xl" v-if="!isdetail">{{ idea.idea_description }}</div>
-    <!-- 購入後、作用再表示する旨の表示 -->
+    <!-- 購入後、もしくは出品者の場合の詳細表示 -->
+    <div class="p-detail__text u-mb-xl" v-else-if="isdetail && ( isBought || user.id == idea.user.id )">{{ idea.idea_detail}}</div>
+    <!-- 購入後、詳細を表示する旨の表示 -->
     <div class="p-detail__text u-mb-xl" v-else-if="isdetail && !isBought">{{ $t('Displayed after purchase')}}</div>
-    <!-- 購入後の詳細表示 -->
-    <div class="p-detail__text u-mb-xl" v-else-if="isdetail && isBought">{{ idea.idea_detail}}</div>
 
   </div>
 </template>
 
 <script>
 export default {
-  props: ["isLogin", "idea", "likeLists", "isBought"],
+  props: ["isLogin", "idea", "likeLists", "isBought", "user"],
   data: function() {
     return {
       isdetail: false,

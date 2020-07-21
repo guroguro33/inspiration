@@ -72,6 +72,10 @@
       font-weight: 700;
       color: $font-color_sub3;
       cursor: pointer;
+      transition: none;
+      &:hover{
+        transition: none;
+      }
     }
   }
   &__text{
