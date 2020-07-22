@@ -31,6 +31,9 @@ Route::get('/ideas/{id}/show', 'IdeasController@show')->name('ideas.show');
 // ヒラメキ出品画面
 Route::get('/ideas/new', 'IdeasController@create')->name('ideas.create');
 
+// プロフィール画面
+Route::get('/profile/{id}', 'IdeasController@profile')->name('ideas.profile');
+
 Route::group(['middleware' => 'auth'], function(){
   // ヒラメキ登録
   Route::post('/ideas/new', 'IdeasController@store')->name('ideas.store');

@@ -1726,10 +1726,6 @@ br {
   border-bottom: solid 1px #707070;
 }
 
-.p-index__item:hover {
-  opacity: 0.7;
-}
-
 @media screen and (max-width: 480px) {
   .p-index__item {
     display: block;
@@ -1842,6 +1838,10 @@ br {
 
 .p-detail__note__text {
   padding-right: 15px;
+}
+
+.p-detail__note__link {
+  display: inline-block;
 }
 
 .p-detail__btn {
@@ -2067,6 +2067,46 @@ br {
   border: solid 1px #707070;
   line-height: inherit;
   font-family: "Noto Sans JP", 游ゴシック体, "Yu Gothic", YuGothic, "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF   Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
+}
+
+/*
+* object/project/_profile.scss
+*/
+
+.p-profile {
+  margin: 100px 0 100px;
+}
+
+@media screen and (max-width: 480px) {
+  .p-profile {
+    margin: 80px 0 50px;
+  }
+}
+
+.p-profile__name {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .p-profile__name {
+    font-size: 16px;
+  }
+}
+
+.p-profile__intro {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  text-align: left;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+@media screen and (max-width: 896px) {
+  .p-profile__intro {
+    max-width: 600px;
+  }
 }
 
 /*

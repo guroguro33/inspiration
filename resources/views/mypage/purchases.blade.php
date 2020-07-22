@@ -3,7 +3,7 @@
 @section('title'){{ __('Purchased inspirations') }}@endsection
 
 @section('description')
-{{ __('This is a list of the purchased flounders.')}}{{ __("Inspiration is a market site for buying and selling ideas. If you have an idea but can't shape it, why not sell that inspiration? If you can't think of an idea for a web service at all, why not buy inspiration for another person? It is a service that matches such people.")}}
+{{ __('This is a list of the purchased inspirations.')}}{{ __("Inspiration is a market site for buying and selling ideas. If you have an idea but can't shape it, why not sell that inspiration? If you can't think of an idea for a web service at all, why not buy inspiration for another person? It is a service that matches such people.")}}
 @endsection
 
 @section('content')

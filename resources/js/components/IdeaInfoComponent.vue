@@ -8,7 +8,7 @@
       <div class="p-detail__note__info">
         <img src="/img/star.svg" alt="Icon of star" class="p-detail__note__star">
         <span class="p-detail__note__text">{{ avgFive_rank }} ({{ idea.evaluations.length }}{{ $t('case') }})</span>
-        <span class="p-detail__note__text">by {{ idea.user.name }}</span>
+        <span class="p-detail__note__text">by <a :href="'/profile/' + idea.user_id + '/'" class="p-detail__note__link u-opacity">{{ idea.user.name }}</a></span>
       </div>
       <div class="p-detail__btn">
         <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="p-detail__btn--tweet u-opacity"
