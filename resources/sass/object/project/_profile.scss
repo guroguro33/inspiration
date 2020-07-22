@@ -1,0 +1,28 @@
+@charset "utf-8";
+/*
+* object/project/_profile.scss
+*/
+.p-profile{
+  margin: 100px 0 100px;
+  @include mq(){
+    margin: 80px 0 50px;
+  }
+  &__name{
+    font-size: $font-size_l;
+    @include mq(){
+      font-size: $font-size_default;
+    }
+  }
+  &__intro{
+    margin: 0 auto;
+    padding: $space_xl;
+    max-width: 800px;
+    width: 100%;
+    text-align: left;
+    word-break: break-word;
+    white-space: pre-wrap;
+    @include mq(md){
+      max-width: 600px;
+    }
+  }
+}

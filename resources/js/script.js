@@ -86,4 +86,10 @@ $(function () {
     $('.js-counter-detail').text(count);
   });
 
+  // submitボタンを押した際にボタンを無効化し、連打による多数送信回避
+  $('[type="submit"]').on('click', function () {
+    $(this).prop('disabled', true);
+    $(this).closest('form').submit();
+  });
+
 })

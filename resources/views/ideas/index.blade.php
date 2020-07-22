@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title'){{ __('List of HIRAMEKI') }}@endsection
+
+@section('description')
+{{ __("Inspiration is a market site for buying and selling ideas. If you have an idea but can't shape it, why not sell that inspiration? If you can't think of an idea for a web service at all, why not buy inspiration for another person? It is a service that matches such people.")}}
+@endsection
+
 @section('content')
 <div class="l-container">
 
@@ -58,24 +64,24 @@
   <section class="p-index">
     <h1 class="p-index__title u-pb-m">{{ __('List of HIRAMEKI') }}</h1>
     <p class="p-index__sort-result u-pb-xxl">
-      {{ $ideas->total() }}{{ __('cases') }}　{{ $ideas->firstItem()?? '0'}}{{ __('case') }}〜{{ $ideas->lastItem()?? '0'}}{{ __('case View') }}
+      {{ $ideas->total() }}{{ __('cases') }}  {{ $ideas->firstItem()?? '0'}}{{ __('case') }}〜{{ $ideas->lastItem()?? '0'}}{{ __('case View') }}
     </p>
     <div class="p-index__body u-pb-3l">
 
       @foreach($ideas as $idea)
-      <a href="{{ route('ideas.show', $idea->id) }}" class="p-index__item u-pb-l u-mb-m">
-        <div class="p-index__icon">
+      <div href="{{ route('ideas.show', $idea->id) }}" class="p-index__item u-pb-l u-mb-m">
+        <a href="{{ route('ideas.profile', $idea->user_id) }}" class="p-index__icon u-opacity">
           <div class="p-index__icon__img">
             <img src="{{ $idea->user->user_img ? asset('/storage/user_images/' . $idea->user->user_img) : asset('./img/no-img2.svg') }}" alt="{{ __('Icon of User')}}">
           </div>
-        <p class="p-index__icon__name">{{ $idea->user->name }}</p>
-        </div>
+          <p class="p-index__icon__name">{{ $idea->user->name }}</p>
+        </a>
         <div class="p-index__sub">
           <p class="p-index__sub__date">{{ date('Y/m/d', strtotime($idea->created_at)) }}</p>
           <p class="p-index__sub__date">{{ date('G:i', strtotime($idea->created_at)) }}</p>
           <p class="p-index__sub__cat">{{ $idea->category->category_name}}</p>
         </div>
-        <div class="p-index__desc c-desc">
+        <a href="{{ route('ideas.show', $idea->id) }}" class="p-index__desc c-desc u-opacity">
           <h3 class="c-desc__title">{{ mb_strimwidth($idea->idea_title, 0 ,65, "…", "UTF-8") }}</h3>
           <div class="c-desc__info u-pb-s">
             <img src="{{ asset('./img/star.svg') }}" alt="{{ __('Icon of Star') }}" class="c-desc__star">
@@ -84,8 +90,8 @@
           </div>
           <p class="c-desc__text">
             {{ mb_strimwidth($idea->idea_description, 0, 83, "…", "UTF-8") }}</p>
-        </div>
-      </a>
+        </a>
+      </div>
       @endforeach
       
 

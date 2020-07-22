@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Idea;
 use App\Like;
+use App\User;
 use App\Category;
 use App\Purchase;
 use App\Mail\PurchaseReport;
 use Illuminate\Http\Request;
 use App\Http\Requests\IdeaRequest;
-use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -340,5 +341,33 @@ class IdeasController extends Controller
       $like->save();
       
     }
+  }
+
+  // --------------------------------------------
+  // プロフィール表示
+  // --------------------------------------------
+  public function profile($id){
+  
+    // ユーザー情報を取得
+    $user = User::find($id);
+
+    // ユーザー画像の有無
+    if(!empty($user->user_img)){
+      $isImage = true;
+    }else{
+      $isImage = false;
+    }
+
+    // そのユーザーが出品したヒラメキ情報を取得
+    $ideas = Idea::with([
+      'user',
+      'category',
+      'evaluations',
+      'avgFive_rank'
+    ])->whereHas('user', function($query) use($id){
+      $query->where('id', $id);
+    })->latest()->paginate(20);
+
+    return view('ideas.profile', compact('user', 'isImage', 'ideas'));
   }
 }

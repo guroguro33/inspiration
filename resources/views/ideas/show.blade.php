@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title'){{$idea->idea_title}}@endsection
+
+@section('description'){{ $idea->idea_description }}@endsection
+
 @section('content')
 <div class="l-container l-sidebar">
   <section class="l-sidebar__detail">
@@ -28,7 +32,7 @@
                 <div class="p-detail__review__info u-pb-s">
                   <img src="{{ asset('./img/star.svg') }}" alt="{{ __('Icon of Star') }}" class="p-detail__review__star">
                   <span class="p-detail__review__point">{{ $evaluation->five_rank }}</span>
-                  <span class="p-detail__review__point">by {{ $evaluation->user->name }}</span>
+                  <span class="p-detail__review__point">by <a href="{{ route('ideas.profile', $evaluation->user_id) }}" class="p-detail__note__link u-opacity">{{ $evaluation->user->name }}</a></span>
                 </div>
               </div>
             </div>
