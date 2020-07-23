@@ -21,7 +21,7 @@
       <div class="u-mb-xxl">
         <div class="p-mymenu__img u-mb-m">
           @if($isImage)
-          <img src="{{ asset('/storage/user_images/' . $user->user_img) }}" class="js-preview" alt="{{ __('Icon of User') }}">
+          <img src="{{ $user->user_img }}" class="js-preview" alt="{{ __('Icon of User') }}">
           @else
           <img src="{{ asset('./img/no-img2.svg') }}" class="js-preview" alt="{{ __('Icon of User') }}">
           @endif

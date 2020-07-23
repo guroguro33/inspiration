@@ -101,10 +101,16 @@ class MyPageController extends Controller
   public function update(ProfileRequest $request){
 
     // ユーザー画像の選択があったら保存する
-    if($request->file('user_img')){
+    if($request->hasFile('user_img')){
       // ユーザー画像を更新
-      $file_name = $request->file('user_img')->getClientOriginalName();
-      $request->user_img->storeAs('public/user_images', $file_name);
+      if(app()->isLocal()){
+        // 開発環境
+        $file_name = $request->file('user_img')->getClientOriginalName();
+        $request->user_img->storeAs('public/user_images', $file_name);
+      }else{
+        // 本番環境
+        $path = Storage::disk('s3')->put('/', $request->file('user_img'), 'public');
+      }
     };
     
     // ユーザー情報を更新
@@ -128,10 +134,18 @@ class MyPageController extends Controller
       ]);
     }
     // ユーザー画像がアップされた場合に変更する
-    if($request->file('user_img')){
-      $user->fill([
-        'user_img' => $file_name
-      ]);
+    if($request->hasFile('user_img')){
+      if(app()->isLocal()){
+        // 開発環境
+        $user->fill([
+          'user_img' => asset('/storage/user_images/' . $file_name)
+        ]);
+      }else{
+        // 本番環境
+        $user->fill([
+          'user_img' => Storage::disk('s3')->url($path),
+        ]);
+      }
     }
     $user->save();
 

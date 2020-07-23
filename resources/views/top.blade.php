@@ -73,7 +73,7 @@
     <div class="p-review__item u-mb-xxl">
       <div class="p-review__icon">
         @if($evaluation->user->user_img)
-        <img src="{{ asset('/storage/user_images/' . $evaluation->user->user_img) }}" alt="{{ __('Icon of User') }}">
+        <img src="{{ $evaluation->user->user_img }}" alt="{{ __('Icon of User') }}">
         @else
         <img src="{{ asset('./img/no-img2.svg') }}" alt="{{ __('Icon of User') }}">
         @endif

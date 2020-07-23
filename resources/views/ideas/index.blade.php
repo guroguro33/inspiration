@@ -72,7 +72,7 @@
       <div href="{{ route('ideas.show', $idea->id) }}" class="p-index__item u-pb-l u-mb-m">
         <a href="{{ route('ideas.profile', $idea->user_id) }}" class="p-index__icon u-opacity">
           <div class="p-index__icon__img">
-            <img src="{{ $idea->user->user_img ? asset('/storage/user_images/' . $idea->user->user_img) : asset('./img/no-img2.svg') }}" alt="{{ __('Icon of User')}}">
+            <img src="{{ $idea->user->user_img ? $idea->user->user_img : asset('./img/no-img2.svg') }}" alt="{{ __('Icon of User')}}">
           </div>
           <p class="p-index__icon__name">{{ $idea->user->name }}</p>
         </a>
