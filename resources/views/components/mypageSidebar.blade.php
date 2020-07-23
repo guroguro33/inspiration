@@ -2,7 +2,7 @@
   <div class="c-fixed__mypage">
     <div class="p-mymenu__img u-mb-m">
       @if($isImage)
-      <img src="{{ asset('/storage/user_images/' . $user->user_img) }}" alt="{{ __('Icon of User') }}">
+      <img src="{{ $user->user_img }}" alt="{{ __('Icon of User') }}">
       @else
       <img src="{{ asset('./img/no-img2.svg') }}" alt="{{ __('Icon of User') }}">
       @endif

@@ -14,7 +14,7 @@
     <div class="u-mb-l">
       <div class="p-mymenu__img u-mb-m">
         @if($isImage)
-        <img src="{{ asset('/storage/user_images/' . $user->user_img) }}" class="js-preview" alt="{{ __('Icon of User') }}">
+        <img src="{{ $user->user_img }}" class="js-preview" alt="{{ __('Icon of User') }}">
         @else
         <img src="{{ asset('./img/no-img2.svg') }}" class="js-preview" alt="{{ __('Icon of User') }}">
         @endif
@@ -41,7 +41,7 @@
       <a href="{{ route('ideas.show', $idea->id) }}" class="p-index__item u-pb-l u-mb-m">
         <div class="p-index__icon">
           <div class="p-index__icon__img">
-            <img src="{{ $idea->user->user_img ? asset('/storage/user_images/' . $idea->user->user_img) : asset('./img/no-img2.svg') }}" alt="{{ __('Icon of User')}}">
+            <img src="{{ $idea->user->user_img ? $idea->user->user_img : asset('./img/no-img2.svg') }}" alt="{{ __('Icon of User')}}">
           </div>
         <p class="p-index__icon__name">{{ $idea->user->name }}</p>
         </div>
