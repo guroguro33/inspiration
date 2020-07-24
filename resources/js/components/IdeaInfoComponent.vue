@@ -8,7 +8,7 @@
       <div class="p-detail__note__info">
         <img src="/img/star.svg" alt="Icon of star" class="p-detail__note__star">
         <span class="p-detail__note__text">{{ avgFive_rank }} ({{ idea.evaluations.length }}{{ $t('case') }})</span>
-        <span class="p-detail__note__text">by <a :href="'/profile/' + idea.user_id + '/'" class="p-detail__note__link u-opacity">{{ idea.user.name }}</a></span>
+        <span class="p-detail__note__text">by <a :href="'/profile/' + idea.user_id" class="p-detail__note__link u-opacity">{{ idea.user.name }}</a></span>
       </div>
       <div class="p-detail__btn">
         <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="p-detail__btn--tweet u-opacity"
@@ -58,10 +58,10 @@
 <script>
 export default {
   props: ["isLogin", "idea", "likeLists", "isBought", "user"],
-  data: function() {
+  data: function () {
     return {
       isdetail: false,
-      isLikeTrue: this.likeLists.includes(this.idea.id) ? true : false
+      isLikeTrue: this.likeLists.includes(this.idea.id) ? true : false,
     };
   },
   filters: {
@@ -80,7 +80,7 @@ export default {
       const formatDay =
         year + "/" + month + "/" + day + " " + hour + ":" + minute;
       return formatDay;
-    }
+    },
   },
   created() {
     // console.log("ログイン状態:" + this.isLogin);
@@ -94,7 +94,7 @@ export default {
       } else {
         return Math.round(this.idea.avg_five_rank[0].average * 10) / 10;
       }
-    }
+    },
   },
   methods: {
     // お気に入り着脱
@@ -102,13 +102,13 @@ export default {
       let that = this;
       axios
         .post("/ideas/like", {
-          id: val.id
+          id: val.id,
         })
-        .then(res => {
+        .then((res) => {
           // console.log("axios成功");
           this.isLikeTrue = !this.isLikeTrue;
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // if (error.response) {
           //   // The request was made and the server responded with a status code
           //   // that falls out of the range of 2xx
@@ -127,7 +127,7 @@ export default {
           // }
           // console.log(error.config);
         });
-    }
-  }
+    },
+  },
 };
 </script>
