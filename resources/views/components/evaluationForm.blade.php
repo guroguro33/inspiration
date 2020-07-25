@@ -19,8 +19,9 @@
   @enderror
   <label class="p-checkout__review__comment-area">
     <p class="u-pb-m">{{ __('Review') }}</p>
-    <textarea name="idea_review" cols="18" rows="10" class="p-checkout__review__comment u-mb-m @error('idea_review') is-invalid @enderror" placeholder="{{ __('Please write review') }}"  autocomplete="off" required>{{ old('idea_review', !empty($review)? $review->idea_review : '') }}</textarea>
+    <textarea name="idea_review" cols="18" rows="10" class="p-checkout__review__comment js-count-evaluation @error('idea_review') is-invalid @enderror" placeholder="{{ __('Please write review') }}"  autocomplete="off" required>{{ old('idea_review', !empty($review)? $review->idea_review : '') }}</textarea>
   </label>
+  <p class="c-form__item__counter  u-mb-m"><span class="js-counter-evaluation">0</span>/1000{{ __('characters')}}</p>
   @error('idea_review')
   <span class="c-form__item--alert u-pb-l">{{ $message }}</span>
   @enderror

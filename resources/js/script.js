@@ -86,6 +86,18 @@ $(function () {
     $('.js-counter-detail').text(count);
   });
 
+  // 評価の文字カウンター
+  if ($('.js-count-evaluation').length) {
+    let count = $('.js-count-evaluation').val().length;
+    $('.js-counter-evaluation').text(count);
+  }
+
+  $('.js-count-evaluation').on('keyup', function () {
+    let count = $(this).val().length;
+    $('.js-counter-evaluation').text(count);
+  });
+
+
   // submitボタンを押した際にボタンを無効化し、連打による多数送信回避
   $('[type="submit"]').on('click', function () {
     $(this).prop('disabled', true);
