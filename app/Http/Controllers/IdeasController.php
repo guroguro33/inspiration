@@ -350,6 +350,10 @@ class IdeasController extends Controller
   // プロフィール表示
   // --------------------------------------------
   public function profile($id){
+    // GETパラメータが数字か、また存在するユーザーかチェック
+    if(!ctype_digit($id) || empty(User::find($id))) {
+      return redirect('/mypage')->with('flash_message', __('Invalid operation was performed.'));
+    }
   
     // ユーザー情報を取得
     $user = User::find($id);
