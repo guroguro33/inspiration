@@ -205,6 +205,9 @@ class IdeasController extends Controller
 
     // 論理削除する
     Idea::find($id)->delete();
+    // お気に入りは物理削除する
+    $param = ['id' => $id];
+    DB::delete('delete from likes where idea_id = :id', $param);
 
     // リダイレクトする
     // sessionフラッシュにメッセージ格納
